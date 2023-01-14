@@ -7,3 +7,4 @@ const startingEnemies = 3;
 const enemiesArray = [];
 const enemynames = ["omega", "alien", "grunt"];
 var maxEnemies = 10;
+var keyState = {};

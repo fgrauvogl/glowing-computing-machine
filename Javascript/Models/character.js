@@ -4,8 +4,8 @@ class Character {
     constructor() {
         this.x = canvas.width / 2;
         this.y = canvas.height / 2;
-        this.width = 10;
-        this.height = 10;
+        this.width = 30;
+        this.height = 30;
         let nameIndex = Math.floor(Math.random() * (listONames.length - 1));
         this.name = listONames[nameIndex];
     }
@@ -20,6 +20,46 @@ class Character {
     }
     update() {
         this.draw();
+        this.move();
     }
+    move() {
+
+        // checks for up and left
+        if (keyState[87] && keyState[65]) {
+            character.Movement(-2, 0);
+            character.Movement(0, -2);
+        }
+        // checks for up and right
+        else if (keyState[87] && keyState[68]) {
+            character.Movement(2, 0);
+            character.Movement(0, -2);
+        }
+        // checks for down and left
+        else if (keyState[83] && keyState[65]) {
+            character.Movement(-2, 0);
+            character.Movement(0, 2);
+        }
+        // checks for down and right
+        else if (keyState[83] && keyState[68]) {
+            character.Movement(2, 0);
+            character.Movement(0, 2);
+        }
+        // checks for up
+        else if (keyState[87]) {
+            character.Movement(0, -2);
+        }
+        // checks for down
+        else if (keyState[83]) {
+            character.Movement(0, 2);
+        }
+        // checks for right
+        else if (keyState[68]) {
+            character.Movement(2, 0);
+        }
+        // checks for left
+        else if (keyState[65]) {
+            character.Movement(-2, 0);
+        }
+    }
+
 }
-//Fuck
