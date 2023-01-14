@@ -16,7 +16,6 @@ class Enemy {
         this.enemyName = getEnemyName(this.EnemyType);
         this.ismovingtowardsplayer = false;
 
-        console.log(`my movement speed is ${this.moveSpeed} my width is ${this.width}`)
 
         enemyid += 1;
     }
