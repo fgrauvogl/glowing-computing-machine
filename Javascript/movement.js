@@ -1,30 +1,24 @@
-var keyState = {};
 
-window.onkeydown = window.onkeyup = function (e) {
-    keyState[e.keyCode] = e.type == 'keydown';
-    
-    // checks for up and left
-    if (keyState[38] && keyState[37]) {
-      character.Movement(-2,0);
-      character.Movement(0,-2);
+
+window.addEventListener('keydown', function (e) {
+    keyState[e.keyCode || e.which] = true;
+}, true);
+window.addEventListener('keyup', function (e) {
+    keyState[e.keyCode || e.which] = false;
+}, true);
+
+
+window.onclick = function (e) {
+    getCursorPosition(canvas, e);
+
     }
-    // checks for up and right
-    else if (keyState[38] && keyState[39]) {
-      character.Movement(2,0);
-      character.Movement(0,-2);
-    }
-    // checks for down and left
-    else if (keyState[40] && keyState [37]) {
-      character.Movement(-2,0);
-      character.Movement(0,2);
-    }
-    // checks for down and right
-    else if(keyState[40] && keyState [39]) {
-      character.Movement(2,0);
-      character.Movement(0,2);
-    }
-    // checks for up
-    else if (keyState[38]) {
-      character.Movement(0,-2);
-  }
+
+function getCursorPosition(canvas, event)
+{
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const diffx = x - character.x
+    const diffy = y - character.y
+
 }

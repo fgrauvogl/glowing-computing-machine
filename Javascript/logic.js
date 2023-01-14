@@ -9,7 +9,7 @@ for (let i = 0; i < startingEnemies; i++) {
     enemiesArray.forEach(enemy => {
         enemy.update();
     });
-    character.update();
+        character.update();
     window.requestAnimationFrame(animate);
 }
 

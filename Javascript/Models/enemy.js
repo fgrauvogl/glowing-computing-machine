@@ -9,13 +9,14 @@ class Enemy {
         this.height = getEnemySize(this.EnemyType);
         this.age = 50 * Math.random();
         this.id = enemyid;
-        this.moveSpeed = 1 / this.width + .1 * Math.random();
+        this.moveSpeed = 1000 / (this.width * this.width);
         this.velocityX = this.moveSpeed;
         this.velocityY = this.moveSpeed;
         this.enemycolor = getEnemyColor(this.EnemyType);
         this.enemyName = getEnemyName(this.EnemyType);
+        this.ismovingtowardsplayer = false;
 
-        console.log(`Created an enemy of type ${this.EnemyType} with name ${this.enemyName}`);
+
         enemyid += 1;
     }
     resetPosition() {
@@ -34,8 +35,8 @@ class Enemy {
 
     update() {
         this.handleAge();
-        this.handleCollision();
         this.handleMovement();
+        this.handleCollision();
         this.draw();
     }
 
@@ -44,16 +45,16 @@ class Enemy {
             return;
         }
         if (this.x < enemy.x) {
-            this.x++;
+            this.x += this.moveSpeed;
         }
         else {
-            this.x--;
+            this.x -= this.moveSpeed;
         }
         if (this.y < enemy.y) {
-            this.y++;
+            this.y += this.moveSpeed;
         }
         else {
-            this.y--;
+            this.y -= this.moveSpeed;
         }
     }
     handleMovement() {
@@ -61,19 +62,24 @@ class Enemy {
         var distanceToCharacter = this.calculateDistanceToCharacter();
 
 
-        if (distanceToCharacter < 100) {
+        if (distanceToCharacter < 1000) {
+            this.ismovingtowardsplayer = true;
+
             if (this.x < character.x) {
-                this.x++;
+                this.x += this.moveSpeed;
             }
             else {
-                this.x--;
+                this.x -= this.moveSpeed;
             }
             if (this.y < character.y) {
-                this.y++;
+                this.y += this.moveSpeed;
             }
             else {
-                this.y--;
+                this.y -= this.moveSpeed;
             }
+        }
+        else {
+            this.ismovingtowardsplayer = false;
         }
     }
     calculateDistanceToCharacter() {
@@ -102,7 +108,12 @@ class Enemy {
                 closestEnemy = enemy;
             }
         });
-        this.moveTowards(closestEnemy);
+
+        if (!this.ismovingtowardsplayer) {
+          this.moveTowards(closestEnemy);
+        }
+
+       
         if (maxDistance < 10) {
             this.makeBaby();
         }
