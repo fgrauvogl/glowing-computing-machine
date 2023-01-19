@@ -1,7 +1,3 @@
-
-
-
-
 class projectile {
 	constructor(x, y) {
 		this.x = x;

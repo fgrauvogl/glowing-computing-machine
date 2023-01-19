@@ -6,5 +6,5 @@ CANVAS_HEIGHT = canvas.height = 800;
 const startingEnemies = 3;
 const enemiesArray = [];
 const enemynames = ["omega", "alien", "grunt"];
-var maxEnemies = 10;
+var maxEnemies = 25;
 var keyState = {};
