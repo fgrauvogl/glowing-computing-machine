@@ -126,7 +126,7 @@ class Enemy {
     }
     handleAge() {
         this.age = this.age + .01 * Math.random();
-        if (this.age > 50) {
+        if (this.age > 60) {
             removeEnemy(this.id);
         }
     }

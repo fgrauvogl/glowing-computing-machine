@@ -1,0 +1,12 @@
+body {
+    border-top-width: 4.8px; 
+    border-top-style: solid;
+    border-bottom-width: 4.8px;
+    border-bottom-style: solid;
+    border-left-width: 4.8px;
+    border-left-style: solid;
+    border-right-width: 4.8px;
+    border-right-style: solid;
+    float: left;
+    background: linear-gradient( 0deg, rgb( 255, 152, 129) 0%, rgb( 131, 164, 255) 100% );
+}
