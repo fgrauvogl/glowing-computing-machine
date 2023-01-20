@@ -13,6 +13,18 @@ class Character {
         this.x += x;
         this.y += y;
 
+        if (this.x < 0) {
+            this.x = 0;
+        }
+        else if (this.x > canvas.width - this.width) {
+            this.x = canvas.width - this.width;     
+        }
+        if (this.y < 0) {
+            this.y = 0;
+        }
+        else if (this.y > canvas.height - this.height) {
+            this.y = canvas.height - this.height;
+        }
     }
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
