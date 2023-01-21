@@ -45,7 +45,7 @@ canvas.addEventListener("click", event => {
     let rect = canvas.getBoundingClientRect();
     let x = event.clientX - rect.left;
     let y = event.clientY - rect.top;
-    let projectile = new Projectile(character.x, character.y, 20, x, y);
+    let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y);
     projectileArray.push(projectile);
 
     // Move the projectile towards the click point

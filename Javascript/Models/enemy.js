@@ -184,7 +184,7 @@ function removeEnemy(id) {
 
 function getEnemyColor(enemyName) {
     if (enemyName == "grunt") {
-        return "rgb(252, 3, 3)";
+        return "rgb(255, 153, 51)";
     }
     else if (enemyName == "alien") {
         return "rgb(16, 143, 39)";
