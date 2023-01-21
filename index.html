@@ -9,8 +9,14 @@
 </head>
 <body>
     <canvas id="canvas1"></canvas>
+    <div id="death-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
+        <h1>You Are Dead</h1>
+        <p>Your journey ends here.</p>
+        <button onclick="restart()">Restart</button>
+    </div>
 </body>
 <script src="Javascript\variables.js"></script>
+<script src="Javascript\Models\projectile.js"></script>
 <script src="Javascript\Models\enemy.js"></script>
 <script src="Javascript\names.js"></script>
 <script src="Javascript\Models\character.js"></script>

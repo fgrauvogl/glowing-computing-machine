@@ -3,7 +3,7 @@ var enemyid = 1;
 class Enemy {
     constructor() {
         this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.y = -100;
         this.EnemyType = getEnemyType();
         this.width = getEnemySize(this.EnemyType);
         this.height = getEnemySize(this.EnemyType);
@@ -15,13 +15,27 @@ class Enemy {
         this.enemycolor = getEnemyColor(this.EnemyType);
         this.enemyName = getEnemyName(this.EnemyType);
         this.ismovingtowardsplayer = false;
-
+        this.health = getEnemyHealth(this.EnemyType);
+        this.strength = this.health / 3;
 
         enemyid += 1;
     }
+
+    collision(x1, y1, w1, h1, x2, y2, w2, h2) {
+        const right1 = x1 + w1;
+        const bottom1 = y1 + h1;
+        const right2 = x2 + w2;
+        const bottom2 = y2 + h2;
+        if (x1 < right2 && right1 > x2 && y1 < bottom2 && bottom1 > y2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     resetPosition() {
         this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.y = 1000;
     }
     makeBaby() {
         let Baby = new Enemy();
@@ -30,14 +44,20 @@ class Enemy {
         if (enemiesArray.length <= maxEnemies) {
             enemiesArray.push(new Enemy());
             this.resetPosition();
+
         }
     }
+
 
     update() {
         this.handleAge();
         this.handleMovement();
         this.handleCollision();
         this.draw();
+        var isCollision = this.collision(character.x, character.y, character.width, character.height, this.x, this.y, this.width, this.height);
+        if (isCollision) {
+        this.hitPlayer();
+        }
     }
 
     moveTowards(enemy) {
@@ -114,10 +134,14 @@ class Enemy {
         }
 
        
-        if (maxDistance < 10) {
-            this.makeBaby();
+        if (maxDistance < 30) {
+            //character.health -= 1;
         }
     }
+    fight(closestEnemy) {
+
+    }
+
     draw() {
         ctx.fillStyle = this.enemycolor;
         ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -128,6 +152,14 @@ class Enemy {
         this.age = this.age + .01 * Math.random();
         if (this.age > 60) {
             removeEnemy(this.id);
+        }
+    }
+    hitPlayer() {
+        character.health -= this.strength;
+        if (character.health < 0) {
+            character.health = 0;
+            character.isDead = true;
+            showDeathScreen();
         }
     }
 }
@@ -186,5 +218,19 @@ function getEnemySize(enemyName) {
     }
     else if (enemyName == "omega") {
         return 170;
+    }
+}
+
+function getEnemyHealth(enemyName) {
+
+
+    if (enemyName == "grunt") {
+        return 10;
+    }
+    else if (enemyName == "alien") {
+        return 100;
+    }
+    else if (enemyName == "omega") {
+        return 1000;
     }
 }

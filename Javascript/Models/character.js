@@ -8,8 +8,15 @@ class Character {
         this.height = 30;
         let nameIndex = Math.floor(Math.random() * (listONames.length - 1));
         this.name = listONames[nameIndex];
+        this.health = this.getCharacterHealth();
+        this.maxHealth = this.health;
+        this.isDead = false;
     }
     Movement(x, y) {
+        if (this.isDead) {
+            return;
+        }
+
         this.x += x;
         this.y += y;
 
@@ -17,7 +24,7 @@ class Character {
             this.x = 0;
         }
         else if (this.x > canvas.width - this.width) {
-            this.x = canvas.width - this.width;     
+            this.x = canvas.width - this.width;
         }
         if (this.y < 0) {
             this.y = 0;
@@ -29,6 +36,9 @@ class Character {
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
         ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = "black";
+        ctx.fillText(this.name, this.x, this.y);
+
     }
     update() {
         this.draw();
@@ -74,4 +84,20 @@ class Character {
         }
     }
 
+
+    getCharacterHealth() {
+        if (this.name == "Crumb") {
+            return 10;
+        }
+        else if (this.name == "Mark") {
+            return 100;
+        }
+        else if (this.name == "Clint") {
+            return 1000;
+        }
+    }
+
+    playerDeath() {
+
+    }
 }
