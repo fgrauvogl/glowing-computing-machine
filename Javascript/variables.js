@@ -9,7 +9,7 @@ CANVAS_HEIGHT = canvas.height = window.innerHeight - 3;
 const startingEnemies = 3;
 const monstersPerLevel = 3;
 var level = 1;
-var maxLevel = 3;
+var maxLevel = 30;
 var enemiesArray = [];
 var projectileArray = [];
 const enemynames = ["omega", "alien", "grunt"];
