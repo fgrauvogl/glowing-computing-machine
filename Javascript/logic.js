@@ -68,6 +68,8 @@ function restart() {
     projectileArray = [];
     character = new Character();
     enemiesArray = [];
+    powerUpArray = [];
+
  for (let i = 0; i < startingEnemies; i++) {
         enemiesArray.push(new Enemy());
     }
@@ -107,9 +109,22 @@ function fireGun() {
 
             break;
         }
-        case y:
-            // code block
+        case Guns.GrenadeLauncher: {
+            const audio = new Audio("./Audio/bestshotgun.mp3");
+
+            audio.play();
+
+            let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y);
+            projectile.radius = 12;
+            projectile.damage = 40;
+            projectile.isGrenade = true;
+            projectile.isImpactOnHit = true;
+            projectileArray.push(projectile);
+
+ 
             break;
+        }
+
         default:
             {
                 const audio = new Audio("./Audio/pew.mp3");

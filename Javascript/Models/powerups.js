@@ -17,7 +17,7 @@ class PowerUp {
 
     getPowerUpType(number) {
         
-        if (number < 20) {
+        if (number < 99) {
             return PowerUps.HP;
         }
         if (number < 100) {
@@ -29,8 +29,10 @@ class PowerUp {
         switch (powerUpType) {
             case PowerUps.Armor: {
                 return "./Images/Armor.png";
-
             } 
+            case PowerUps.HP: {
+                return "./Images/heart.png";
+            }
 
                 
             default:
@@ -38,7 +40,14 @@ class PowerUp {
     }
 
     update() {
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        console.log(this.image.src);
+        if (this.image.src) {
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        }
+        else {
+
+        }
+       
     }
 
 }
