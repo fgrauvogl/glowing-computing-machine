@@ -1,9 +1,10 @@
 var enemyid = 1;
 
+
 class Enemy {
     constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = -100;
+        this.x = getRandomXCoord();
+        this.y = getRandomYCoord(this.x);
         this.EnemyType = getEnemyType();
         this.width = getEnemySize(this.EnemyType);
         this.height = getEnemySize(this.EnemyType);
@@ -113,7 +114,7 @@ class Enemy {
         if (enemiesArray.length < 2) {
             return;
         }
-        var maxDistance = 1000;
+        var maxDistance = 10000;
         var closestEnemy;
         enemiesArray.forEach(enemy => {
             if (this.id == enemy.id) {
@@ -183,11 +184,62 @@ function removeEnemy(id) {
     let index = enemiesArray.indexOf(obj);
    
     if (Enemy.health < 0) {
-        Enemy.health = 0
+        Enemy.health = 0;
         Enemy.enemyIsDead = true;
     }
     if (this.enemyDead = true) {
-    enemiesArray.splice(index, 1);
+        enemiesArray.splice(index, 1);
+        getDrop(obj);
+    }
+}
+
+
+function getDrop(Enemy) {
+
+    if (!isLootDropped(Enemy.EnemyType)) {
+        return;
+    }
+
+    var lootRolls = getLootRolls(Enemy.EnemyType);
+    let rolls = [];
+    for (var i = 0; i < lootRolls; i++) {
+        rolls.push(Math.random() * 100);
+    }
+    var maxRoll = Math.max(...rolls);
+    var newDrop = new PowerUp(Enemy.x, Enemy.y,maxRoll);
+    powerUpArray.push(newDrop);
+}
+
+function isLootDropped(enemyName) {
+    var lootChance;
+
+    if (enemyName == "grunt") {
+        lootChance = Math.random() * 12;
+    }
+    else if (enemyName == "alien") {
+        lootChance = Math.random() * 20;
+    }
+    else if (enemyName == "omega") {
+        lootChance = Math.random() * 60;
+    }
+    if (lootChance > 10) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+function getLootRolls(enemyName) {
+    if (enemyName == "grunt") {
+        return 1;
+    }
+    else if (enemyName == "alien") {
+        return 3;
+    }
+    else if (enemyName == "omega") {
+        return 7;
     }
 }
 
@@ -239,5 +291,38 @@ function getEnemyHealth(enemyName) {
     }
     else if (enemyName == "omega") {
         return 300;
+    }
+}
+
+function getRandomXCoord() {
+    var randomNumber = Math.ceil(2 * Math.random());
+    var randomNumberTwo = Math.ceil(2 * Math.random());
+
+    if (randomNumber == 1) {
+        return canvas.width * Math.random();
+    }
+    else {
+        if (randomNumberTwo == 1) {
+            return -100;
+        }
+        else {
+            return canvas.width + 100;
+        }
+    }
+}
+
+function getRandomYCoord(x) {
+    if (x < 0 || x > canvas.width) {
+        return canvas.height * Math.random();
+    }
+    else {
+        var randomNumber = Math.ceil(2 * Math.random());
+
+        if (randomNumber == 1) {
+            return -100;
+        }
+        else {
+            return canvas.height + 100;
+        }
     }
 }

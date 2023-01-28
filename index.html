@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
+    <audio id="pew" src="Audio\pew.mp3"></audio>
+    <audio id="shotgun" src="Audio\bestshotgun.mp3"></audio>
     <canvas id="canvas1"></canvas>
     <div id="death-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
         <h1>You Are Dead</h1>
@@ -15,13 +17,25 @@
         <button onclick="restart()">Restart</button>
     </div>
 
-    <img src="#" alt="Alternate Text" />
+    <img src="Images\heart.png" alt="health"
+         id="heart" />
+
+    <div id="win-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
+        <h1>Congratulations! You won!</h1>
+        <img src="path/to/winner-image.png" alt="Winner">
+        <button onclick="restart()" id="play-again-button">Play Again</button>
+    </div>
+
+
 
 
 
 </body>
 <script src="Javascript\variables.js"></script>
+<script src="Javascript\utility.js"></script>
+<script src="Javascript\heart.js"></script>
 <script src="Javascript\Models\projectile.js"></script>
+<script src="Javascript\Models\powerups.js"></script>
 <script src="Javascript\Models\enemy.js"></script>
 <script src="Javascript\names.js"></script>
 <script src="Javascript\Models\character.js"></script>

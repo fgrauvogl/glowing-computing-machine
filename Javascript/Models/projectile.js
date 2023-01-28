@@ -1,17 +1,22 @@
 let projectileID = 0;
 
 class Projectile {
-    constructor(x, y, speed, endingx, endingy) {
+    constructor(x, y, speed, endingx, endingy, angle = 0) {
         this.x = x;
         this.y = y;
-        this.speed = 3;
+        this.speed = speed;
         this.endingx = endingx;
         this.endingy = endingy;
         this.id = projectileID;
         projectileID += 1;
         this.projectileHeight = 5;
         this.projectileWidth = 5;
-        this.angle = Math.atan2(endingy - this.y, endingx - this.x);
+        if (angle == 0) {
+            this.angle = Math.atan2(endingy - this.y, endingx - this.x);
+        }
+        else {
+            this.angle = angle;
+        }
         this.enemyType = getEnemyType();
         this.damage = 10;
         this.enemiesHit = {};
@@ -40,7 +45,7 @@ class Projectile {
             if (result) {
                 enemy.health -= this.damage;
                 this.enemiesHit[enemy.id] = enemy.id;
-
+                removeProjectile(this.id);
                 if (enemy.health <= 0) {
                     removeEnemy(enemy.id);
                 }
