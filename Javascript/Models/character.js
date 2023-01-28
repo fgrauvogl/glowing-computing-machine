@@ -11,7 +11,7 @@ class Character {
         this.health = this.getCharacterHealth();
         this.maxHealth = this.health;
         this.isDead = false;
-        this.currentGun = Guns.ShotGun;
+        this.currentGun = Guns.GrenadeLauncher;
         this.armor = 0;
     }
     Movement(x, y) {

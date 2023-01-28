@@ -19,7 +19,7 @@ const Guns = {
 	ShotGun: "Shot Gun",
 	Pistol: "Pistol",
 	MachineGun: "Machine Gun",
-	RocketLauncher: "Rocket Launcher",
+	GrenadeLauncher: "Grenade Launcher",
 }
 var shotGunPellets = 6;
 var shotGunSpread = [1, .5, -.5, -1];
@@ -27,7 +27,7 @@ const PowerUps = {
 	Armor: "Armor",
 	ShotGun: "Shot Gun",
 	MachineGun: "Machine Gun",
-	RocketLauncher: "Rocket Launcher",
+	GrenadeLauncher: "Grenade Launcher",
 	SpeedUp: "Speed Up",
 	Nuke: "Nuke",
 	HP: "HP",

@@ -29,8 +29,10 @@ class PowerUp {
         switch (powerUpType) {
             case PowerUps.Armor: {
                 return "./Images/Armor.png";
-
             } 
+            case PowerUps.HP: {
+                return "./Images/heart.png";
+            }
 
                 
             default:
