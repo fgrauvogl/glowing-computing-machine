@@ -3,6 +3,10 @@ const canvas = document.getElementById('canvas1');
 const winscreen = document.getElementById('win-screen');
 const pewAudio = document.getElementById("pew");
 const shotGunAudio = document.getElementById("shotgun");
+const grenadeLauncherAudio = document.getElementById("grenadeLauncher");
+const grenadeExplosionAudio = new Audio("./Audio/grenadeExplosion.mp3");
+
+
 const ctx = canvas.getContext('2d');
 CANVAS_WIDTH = canvas.width = window.innerWidth - 20;
 CANVAS_HEIGHT = canvas.height = window.innerHeight - 3;
