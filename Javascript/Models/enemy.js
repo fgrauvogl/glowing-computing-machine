@@ -17,7 +17,7 @@ class Enemy {
         this.ismovingtowardsplayer = false;
         this.health = getEnemyHealth(this.EnemyType);
         this.strength = this.health / 3;
-        this.enemyIsDead = false
+        this.enemyIsDead = false;
         this.maxHealth = this.health;
         enemyid += 1;
     }
