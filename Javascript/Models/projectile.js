@@ -1,19 +1,25 @@
 let projectileID = 0;
 
 class Projectile {
-    constructor(x, y, speed, endingx, endingy) {
+    constructor(x, y, speed, endingx, endingy, angle = 0) {
         this.x = x;
         this.y = y;
-        this.speed = 4;
+        this.speed = speed;
         this.endingx = endingx;
         this.endingy = endingy;
         this.id = projectileID;
         projectileID += 1;
         this.projectileHeight = 5;
         this.projectileWidth = 5;
-        this.angle = Math.atan2(endingy - this.y, endingx - this.x);
-
-        
+        if (angle == 0) {
+            this.angle = Math.atan2(endingy - this.y, endingx - this.x);
+        }
+        else {
+            this.angle = angle;
+        }
+        this.enemyType = getEnemyType();
+        this.damage = 10;
+        this.enemiesHit = {};
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -30,12 +36,22 @@ class Projectile {
 
     checkForEnemyCollisions() {
         enemiesArray.forEach(enemy => {
-            var result = this.collision(this.x,this.y,this.projectileHeight,this.projectileWidth,enemy.x,enemy.y,enemy.width,enemy.height);
-            if (result) {
-                removeEnemy(enemy.id);
+            if (enemy.id in this.enemiesHit) {
+                return;
             }
 
+            var result = this.collision(this.x,this.y,this.projectileHeight,this.projectileWidth,enemy.x,enemy.y,enemy.width,enemy.height);
+          
+            if (result) {
+                enemy.health -= this.damage;
+                this.enemiesHit[enemy.id] = enemy.id;
+                removeProjectile(this.id);
+                if (enemy.health <= 0) {
+                    removeEnemy(enemy.id);
+                }
+            }
         });
+        
     }
 
     moveTowards() {

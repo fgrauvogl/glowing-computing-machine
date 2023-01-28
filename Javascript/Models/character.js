@@ -11,6 +11,8 @@ class Character {
         this.health = this.getCharacterHealth();
         this.maxHealth = this.health;
         this.isDead = false;
+        this.currentGun = Guns.ShotGun;
+        this.armor = 0;
     }
     Movement(x, y) {
         if (this.isDead) {
@@ -87,17 +89,14 @@ class Character {
 
     getCharacterHealth() {
         if (this.name == "Crumb") {
-            return 10;
-        }
-        else if (this.name == "Mark") {
             return 100;
         }
-        else if (this.name == "Clint") {
+        else if (this.name == "Mark") {
             return 1000;
+        }
+        else if (this.name == "Clint") {
+            return 10000;
         }
     }
 
-    playerDeath() {
-
-    }
 }
