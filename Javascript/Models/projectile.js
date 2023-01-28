@@ -143,10 +143,13 @@ class Projectile {
         }
     }
 
-    grenadeExplosion() {
+    grenadeExplosion() { 
+        const audio = new Audio("./Audio/GrenadeExplosion.mp3");
+        audio.play();
+
         for (var i = 0; i < grenadePellets; i++) {
             var randomAngle = (Math.random() - .5) * 10;
-            var randomSpeed = (10 + Math.random() * 10)
+            var randomSpeed = (10 + Math.random() * 10);
             let projectile = new Projectile(this.x + this.projectileWidth / 2, this.y + this.projectileHeight / 2, randomSpeed, this.x, this.y, randomAngle);
             projectile.damage = 15;
             projectile.lifespan = 3+ Math.random() * 7;

@@ -110,9 +110,9 @@ function fireGun() {
             break;
         }
         case Guns.GrenadeLauncher: {
-            const audio = new Audio("./Audio/bestshotgun.mp3");
-
+            const audio = new Audio("./Audio/GrenadeLauncher.mp3");
             audio.play();
+
 
             let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y);
             projectile.radius = 12;
