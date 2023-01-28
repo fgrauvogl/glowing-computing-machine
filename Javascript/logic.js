@@ -27,6 +27,7 @@ function drawHealthBar(character) {
 
     ctx.fillStyle = "red";
     ctx.fillRect(40, canvas.height - 40, maxHealthBarSize * percentHealthLeft, 20);
+    ctx.fill
 }
 
 function showDeathScreen() {

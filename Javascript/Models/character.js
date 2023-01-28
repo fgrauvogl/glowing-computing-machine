@@ -87,17 +87,13 @@ class Character {
 
     getCharacterHealth() {
         if (this.name == "Crumb") {
-            return 10;
-        }
-        else if (this.name == "Mark") {
             return 100;
         }
-        else if (this.name == "Clint") {
+        else if (this.name == "Mark") {
             return 1000;
         }
-    }
-
-    playerDeath() {
-
+        else if (this.name == "Clint") {
+            return 10000;
+        }
     }
 }

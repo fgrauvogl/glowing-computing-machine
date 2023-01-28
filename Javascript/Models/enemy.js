@@ -17,7 +17,8 @@ class Enemy {
         this.ismovingtowardsplayer = false;
         this.health = getEnemyHealth(this.EnemyType);
         this.strength = this.health / 3;
-
+        this.enemyIsDead = false
+        this.maxHealth = this.health;
         enemyid += 1;
     }
 
@@ -82,16 +83,16 @@ class Enemy {
         var distanceToCharacter = this.calculateDistanceToCharacter();
 
 
-        if (distanceToCharacter < 1000) {
+        if (distanceToCharacter < 10000) {
             this.ismovingtowardsplayer = true;
 
-            if (this.x < character.x) {
+            if (this.x + this.width / 2 < character.x + character.width / 2) {
                 this.x += this.moveSpeed;
             }
             else {
                 this.x -= this.moveSpeed;
             }
-            if (this.y < character.y) {
+            if (this.y + this.height / 2 < character.y + character.height / 2) {
                 this.y += this.moveSpeed;
             }
             else {
@@ -132,12 +133,9 @@ class Enemy {
         if (!this.ismovingtowardsplayer) {
           this.moveTowards(closestEnemy);
         }
-
-       
-        if (maxDistance < 30) {
-            //character.health -= 1;
-        }
     }
+
+
     fight(closestEnemy) {
 
     }
@@ -145,8 +143,12 @@ class Enemy {
     draw() {
         ctx.fillStyle = this.enemycolor;
         ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = "red";
+        var currentHealthPercentage = this.health / this.maxHealth;
+        ctx.fillRect(this.x, this.y + this.height, this.width * currentHealthPercentage, this.height/8);
         ctx.fillStyle = "black";
         ctx.fillText(this.enemyName, this.x, this.y);
+
     }
     handleAge() {
         this.age = this.age + .01 * Math.random();
@@ -179,7 +181,14 @@ function getEnemyType() {
 function removeEnemy(id) {
     let obj = enemiesArray.find(x => x.id === id);
     let index = enemiesArray.indexOf(obj);
+   
+    if (Enemy.health < 0) {
+        Enemy.health = 0
+        Enemy.enemyIsDead = true;
+    }
+    if (this.enemyDead = true) {
     enemiesArray.splice(index, 1);
+    }
 }
 
 function getEnemyColor(enemyName) {
@@ -222,8 +231,6 @@ function getEnemySize(enemyName) {
 }
 
 function getEnemyHealth(enemyName) {
-
-
     if (enemyName == "grunt") {
         return 10;
     }
@@ -231,6 +238,6 @@ function getEnemyHealth(enemyName) {
         return 100;
     }
     else if (enemyName == "omega") {
-        return 1000;
+        return 300;
     }
 }

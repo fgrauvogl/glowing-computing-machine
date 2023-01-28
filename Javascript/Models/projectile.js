@@ -4,7 +4,7 @@ class Projectile {
     constructor(x, y, speed, endingx, endingy) {
         this.x = x;
         this.y = y;
-        this.speed = 4;
+        this.speed = 3;
         this.endingx = endingx;
         this.endingy = endingy;
         this.id = projectileID;
@@ -12,8 +12,9 @@ class Projectile {
         this.projectileHeight = 5;
         this.projectileWidth = 5;
         this.angle = Math.atan2(endingy - this.y, endingx - this.x);
-
-        
+        this.enemyType = getEnemyType();
+        this.damage = 10;
+        this.enemiesHit = {};
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -30,12 +31,22 @@ class Projectile {
 
     checkForEnemyCollisions() {
         enemiesArray.forEach(enemy => {
-            var result = this.collision(this.x,this.y,this.projectileHeight,this.projectileWidth,enemy.x,enemy.y,enemy.width,enemy.height);
-            if (result) {
-                removeEnemy(enemy.id);
+            if (enemy.id in this.enemiesHit) {
+                return;
             }
 
+            var result = this.collision(this.x,this.y,this.projectileHeight,this.projectileWidth,enemy.x,enemy.y,enemy.width,enemy.height);
+          
+            if (result) {
+                enemy.health -= this.damage;
+                this.enemiesHit[enemy.id] = enemy.id;
+
+                if (enemy.health <= 0) {
+                    removeEnemy(enemy.id);
+                }
+            }
         });
+        
     }
 
     moveTowards() {
