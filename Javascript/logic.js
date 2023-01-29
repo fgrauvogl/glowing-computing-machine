@@ -2,6 +2,8 @@ for (let i = 0; i < startingEnemies; i++) {
     enemiesArray.push(new Enemy());
 }
 
+    var playerWeaponManager = new PlayerWeaponManager();
+
     var character = new Character();
 
     function animate(){
@@ -78,62 +80,6 @@ function restart() {
     heart.style.display = "block";
 }
 canvas.addEventListener("click", event => {
-
-    fireGun();
+    playerWeaponManager.fireGun();
 
 })
-
-function fireGun() {
-
-    let rect = canvas.getBoundingClientRect();
-
-    let x = event.clientX - rect.left;
-
-    let y = event.clientY - rect.top;
-
-    switch (character.currentGun) {
-
-        case Guns.ShotGun: {
-            const audio = new Audio("./Audio/bestshotgun.mp3");
-
-            audio.play();
-
-            let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y);
-
-            projectileArray.push(projectile);
-
-            for (var i = 0; i < shotGunPellets; i++) {
-                let projectile2 = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, projectile.angle + .3 * (.5 - Math.random()));
-                projectileArray.push(projectile2);
-            }
-
-            break;
-        }
-        case Guns.GrenadeLauncher: {
-            const audio = new Audio("./Audio/GrenadeLauncher.mp3");
-            audio.play();
-
-
-            let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y);
-            projectile.radius = 12;
-            projectile.damage = 40;
-            projectile.isGrenade = true;
-            projectile.isImpactOnHit = true;
-            projectileArray.push(projectile);
-
- 
-            break;
-        }
-
-        default:
-            {
-                const audio = new Audio("./Audio/pew.mp3");
-
-                audio.play();
-
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 4, x, y);
-
-                projectileArray.push(projectile);
-            }
-    } 
-}

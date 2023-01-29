@@ -40,7 +40,6 @@ class PowerUp {
     }
 
     update() {
-        console.log(this.image.src);
         if (this.image.src) {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
