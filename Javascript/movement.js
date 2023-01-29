@@ -2,6 +2,12 @@
 
 window.addEventListener('keydown', function (e) {
     keyState[e.keyCode || e.which] = true;
+    if (e.key == "e") {
+        playerWeaponManager.switchGunRight();
+    }
+    else if (e.key == "q") {
+        playerWeaponManager.switchGunLeft();
+    }
 }, true);
 window.addEventListener('keyup', function (e) {
     keyState[e.keyCode || e.which] = false;
