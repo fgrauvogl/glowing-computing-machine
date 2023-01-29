@@ -12,7 +12,8 @@ class Character {
         this.maxHealth = this.health;
         this.isDead = false;
         this.currentGun = Guns.GrenadeLauncher;
-        this.armor = 0;
+        this.armor = 200;
+        this.maxArmor = this.armor;
     }
     Movement(x, y) {
         if (this.isDead) {
@@ -99,4 +100,16 @@ class Character {
         }
     }
 
+    applyPowerUp(powerUpType) {
+        switch (powerUpType) {
+            case PowerUps.Armor:
+                this.armor = Math.min(this.armor + 50, this.maxArmor);
+                break;
+            case PowerUps.HP:
+                this.health = this.health + 50;
+                break;
+            default:
+                break;
+        }
+    }
 }

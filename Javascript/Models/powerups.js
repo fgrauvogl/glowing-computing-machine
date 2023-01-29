@@ -2,7 +2,7 @@ var powerUpId = 1;
 
 
 class PowerUp {
-    constructor(x, y,lootRoll) {
+    constructor(x, y, lootRoll) {
         this.x = x;
         this.y = y;
         this.width = 25;
@@ -12,11 +12,12 @@ class PowerUp {
         powerUpId += 1;
         this.image = new Image();
         this.image.src = this.getPowerUpImage(this.powerUpType);
+        this.powerUpIsDead = false;
     }
 
 
     getPowerUpType(number) {
-        
+
         if (number < 99) {
             return PowerUps.HP;
         }
@@ -29,24 +30,51 @@ class PowerUp {
         switch (powerUpType) {
             case PowerUps.Armor: {
                 return "./Images/Armor.png";
-            } 
+            }
             case PowerUps.HP: {
                 return "./Images/heart.png";
             }
 
-                
+
             default:
         }
     }
 
+    collidesWith(character) {
+        return (
+            this.x < character.x + character.width &&
+            this.x + this.width > character.x &&
+            this.y < character.y + character.height &&
+            this.y + this.height > character.y
+        );
+    }
+
+    dropPickup(powerUp) {
+        if (this.collidesWith(character)) {
+            character.applyPowerUp(powerUp);
+            this.powerUpIsDead = true
+            removePowerUp(this.id);
+        }
+    }
+
     update() {
+        this.dropPickup();
         if (this.image.src) {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
         else {
 
         }
-       
+
+    }
+}
+
+function removePowerUp(id) {
+    let obj = powerUpArray.find(x => x.id === id);
+    let index = powerUpArray.indexOf(obj);
+
+    if (this.powerUpIsDead = true) {
+        powerUpArray.splice(index, 1);
     }
 
 }
