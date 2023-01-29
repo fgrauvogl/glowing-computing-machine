@@ -19,6 +19,7 @@ for (let i = 0; i < startingEnemies; i++) {
         });
         character.update();
         drawHealthBar(character);
+        drawArmorBar(character);
         handleLevelUp();
         window.requestAnimationFrame(animate);
 }
@@ -58,6 +59,16 @@ function drawHealthBar(character) {
 
     ctx.fillStyle = "red";
     ctx.fillRect(40, canvas.height - 40, maxHealthBarSize * percentHealthLeft, 20);
+}
+
+function drawArmorBar(character) {
+
+    var maxArmorBarSize =200;
+    var percentArmorLeft = character.armor / character.maxArmor;
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 20, maxArmorBarSize * percentArmorLeft, 5);
+    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 45, maxArmorBarSize * percentArmorLeft, 5);
 }
 
 function showDeathScreen() {
