@@ -1,6 +1,5 @@
 var enemyid = 1;
 
-
 class Enemy {
     constructor() {
         this.x = getRandomXCoord();

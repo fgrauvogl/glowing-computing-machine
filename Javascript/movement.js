@@ -26,5 +26,4 @@ function getCursorPosition(canvas, event)
     const y = event.clientY - rect.top;
     const diffx = x - character.x
     const diffy = y - character.y
-
 }

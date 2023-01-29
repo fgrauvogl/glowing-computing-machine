@@ -2,11 +2,12 @@ for (let i = 0; i < startingEnemies; i++) {
     enemiesArray.push(new Enemy());
 }
 
-    var playerWeaponManager = new PlayerWeaponManager();
+var playerWeaponManager = new PlayerWeaponManager();
 
-    var character = new Character();
+var character = new Character();
 
-    function animate(){
+
+function animate() { 
     ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
     enemiesArray.forEach(enemy => {
         enemy.update();
@@ -20,7 +21,7 @@ for (let i = 0; i < startingEnemies; i++) {
         character.update();
         drawHealthBar(character);
         handleLevelUp();
-        window.requestAnimationFrame(animate);
+    window.requestAnimationFrame(animate);
 }
 
 animate();
@@ -83,3 +84,16 @@ canvas.addEventListener("click", event => {
     playerWeaponManager.fireGun();
 
 })
+
+let isPaused = false;
+
+const pauseButton = document.getElementById("pause-button");
+pauseButton.addEventListener("click", () => {
+    isPaused = !isPaused;
+});
+
+function pause() {
+    if (!isPaused) {
+     
+    }
+}
