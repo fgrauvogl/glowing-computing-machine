@@ -20,6 +20,8 @@ for (let i = 0; i < startingEnemies; i++) {
         character.update();
         drawHealthBar(character);
         handleLevelUp();
+        playerWeaponManager.update();
+        drawAmmoBar();
         window.requestAnimationFrame(animate);
 }
 
@@ -53,6 +55,24 @@ function levelUp() {
 
 function drawHealthBar(character) {
    
+    var maxHealthBarSize = 200;
+    var percentHealthLeft = character.health / character.maxHealth;
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(40, canvas.height - 40, maxHealthBarSize * percentHealthLeft, 20);
+}
+
+function drawAmmoBar() {
+    let currentAmmo = playerWeaponManager.getCurrentAmmoOfCurrentGun();
+    if (playerWeaponManager.currentGun == Guns.Pistol) {
+        currentAmmo = "Infinite";
+    }
+    ctx.fillStyle = "black";
+    ctx.fillText(`${playerWeaponManager.currentGun} ${currentAmmo}`, 80, canvas.height - 50);
+}
+
+function drawHealthBar(character) {
+
     var maxHealthBarSize = 200;
     var percentHealthLeft = character.health / character.maxHealth;
 

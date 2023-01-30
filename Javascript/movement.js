@@ -13,6 +13,18 @@ window.addEventListener('keyup', function (e) {
     keyState[e.keyCode || e.which] = false;
 }, true);
 
+window.addEventListener('mousedown', function (e) {
+    isMouseDown = true;
+}, true);
+window.addEventListener('mouseup', function (e) {
+    isMouseDown = false;
+}, true);
+
+window.addEventListener('mousemove', function (e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+}, true);
+
 
 window.onclick = function (e) {
     getCursorPosition(canvas, e);

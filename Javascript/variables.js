@@ -12,6 +12,9 @@ CANVAS_WIDTH = canvas.width = window.innerWidth - 20;
 CANVAS_HEIGHT = canvas.height = window.innerHeight - 3;
 const startingEnemies = 3;
 const monstersPerLevel = 3;
+var isMouseDown = false;
+let mouseX = 0;
+let mouseY = 0;
 var level = 1;
 var maxLevel = 30;
 var enemiesArray = [];
@@ -23,7 +26,10 @@ const Guns = {
 	ShotGun: "Shot Gun",
 	Pistol: "Pistol",
 	MachineGun: "Machine Gun",
+	ChainGun: "Chain Gun",
 	GrenadeLauncher: "Grenade Launcher",
+	Sniper: "Sniper Rifle",
+	FiftyCal: "50 Cal",
 }
 var shotGunPellets = 6;
 var shotGunSpread = [1, .5, -.5, -1];
