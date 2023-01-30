@@ -135,22 +135,22 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.MachineGun: {
-                const audio = new Audio("./Audio/pew.mp3");
+                const audio = new Audio("./Audio/machinegun.mp3");
 
                 audio.play();
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 16, x, y);
+                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y);
 
                 projectileArray.push(projectile);
 
                 break;
             }
             case Guns.ChainGun: {
-                const audio = new Audio("./Audio/pew.mp3");
+                const audio = new Audio("./Audio/machinegun.mp3");
 
                 audio.play();
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y);
+                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 15, x, y);
 
                 projectileArray.push(projectile);
 
