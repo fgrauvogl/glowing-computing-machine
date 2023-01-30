@@ -13,7 +13,6 @@ class PlayerWeaponManager {
         this.Ammo[Guns.ShotGun] = 30;
         this.Ammo[Guns.MachineGun] = 2000;
         this.Ammo[Guns.ChainGun] = 2000;
-        this.Ammo[Guns.MegaGatling] = 2000;
         this.Ammo[Guns.Sniper] = 100;
         this.Ammo[Guns.FiftyCal] = 100;
         this.isWeaponCoolDown = false;
