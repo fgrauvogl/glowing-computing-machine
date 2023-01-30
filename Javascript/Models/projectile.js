@@ -144,8 +144,8 @@ class Projectile {
     }
 
     grenadeExplosion() { 
-        const audio = new Audio("./Audio/GrenadeExplosion.mp3");
-        audio.play();
+
+        playAudio("./Audio/GrenadeExplosion.mp3");
 
         for (var i = 0; i < grenadePellets; i++) {
             var randomAngle = (Math.random() - .5) * 10;

@@ -1,10 +1,7 @@
 /** @type {HTMLCanvasElement} */
 const canvas = document.getElementById('canvas1');
 const winscreen = document.getElementById('win-screen');
-const pewAudio = document.getElementById("pew");
-const shotGunAudio = document.getElementById("shotgun");
-const grenadeLauncherAudio = document.getElementById("grenadeLauncher");
-const grenadeExplosionAudio = new Audio("./Audio/grenadeExplosion.mp3");
+const pausemenu = document.getElementById('pause-menu');
 
 
 const ctx = canvas.getContext('2d');
@@ -14,6 +11,7 @@ const startingEnemies = 3;
 const monstersPerLevel = 3;
 var isMouseDown = false;
 let isPaused = false;
+let isMuted = false;
 let mouseX = 0;
 let mouseY = 0;
 var level = 1;
@@ -45,3 +43,12 @@ const PowerUps = {
 	ExtraLife: "Extra Life",
 }
 var powerUpArray = [];
+
+var slider = document.getElementById("volume-bar");
+
+let volume = 100;
+
+slider.oninput = function () {
+	volume = this.value;
+	console.log(this.value);
+}

@@ -87,6 +87,10 @@ class PlayerWeaponManager {
         }
     }
     fireGun() {
+        if (isPaused) {
+            return;
+        }
+
         if (automaticGuns[this.currentGun]) {
             this.setWeaponCoolDown(automaticGuns[this.currentGun]);
         }
@@ -104,9 +108,8 @@ class PlayerWeaponManager {
         switch (playerWeaponManager.currentGun) {
 
             case Guns.ShotGun: {
-                const audio = new Audio("./Audio/bestshotgun.mp3");
 
-                audio.play();
+                playAudio("./Audio/bestshotgun.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y);
 
@@ -120,9 +123,8 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.GrenadeLauncher: {
-                const audio = new Audio("./Audio/GrenadeLauncher.mp3");
-                audio.play();
 
+                playAudio("./Audio/GrenadeLauncher.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y);
                 projectile.radius = 12;
@@ -135,9 +137,8 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.MachineGun: {
-                const audio = new Audio("./Audio/machinegun.mp3");
 
-                audio.play();
+                playAudio("./Audio/machinegun.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y);
 
@@ -146,9 +147,8 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.ChainGun: {
-                const audio = new Audio("./Audio/machinegun.mp3");
 
-                audio.play();
+                playAudio("./Audio/machinegun.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 15, x, y);
 
@@ -157,9 +157,8 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.Sniper: {
-                const audio = new Audio("./Audio/Pistol.mp3");
 
-                audio.play();
+                playAudio("./Audio/Pistol.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y);
 
@@ -170,9 +169,8 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.FiftyCal: {
-                const audio = new Audio("./Audio/Pistol.mp3");
 
-                audio.play();
+                playAudio("./Audio/Pistol.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y);
 
@@ -185,9 +183,7 @@ class PlayerWeaponManager {
 
             default:
                 {
-                    const audio = new Audio("./Audio/Pistol.mp3");
-
-                    audio.play();
+                    playAudio("./Audio/Pistol.mp3");
 
                     let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 4, x, y);
 

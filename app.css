@@ -3,3 +3,46 @@ body {
     margin: 0px;
     background: linear-gradient( 0deg, rgb( 255, 152, 129) 0%, rgb( 131, 164, 255) 100% );
 }
+
+#pause-menu {
+    display: none;
+    position: absolute;
+    top: 25vh;
+    left: 25vw;
+    width: 50vw;
+    height: 50vh;
+    background: white;
+}
+
+#pause-button {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 2.5vw;
+    height: 2.5vw;
+    opacity: 0.5;
+}
+
+#menu-text {
+    top: 5px;
+    text-align: center;
+}
+
+#mute-image{
+    right: 10px;
+    top: 10px;
+    position:absolute;
+    width: 40px;
+    height: 40px;
+}
+
+#volume-bar{
+    position:absolute;
+    left:10px;
+}
+
+#audio-text {
+    display:inline-block;
+    left:10px;
+}

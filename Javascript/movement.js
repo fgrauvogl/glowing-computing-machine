@@ -13,6 +13,9 @@ window.addEventListener('keydown', function (e) {
         if (!isPaused) {
             unpause();
         }
+        else {
+            pause();
+        }
     }
 }, true);
 window.addEventListener('keyup', function (e) {

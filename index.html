@@ -32,24 +32,30 @@
         <button onclick="restart()" id="play-again-button">Play Again</button>
     </div>
 
-    <div id="pause-menu" style="display:inline-block; position:absolute; top:-110px; left:-280px;">
-        <canvas id="myCanvas"></canvas>
-        <button id="pause-button">Pause</button>
+    <div id="pause-menu">
+        <h1 id="menu-text">Menu</h1>
+        <img src="Images\mute.png" id="mute-image" onclick="handleMute()" />
+        <h2 id="audio-text">Audio</h2>
+            <input type="range" min="0" max="100" value="50" id="volume-bar">
     </div>
 
+    <img src="Images\pause.png" alt="Alternate Text" id="pause-button" /> src;
 
+
+
+
+    <script src="Javascript\variables.js"></script>
+    <script src="Javascript\utility.js"></script>
+    <script src="Javascript\playerweaponmanager.js"></script>
+    <script src="Javascript\heart.js"></script>
+    <script src="Javascript\armor.js"></script>
+    <script src="Javascript\Models\projectile.js"></script>
+    <script src="Javascript\Models\powerups.js"></script>
+    <script src="Javascript\Models\enemy.js"></script>
+    <script src="Javascript\names.js"></script>
+    <script src="Javascript\Models\character.js"></script>
+    <script src="Javascript\logic.js"></script>
+    <script src="Javascript\movement.js"></script>
 </body>
-<script src="Javascript\variables.js"></script>
-<script src="Javascript\playerweaponmanager.js"></script>
-<script src="Javascript\utility.js"></script>
-<script src="Javascript\heart.js"></script>
-<script src="Javascript\armor.js"></script>
-<script src="Javascript\Models\projectile.js"></script>
-<script src="Javascript\Models\powerups.js"></script>
-<script src="Javascript\Models\enemy.js"></script>
-<script src="Javascript\names.js"></script>
-<script src="Javascript\Models\character.js"></script>
-<script src="Javascript\logic.js"></script>
-<script src="Javascript\movement.js"></script>
-<script src="Javascript\pause.js"></script>
+
 </html>

@@ -119,9 +119,28 @@ function drawHealthBar(character) {
     const pauseButton = document.getElementById("pause-button");
     pauseButton.addEventListener("click", () => {
         isPaused = !isPaused;
-        animate();
+        if (isPaused) {
+            pause();
+        }
+        else {
+            unpause();
+        }
     });
+
+function pause() {
+    isPaused = true;
+    pausemenu.style.display = "inline-block";
+}
+
     function unpause() {
      isPaused = false;
-      animate();
-    }
+        animate();
+        pausemenu.style.display = "none";
+}
+
+
+function handleMute() {
+    isMuted = !isMuted;
+    console.log(isMuted);
+}
+
