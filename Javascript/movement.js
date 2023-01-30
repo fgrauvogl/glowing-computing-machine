@@ -8,6 +8,15 @@ window.addEventListener('keydown', function (e) {
     else if (e.key == "q") {
         playerWeaponManager.switchGunLeft();
     }
+    else if (e.key == "q") {
+        playerWeaponManager.switchGunLeft();
+    }
+    else if (e.key == "p") {
+        isPaused = !isPaused;
+        if (!isPaused) {
+            unpause();
+        }
+    }
 }, true);
 window.addEventListener('keyup', function (e) {
     keyState[e.keyCode || e.which] = false;

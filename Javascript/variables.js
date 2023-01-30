@@ -13,6 +13,7 @@ CANVAS_HEIGHT = canvas.height = window.innerHeight - 3;
 const startingEnemies = 3;
 const monstersPerLevel = 3;
 var isMouseDown = false;
+let isPaused = false;
 let mouseX = 0;
 let mouseY = 0;
 var level = 1;

@@ -7,7 +7,8 @@ var playerWeaponManager = new PlayerWeaponManager();
 var character = new Character();
 
 
-function animate() { 
+function animate() {
+    if (isPaused) { return; }
     ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
     enemiesArray.forEach(enemy => {
         enemy.update();
@@ -115,13 +116,15 @@ function drawHealthBar(character) {
 
     })
 
-    let isPaused = false;
-
     const pauseButton = document.getElementById("pause-button");
     pauseButton.addEventListener("click", () => {
         isPaused = !isPaused;
+        animate();
     });
-
+    function unpause() {
+     isPaused = false;
+      animate();
+    }
     function pause() {
         if (!isPaused) {
             console.log("PAused");
