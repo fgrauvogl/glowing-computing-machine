@@ -8,9 +8,6 @@ window.addEventListener('keydown', function (e) {
     else if (e.key == "q") {
         playerWeaponManager.switchGunLeft();
     }
-    else if (e.key == "q") {
-        playerWeaponManager.switchGunLeft();
-    }
     else if (e.key == "p") {
         isPaused = !isPaused;
         if (!isPaused) {
