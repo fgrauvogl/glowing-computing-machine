@@ -1,6 +1,6 @@
 var gunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.Sniper, Guns.FiftyCal];
 var automaticGuns = {};
-automaticGuns[Guns.MachineGun] = 100;
+automaticGuns[Guns.MachineGun] = 200;
 automaticGuns[Guns.ChainGun] = 20;
 
 class PlayerWeaponManager {
