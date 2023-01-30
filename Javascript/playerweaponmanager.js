@@ -4,6 +4,9 @@ automaticGuns[Guns.MachineGun] = 200;
 automaticGuns[Guns.ChainGun] = 20;
 automaticGuns[Guns.MegaGatling] = 2;
 
+var ammoPerShot = {}
+ammoPerShot[Guns.MegaGatling] = 100;
+
 class PlayerWeaponManager {
     constructor() {
         this.gunIndex = 0;
@@ -74,7 +77,7 @@ class PlayerWeaponManager {
         this.currentGun = gunType;
     }
     useAmmo() {
-        this.Ammo[this.currentGun] -= 1;
+        this.Ammo[this.currentGun] -= ammoPerShot[this.currentGun] ?? 1;
     }
     getCurrentAmmoOfCurrentGun() {
         return this.Ammo[this.currentGun];
