@@ -13,9 +13,13 @@ class PowerUp {
         this.image = new Image();
         this.image.src = this.getPowerUpImage(this.powerUpType);
         this.powerUpIsDead = false;
+        setTimeout(this.removeMyself.bind(this), 20000);
+
         powerUpId += 1;
     }
-
+    removeMyself() {
+        removePowerUp(this.id);
+    }
 
     getPowerUpType(number) {
 
