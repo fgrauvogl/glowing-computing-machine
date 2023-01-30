@@ -125,8 +125,3 @@ function drawHealthBar(character) {
      isPaused = false;
       animate();
     }
-    function pause() {
-        if (!isPaused) {
-            console.log("PAused");
-        }
-    }

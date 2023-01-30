@@ -157,7 +157,7 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.Sniper: {
-                const audio = new Audio("./Audio/pew.mp3");
+                const audio = new Audio("./Audio/Pistol.mp3");
 
                 audio.play();
 
@@ -170,7 +170,7 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.FiftyCal: {
-                const audio = new Audio("./Audio/pew.mp3");
+                const audio = new Audio("./Audio/Pistol.mp3");
 
                 audio.play();
 
@@ -185,7 +185,7 @@ class PlayerWeaponManager {
 
             default:
                 {
-                    const audio = new Audio("./Audio/pew.mp3");
+                    const audio = new Audio("./Audio/Pistol.mp3");
 
                     audio.play();
 
