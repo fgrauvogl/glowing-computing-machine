@@ -158,9 +158,11 @@ class PlayerWeaponManager {
             }
             case Guns.Sniper: {
 
-                playAudio("./Audio/Pistol.mp3");
+                playAudio("./Audio/Sniper.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y);
+
+                projectile.damage = 20;
 
                 projectile.radius = 3;
 
@@ -170,11 +172,15 @@ class PlayerWeaponManager {
             }
             case Guns.FiftyCal: {
 
-                playAudio("./Audio/Pistol.mp3");
+                playAudio("./Audio/Sniper.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y);
 
+                projectile.damage = 50;
+
                 projectile.radius = 10;
+
+                projectile.isArmorPiercing = true;
 
                 projectileArray.push(projectile);
 

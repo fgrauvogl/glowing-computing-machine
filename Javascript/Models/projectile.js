@@ -2,6 +2,7 @@ let projectileID = 0;
 let grenadePellets = 10;
 
 class Projectile {
+    isArmorPiercing = false;
     constructor(x, y, speed, endingx, endingy, angle = 0) {
         this.x = x;
         this.y = y;
@@ -27,7 +28,6 @@ class Projectile {
         this.isNuke = false;
         this.lifespan = -1;
         this.radius = 5;
-
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -54,9 +54,11 @@ class Projectile {
                 playAudio("./Audio/impact.mp3");
                 enemy.health -= this.damage;
                 this.enemiesHit[enemy.id] = enemy.id;
-                removeProjectile(this.id);
                 if (enemy.health <= 0) {
                     removeEnemy(enemy.id);
+                }
+                if (!this.isArmorPiercing) {
+                    removeProjectile(this.id);
                 }
             }
         });
