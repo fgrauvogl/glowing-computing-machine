@@ -7,12 +7,13 @@ class PowerUp {
         this.y = y;
         this.width = 25;
         this.height = 25;
+        this.id = powerUpId;
         this.powerUpType = this.getPowerUpType(lootRoll);
         this.powerUpId = powerUpId;
-        powerUpId += 1;
         this.image = new Image();
         this.image.src = this.getPowerUpImage(this.powerUpType);
         this.powerUpIsDead = false;
+        powerUpId += 1;
     }
 
 
@@ -35,7 +36,6 @@ class PowerUp {
                 return "./Images/heart.png";
             }
 
-
             default:
         }
     }
@@ -49,10 +49,10 @@ class PowerUp {
         );
     }
 
-    dropPickup(powerUp) {
+    dropPickup() {
         if (this.collidesWith(character)) {
-            character.applyPowerUp(powerUp);
-            this.powerUpIsDead = true
+            character.applyPowerUp(this.powerUpType);
+            this.powerUpIsDead = true;
             removePowerUp(this.id);
         }
     }
@@ -69,7 +69,7 @@ class PowerUp {
     }
 }
 
-function removePowerUp(id) {
+function removePowerUp(id) { 
     let obj = powerUpArray.find(x => x.id === id);
     let index = powerUpArray.indexOf(obj);
 

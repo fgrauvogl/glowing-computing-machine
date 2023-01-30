@@ -106,7 +106,7 @@ class Character {
                 this.armor = Math.min(this.armor + 50, this.maxArmor);
                 break;
             case PowerUps.HP:
-                this.health = this.health + 50;
+                this.health = Math.min(this.health + 50, this.maxHealth);
                 break;
             default:
                 break;
