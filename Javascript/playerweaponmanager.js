@@ -1,7 +1,8 @@
-var gunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.Sniper, Guns.FiftyCal];
+var gunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.MegaGatling, Guns.Sniper, Guns.FiftyCal];
 var automaticGuns = {};
 automaticGuns[Guns.MachineGun] = 200;
 automaticGuns[Guns.ChainGun] = 20;
+automaticGuns[Guns.MegaGatling] = 2;
 
 class PlayerWeaponManager {
     constructor() {
@@ -12,6 +13,7 @@ class PlayerWeaponManager {
         this.Ammo[Guns.ShotGun] = 30;
         this.Ammo[Guns.MachineGun] = 2000;
         this.Ammo[Guns.ChainGun] = 2000;
+        this.Ammo[Guns.MegaGatling] = 2000;
         this.Ammo[Guns.Sniper] = 100;
         this.Ammo[Guns.FiftyCal] = 100;
         this.isWeaponCoolDown = false;
@@ -156,6 +158,21 @@ class PlayerWeaponManager {
 
                 break;
             }
+            case Guns.MegaGatling: {
+
+                playAudio("./Audio/machinegun.mp3");
+
+                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y);
+
+                projectileArray.push(projectile);
+
+                for (var i = 0; i < 100; i++) {
+                    let projectile2 = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y, projectile.angle + .5 * (.5 - Math.random()));
+                    projectileArray.push(projectile2);
+                }
+
+                break;
+            }
             case Guns.Sniper: {
 
                 playAudio("./Audio/Sniper.mp3");
@@ -197,4 +214,11 @@ class PlayerWeaponManager {
                 }
         }
     }
+}
+function fireProjectileAtMouseLocation() {
+
+    let x = event?.clientX ?? mouseX;
+
+    let y = event?.clientY ?? mouseY;
+
 }

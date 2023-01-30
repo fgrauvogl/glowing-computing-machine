@@ -29,6 +29,7 @@ const Guns = {
 	GrenadeLauncher: "Grenade Launcher",
 	Sniper: "Sniper Rifle",
 	FiftyCal: "50 Cal",
+	MegaGatling: "Mega Gatling Gun"
 }
 var shotGunPellets = 6;
 var shotGunSpread = [1, .5, -.5, -1];
