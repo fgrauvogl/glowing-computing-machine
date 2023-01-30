@@ -23,11 +23,18 @@
 
     <img src="Images\heart.png" alt="health"
          id="heart" />
+    <img src="Images\Armor.png" alt="armor"
+         id="armor" />
 
     <div id="win-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
         <h1>Congratulations! You won!</h1>
         <img src="path/to/winner-image.png" alt="Winner">
         <button onclick="restart()" id="play-again-button">Play Again</button>
+    </div>
+
+    <div id="pause-menu" style="display:inline-block; position:absolute; top:-110px; left:-280px;">
+        <canvas id="myCanvas"></canvas>
+        <button id="pause-button">Pause</button>
     </div>
 
 
@@ -36,6 +43,7 @@
 <script src="Javascript\playerweaponmanager.js"></script>
 <script src="Javascript\utility.js"></script>
 <script src="Javascript\heart.js"></script>
+<script src="Javascript\armor.js"></script>
 <script src="Javascript\Models\projectile.js"></script>
 <script src="Javascript\Models\powerups.js"></script>
 <script src="Javascript\Models\enemy.js"></script>
@@ -43,4 +51,5 @@
 <script src="Javascript\Models\character.js"></script>
 <script src="Javascript\logic.js"></script>
 <script src="Javascript\movement.js"></script>
+<script src="Javascript\pause.js"></script>
 </html>

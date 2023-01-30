@@ -1,6 +1,5 @@
 var enemyid = 1;
 
-
 class Enemy {
     constructor() {
         this.x = getRandomXCoord();
@@ -158,11 +157,15 @@ class Enemy {
         }
     }
     hitPlayer() {
-        character.health -= this.strength;
-        if (character.health < 0) {
-            character.health = 0;
-            character.isDead = true;
-            showDeathScreen();
+        character.armor -= this.strength;
+        if (character.armor < 0) {
+            character.armor = 0;
+            character.health -= this.strength;
+            if (character.health < 0) {
+                character.health = 0;
+                character.isDead = true;
+                showDeathScreen();
+            }
         }
     }
 }

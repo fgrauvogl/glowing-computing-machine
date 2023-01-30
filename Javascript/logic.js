@@ -2,11 +2,12 @@ for (let i = 0; i < startingEnemies; i++) {
     enemiesArray.push(new Enemy());
 }
 
-    var playerWeaponManager = new PlayerWeaponManager();
+var playerWeaponManager = new PlayerWeaponManager();
 
-    var character = new Character();
+var character = new Character();
 
-    function animate(){
+
+function animate() { 
     ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
     enemiesArray.forEach(enemy => {
         enemy.update();
@@ -19,6 +20,7 @@ for (let i = 0; i < startingEnemies; i++) {
         });
         character.update();
         drawHealthBar(character);
+        drawArmorBar(character);
         handleLevelUp();
         playerWeaponManager.update();
         drawAmmoBar();
@@ -78,6 +80,15 @@ function drawHealthBar(character) {
 
     ctx.fillStyle = "red";
     ctx.fillRect(40, canvas.height - 40, maxHealthBarSize * percentHealthLeft, 20);
+    
+function drawArmorBar(character) {
+
+    var maxArmorBarSize =200;
+    var percentArmorLeft = character.armor / character.maxArmor;
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 20, maxArmorBarSize * percentArmorLeft, 5);
+    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 45, maxArmorBarSize * percentArmorLeft, 5);
 }
 
 function showDeathScreen() {
@@ -103,3 +114,16 @@ canvas.addEventListener("click", event => {
     playerWeaponManager.fireGun();
 
 })
+
+let isPaused = false;
+
+const pauseButton = document.getElementById("pause-button");
+pauseButton.addEventListener("click", () => {
+    isPaused = !isPaused;
+});
+
+function pause() {
+    if (!isPaused) {
+     
+    }
+}
