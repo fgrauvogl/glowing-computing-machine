@@ -51,6 +51,7 @@ class Projectile {
             var result = this.collision(this.x, this.y, this.projectileHeight, this.projectileWidth, enemy.x, enemy.y, enemy.width, enemy.height);
 
             if (result) {
+                playAudio("./Audio/impact.mp3");
                 enemy.health -= this.damage;
                 this.enemiesHit[enemy.id] = enemy.id;
                 removeProjectile(this.id);
