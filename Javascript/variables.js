@@ -10,7 +10,7 @@ const itemCtx = itemCanvas.getContext('2d');
 
 CANVAS_WIDTH = itemCanvas.width = canvas.width = window.innerWidth;
 CANVAS_HEIGHT = itemCanvas.height = canvas.height = window.innerHeight;
-const startingEnemies = 5;
+const startingEnemies = 1;
 const monstersPerLevel = 3;
 var isMouseDown = false;
 let isPaused = false;
@@ -54,5 +54,4 @@ let volume = 100;
 
 slider.oninput = function () {
 	volume = this.value;
-	console.log(this.value);
 }

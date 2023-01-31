@@ -38,14 +38,14 @@ class Character {
     }
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillRect(Math.floor(this.x), Math.floor(this.y), this.width, this.height);
         ctx.fillStyle = "black";
         ctx.fillText(this.name, this.x, this.y);
 
     }
     update() {
-        this.draw();
         this.move();
+        this.draw();
     }
     move() {
 

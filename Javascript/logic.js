@@ -141,6 +141,5 @@ function pause() {
 
 function handleMute() {
     isMuted = !isMuted;
-    console.log(isMuted);
 }
 

@@ -54,11 +54,11 @@ class Enemy {
         this.handleAge();
         this.handleMovement();
         this.handleCollision();
-        this.draw();
         var isCollision = this.collision(character.x, character.y, character.width, character.height, this.x, this.y, this.width, this.height);
         if (isCollision) {
         this.hitPlayer();
         }
+        this.draw();
     }
 
     moveTowards(enemy) {
@@ -145,7 +145,7 @@ class Enemy {
         ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.fillStyle = "red";
         var currentHealthPercentage = this.health / this.maxHealth;
-        ctx.fillRect(this.x, this.y + this.height, this.width * currentHealthPercentage, this.height/8);
+        ctx.fillRect(Math.floor(this.x), Math.floor(this.y + this.height), this.width * currentHealthPercentage, this.height / 8);
         ctx.fillStyle = "black";
         ctx.fillText(this.enemyName, this.x, this.y);
 
