@@ -46,3 +46,14 @@ body {
     display:inline-block;
     left:10px;
 }
+
+#item-canvas {
+    z-index: -3;
+    position: absolute;
+    background: linear-gradient( 0deg, rgb( 255, 152, 129) 0%, rgb( 131, 164, 255) 100% );
+}
+
+#canvas1 {
+    z-index: -2;
+    position: absolute;
+}

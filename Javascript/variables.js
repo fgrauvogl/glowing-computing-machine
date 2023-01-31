@@ -1,12 +1,15 @@
 /** @type {HTMLCanvasElement} */
 const canvas = document.getElementById('canvas1');
+const itemCanvas = document.getElementById('item-canvas');
 const winscreen = document.getElementById('win-screen');
 const pausemenu = document.getElementById('pause-menu');
 
 
 const ctx = canvas.getContext('2d');
-CANVAS_WIDTH = canvas.width = window.innerWidth - 20;
-CANVAS_HEIGHT = canvas.height = window.innerHeight - 3;
+const itemCtx = itemCanvas.getContext('2d');
+
+CANVAS_WIDTH = itemCanvas.width = canvas.width = window.innerWidth;
+CANVAS_HEIGHT = itemCanvas.height = canvas.height = window.innerHeight;
 const startingEnemies = 3;
 const monstersPerLevel = 3;
 var isMouseDown = false;

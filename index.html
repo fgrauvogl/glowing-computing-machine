@@ -15,6 +15,8 @@
 
 
     <canvas id="canvas1"></canvas>
+    <canvas id="item-canvas"></canvas>
+
     <div id="death-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
         <h1>You Are Dead</h1>
         <p>Your journey ends here.</p>
@@ -35,7 +37,7 @@
         <h1 id="menu-text">Menu</h1>
         <img src="Images\mute.png" id="mute-image" onclick="handleMute()" />
         <h2 id="audio-text">Audio</h2>
-            <input type="range" min="0" max="100" value="50" id="volume-bar">
+        <input type="range" min="0" max="100" value="50" id="volume-bar">
     </div>
 
     <img src="Images\pause.png" alt="Alternate Text" id="pause-button" />

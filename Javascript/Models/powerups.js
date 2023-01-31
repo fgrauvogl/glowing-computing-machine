@@ -63,11 +63,11 @@ class PowerUp {
 
     update() {
         this.dropPickup();
-        if (this.image.src) {
-            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        if (this.image.src && !this.powerUpIsDead) {
+            itemCtx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
         else {
-
+            itemCtx.clearRect(this.x, this.y, this.width, this.height);
         }
 
     }
@@ -77,8 +77,12 @@ function removePowerUp(id) {
     let obj = powerUpArray.find(x => x.id === id);
     let index = powerUpArray.indexOf(obj);
 
-    if (this.powerUpIsDead = true) {
-        powerUpArray.splice(index, 1);
+    powerUpArray.splice(index, 1);
+    if (obj?.x) {
+        itemCtx.clearRect(obj.x, obj.y, obj.width, obj.height);
+    }
+    else {
+        itemCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     }
 
 }
