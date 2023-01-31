@@ -74,9 +74,10 @@ class PowerUp {
 }
 
 function removePowerUp(id) { 
+    debugger;
     let obj = powerUpArray.find(x => x.id === id);
     let index = powerUpArray.indexOf(obj);
-
+    if (obj == null) { return; }
     powerUpArray.splice(index, 1);
     if (obj?.x) {
         itemCtx.clearRect(obj.x, obj.y, obj.width, obj.height);
