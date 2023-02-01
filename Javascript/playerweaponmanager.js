@@ -1,4 +1,6 @@
 var gunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.MegaGatling, Guns.Sniper, Guns.FiftyCal];
+var mobGunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.Sniper, Guns.FiftyCal];
+
 var automaticGuns = {};
 automaticGuns[Guns.MachineGun] = 500;
 automaticGuns[Guns.ChainGun] = 20;

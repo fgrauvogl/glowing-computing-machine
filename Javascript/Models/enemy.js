@@ -40,9 +40,9 @@ class Enemy {
     getGun() {
         if (this.EnemyType != "omega") { return; }
 
-        let randomGunIndex = Math.floor(gunsList.length * Math.random());
+        let randomGunIndex = Math.floor(mobGunsList.length * Math.random());
 
-        return gunsList[randomGunIndex];
+        return gunsList[mobGunsList];
 
     }
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
