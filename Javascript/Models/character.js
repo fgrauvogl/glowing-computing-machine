@@ -37,6 +37,20 @@ class Character {
             this.y = canvas.height - this.height;
         }
     }
+    hitPlayer(amount) {
+        this.armor -= amount;
+        if (this.armor <= 0) {
+            this.armor = 0;
+            this.health -= amount;
+
+            if (this.health < 0) {
+                debugger;
+                this.health = 0;
+                this.isDead = true;
+                showDeathScreen();
+            }
+        }
+    }
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y), this.width, this.height);

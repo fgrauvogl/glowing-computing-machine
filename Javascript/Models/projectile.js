@@ -28,6 +28,8 @@ class Projectile {
         this.isNuke = false;
         this.lifespan = -1;
         this.radius = 5;
+        this.isEnemyProjectile = false;
+        this.color = "black";
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -41,7 +43,21 @@ class Projectile {
             return false;
         }
     }
+    checkForCharacterCollisions() {
 
+        var result = this.collision(this.x, this.y, this.projectileHeight, this.projectileWidth, character.x, character.y, character.width, character.height);
+
+        if (result) {
+            playAudio("./Audio/impact.mp3");
+            character.hitPlayer(this.damage);
+            if (character.health <= 0) {
+                character.isDead = true;
+            }
+            if (!this.isArmorPiercing) {
+                removeEnemyProjectile(this.id);
+            }
+        }
+    }
     checkForEnemyCollisions() {
         enemiesArray.forEach(enemy => {
             if (enemy.id in this.enemiesHit) {
@@ -64,6 +80,14 @@ class Projectile {
         });
 
     }
+    removeMyself() {
+        if (this.isEnemyProjectile) {
+            removeEnemyProjectile(this.id);
+        }
+        else {
+            removeProjectile(this.id);
+        }
+    }
 
     moveTowards() {
 
@@ -75,10 +99,20 @@ class Projectile {
 
     projectileDisappearCheck(targetx, targety) {
         if (this.x < 0 || this.x > canvas.width) {
-            removeProjectile(this.id);
+            if (this.isEnemyProjectile) {
+                removeEnemyProjectile(this.id);
+            } else {
+                removeProjectile(this.id);
+
+            }
         }
         if (this.y < 0 || this.y > canvas.height) {
-            removeProjectile(this.id);
+            if (this.isEnemyProjectile) {
+                removeEnemyProjectile(this.id);
+            } else {
+                removeProjectile(this.id);
+
+            }
         }
 
     }
@@ -86,13 +120,14 @@ class Projectile {
 
     draw() {
         // Draw the projectile on the canvas
-        ctx.fillStyle = "black";
+        ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         ctx.fill();
     }
 
     testFunction() {
+        console.log(this.lifespan);
         if (this.lifespan < 0) {
             return;
         }
@@ -111,7 +146,15 @@ class Projectile {
         this.testFunction();
         this.projectileDisappearCheck(this.endingx, this.endingy);
         this.draw();
-      
+    }
+
+    enemyProjectileUpdate() {
+        this.moveTowards();
+        this.checkForCharacterCollisions();
+        this.handleAdditionalProjectileRules();
+        this.testFunction();
+        this.projectileDisappearCheck(this.endingx, this.endingy);
+        this.draw();
     }
 
     handleAdditionalProjectileRules() {
@@ -134,7 +177,12 @@ class Projectile {
     }
     
     explosion() {
-        removeProjectile(this.id);
+        if (this.isEnemyProjectile) {
+            removeEnemyProjectile(this.id);
+        } else {
+            removeProjectile(this.id);
+
+        }
         if (this.isGrenade) {
             this.grenadeExplosion();
         }
@@ -154,19 +202,32 @@ class Projectile {
             var randomAngle = (Math.random() - .5) * 10;
             var randomSpeed = (10 + Math.random() * 10);
             let projectile = new Projectile(this.x + this.projectileWidth / 2, this.y + this.projectileHeight / 2, randomSpeed, this.x, this.y, randomAngle);
+            projectile.color = this.color;
             projectile.damage = 15;
-            projectile.lifespan = 3+ Math.random() * 7;
+            projectile.lifespan = 3 + Math.random() * 7;
+         
+            if (this.isEnemyProjectile) {
+                projectile.isEnemyProjectile = true;
+            };
 
-            projectileArray.push(projectile);
-
-
+            if (this.isEnemyProjectile) {
+                enemyProjectileArray.push(projectile);
+            }
+            else {
+                characterProjectileArray.push(projectile);
+            }
         }
     }
 
 }
 function removeProjectile(id) {
-    let obj = projectileArray.find(x => x.id === id);
-    let index = projectileArray.indexOf(obj);
-    projectileArray.splice(index, 1);
+    let obj = characterProjectileArray.find(x => x.id === id);
+    let index = characterProjectileArray.indexOf(obj);
+    characterProjectileArray.splice(index, 1);
 }
 
+function removeEnemyProjectile(id) {
+    let obj = enemyProjectileArray.find(x => x.id === id);
+    let index = enemyProjectileArray.indexOf(obj);
+    enemyProjectileArray.splice(index, 1);
+}

@@ -2,8 +2,6 @@ for (let i = 0; i < startingEnemies; i++) {
     enemiesArray.push(new Enemy());
 }
 
-var playerWeaponManager = new PlayerWeaponManager();
-
 var character = new Character();
 
 let frame = 0;
@@ -15,9 +13,12 @@ function animate() {
     enemiesArray.forEach(enemy => {
         enemy.update();
     });
-        projectileArray.forEach(projectile => {
+        characterProjectileArray.forEach(projectile => {
             projectile.update();
         });
+         enemyProjectileArray.forEach(projectile => {
+            projectile.enemyProjectileUpdate();
+       });
        powerUpArray.forEach(powerUp => {
             powerUp.update();
         });
@@ -25,7 +26,8 @@ function animate() {
         drawHealthBar(character);
         drawArmorBar(character);
         handleLevelUp();
-        playerWeaponManager.update();
+    playerWeaponManager.update();
+    console.log(characterProjectileArray);
     drawAmmoBar();
     frame += 1;
     window.requestAnimationFrame(animate);
@@ -111,7 +113,7 @@ function restart() {
         unpause();
         pausemenu.style.display = "none";
         level = 1;
-        projectileArray = [];
+        characterProjectileArray = [];
         character = new Character();
         enemiesArray = [];
         powerUpArray = [];

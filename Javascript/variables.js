@@ -20,7 +20,9 @@ let mouseY = 0;
 var level = 1;
 var maxLevel = 30;
 var enemiesArray = [];
-var projectileArray = [];
+var characterProjectileArray = [];
+var enemyProjectileArray = [];
+
 const enemynames = ["omega", "alien", "grunt"];
 var maxEnemies = 30;
 var keyState = {};

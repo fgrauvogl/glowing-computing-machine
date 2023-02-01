@@ -121,11 +121,11 @@ class PlayerWeaponManager {
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y);
 
-                projectileArray.push(projectile);
+                characterProjectileArray.push(projectile);
 
                 for (var i = 0; i < shotGunPellets; i++) {
                     let projectile2 = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, projectile.angle + .3 * (.5 - Math.random()));
-                    projectileArray.push(projectile2);
+                    characterProjectileArray.push(projectile2);
                 }
 
                 break;
@@ -139,7 +139,7 @@ class PlayerWeaponManager {
                 projectile.damage = 40;
                 projectile.isGrenade = true;
                 projectile.isImpactOnHit = true;
-                projectileArray.push(projectile);
+                characterProjectileArray.push(projectile);
 
 
                 break;
@@ -150,7 +150,7 @@ class PlayerWeaponManager {
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y);
 
-                projectileArray.push(projectile);
+                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -160,7 +160,7 @@ class PlayerWeaponManager {
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 15, x, y);
 
-                projectileArray.push(projectile);
+                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -170,11 +170,11 @@ class PlayerWeaponManager {
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y);
 
-                projectileArray.push(projectile);
+                characterProjectileArray.push(projectile);
 
                 for (var i = 0; i < 100; i++) {
                     let projectile2 = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y, projectile.angle + .5 * (.5 - Math.random()));
-                    projectileArray.push(projectile2);
+                    characterProjectileArray.push(projectile2);
                 }
 
                 break;
@@ -189,7 +189,7 @@ class PlayerWeaponManager {
 
                 projectile.radius = 3;
 
-                projectileArray.push(projectile);
+                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -205,7 +205,7 @@ class PlayerWeaponManager {
 
                 projectile.isArmorPiercing = true;
 
-                projectileArray.push(projectile);
+                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -216,7 +216,7 @@ class PlayerWeaponManager {
 
                     let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 4, x, y);
 
-                    projectileArray.push(projectile);
+                    characterProjectileArray.push(projectile);
                 }
         }
     }
@@ -228,3 +228,6 @@ function fireProjectileAtMouseLocation() {
     let y = event?.clientY ?? mouseY;
 
 }
+
+var playerWeaponManager = new PlayerWeaponManager();
+
