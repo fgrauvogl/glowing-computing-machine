@@ -2,6 +2,7 @@ var enemyid = 1;
 
 class Enemy {
     constructor() {
+        this.angle = 0;
         this.x = getRandomXCoord();
         this.y = getRandomYCoord(this.x);
         this.EnemyType = getEnemyType();
@@ -9,7 +10,7 @@ class Enemy {
         this.height = getEnemySize(this.EnemyType);
         this.age = 50 * Math.random();
         this.id = enemyid;
-        this.moveSpeed = 1000 / (this.width * this.width);
+        this.moveSpeed = 100 / (this.width);
         this.velocityX = this.moveSpeed;
         this.velocityY = this.moveSpeed;
         this.enemycolor = getEnemyColor(this.EnemyType);
@@ -86,18 +87,12 @@ class Enemy {
         if (distanceToCharacter < 10000) {
             this.ismovingtowardsplayer = true;
 
-            if (this.x + this.width / 2 < character.x + character.width / 2) {
-                this.x += this.moveSpeed;
-            }
-            else {
-                this.x -= this.moveSpeed;
-            }
-            if (this.y + this.height / 2 < character.y + character.height / 2) {
-                this.y += this.moveSpeed;
-            }
-            else {
-                this.y -= this.moveSpeed;
-            }
+            this.angle = Math.atan2(character.y - this.y, character.x - this.x);
+
+            this.x += this.moveSpeed * Math.cos(this.angle);
+
+            this.y += this.moveSpeed * Math.sin(this.angle);
+
         }
         else {
             this.ismovingtowardsplayer = false;

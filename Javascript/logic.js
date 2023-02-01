@@ -28,7 +28,6 @@ function animate() {
         playerWeaponManager.update();
     drawAmmoBar();
     frame += 1;
-    console.log(frame);
     window.requestAnimationFrame(animate);
 }
 
