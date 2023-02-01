@@ -156,7 +156,6 @@ function restart() {
     playerWeaponManager.setStartingAmmo();
     currentDoomCountDown = startingDoomCountDown
     if (gameMode != GameModes.Doom) {
-        debugger;
         for (let i = 0; i < startingEnemies; i++) {
             enemiesArray.push(new Enemy());
 
