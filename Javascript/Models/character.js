@@ -12,7 +12,7 @@ class Character {
         this.maxHealth = this.health;
         this.isDead = false;
         this.currentGun = Guns.GrenadeLauncher;
-        this.armor = 200;
+        this.armor = 500;
         this.maxArmor = this.armor;
     }
     Movement(x, y) {
@@ -106,8 +106,13 @@ class Character {
                 this.armor = Math.min(this.armor + 50, this.maxArmor);
                 break;
             case PowerUps.HP:
-                this.health = Math.min(this.health + 50, this.maxHealth);
+                this.health = Math.min(this.health + 75, this.maxHealth);
                 break;
+            case PowerUps.Nuke:
+                enemiesArray.forEach(enemy => {
+                    getDrop(enemy);
+                });
+                enemiesArray = [];
             default:
                 break;
         }

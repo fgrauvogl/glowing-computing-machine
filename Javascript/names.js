@@ -14,7 +14,7 @@ for (let i = 0; i < 1000; i++) {
 const alienNames = [];
 
 const firstAlienNames = ["Cinta", "Chico", "Zuma", "Nenet", "Tecum", "Mecal", "Nomad", "Ozoma", "Pulit", "Quetz"];
-const middleAlienNames = ["Xitli", "Atzin", "Nelli", "Tzint", "Quini", "Palli", "Tzatz", "Zalli", "Zepit", "Lalli"];
+const middleAlienNames = ["Xitli", "Atzin", "Nelli", "Tzint", "Quini", "Palli", "Tzatz", "Zambize", "Zetxil", "Lalli"];
 const lastAlienNames = ["Itzal", "Xalli", "Patal", "Cital", "Zatal", "Quetz", "Itzel", "Litli", "Tzelt", "Necte"];
 
 for (let i = 0; i < 1000; i++) {

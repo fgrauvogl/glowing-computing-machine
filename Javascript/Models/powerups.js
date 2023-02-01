@@ -22,12 +22,14 @@ class PowerUp {
     }
 
     getPowerUpType(number) {
-
-        if (number < 99) {
-            return PowerUps.HP;
+        if (number < 20) {
+            return PowerUps.Nuke;
+        }
+        if (number < 70) {
+            return PowerUps.Armor;
         }
         if (number < 100) {
-            return PowerUps.Armor;
+            return PowerUps.HP;
         }
     }
 
@@ -39,7 +41,9 @@ class PowerUp {
             case PowerUps.HP: {
                 return "./Images/heart.png";
             }
-
+            case PowerUps.Nuke: {
+                return "./Images/nuke.png";
+            }
             default:
         }
     }

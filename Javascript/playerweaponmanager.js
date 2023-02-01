@@ -191,7 +191,7 @@ class PlayerWeaponManager {
             }
             case Guns.FiftyCal: {
 
-                playAudio("./Audio/Sniper.mp3");
+                playAudio("./Audio/50.Cal.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y);
 
