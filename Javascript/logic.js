@@ -42,6 +42,7 @@ function clearCtx() {
 function toggleDoomMode() {
     if (gameMode == GameModes.Doom) {
         gameMode = null;
+        music.pause();
     }
     else {
         gameMode = GameModes.Doom;
@@ -154,7 +155,8 @@ function restart() {
     playerWeaponManager.currentGun = Guns.Pistol;
     playerWeaponManager.setStartingAmmo();
     currentDoomCountDown = startingDoomCountDown
-    if (!gameMode == GameModes.Doom) {
+    if (gameMode != GameModes.Doom) {
+        debugger;
         for (let i = 0; i < startingEnemies; i++) {
             enemiesArray.push(new Enemy());
 

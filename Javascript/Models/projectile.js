@@ -127,7 +127,7 @@ class Projectile {
     }
 
     testFunction() {
-        if (this.lifespan != -1) {
+        if (this.lifespan == -1) {
             return;
         }
         if (this.lifespan < 0) {
