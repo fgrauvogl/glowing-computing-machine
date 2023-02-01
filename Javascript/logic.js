@@ -208,5 +208,13 @@ function unpause() {
 
 function handleMute() {
     isMuted = !isMuted;
+    if (isMuted) {
+        music.pause();
+    }
+    else {
+        if (gameMode == GameModes.Doom) {
+            music.play();
+        }
+    }
 }
 
