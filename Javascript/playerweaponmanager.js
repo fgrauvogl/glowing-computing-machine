@@ -12,13 +12,17 @@ class PlayerWeaponManager {
         this.gunIndex = 0;
         this.currentGun = gunsList[this.gunIndex];
         this.Ammo = {};
+        this.setStartingAmmo();
+        this.isWeaponCoolDown = false;
+    }
+
+    setStartingAmmo() {
         this.Ammo[Guns.GrenadeLauncher] = 30;
         this.Ammo[Guns.ShotGun] = 30;
         this.Ammo[Guns.MachineGun] = 2000;
         this.Ammo[Guns.ChainGun] = 2000;
         this.Ammo[Guns.Sniper] = 100;
         this.Ammo[Guns.FiftyCal] = 100;
-        this.isWeaponCoolDown = false;
     }
 
     setWeaponCoolDown(timeInMilliSeconds) {
