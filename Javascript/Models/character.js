@@ -114,6 +114,28 @@ class Character {
                     getDrop(enemy);
                 });
                 enemiesArray = [];
+                break;
+            case PowerUps.ShotGun:
+                playerWeaponManager.Ammo[Guns.ShotGun] = playerWeaponManager.Ammo[Guns.ShotGun] + 10;
+                break;
+            case PowerUps.GrenadeLauncher:
+                playerWeaponManager.Ammo[Guns.GrenadeLauncher] = playerWeaponManager.Ammo[Guns.GrenadeLauncher] + 5;
+                break;
+            case PowerUps.MachineGun:
+                playerWeaponManager.Ammo[Guns.MachineGun] = playerWeaponManager.Ammo[Guns.MachineGun] + 25;
+                break;
+            case PowerUps.ChainGun:
+                playerWeaponManager.Ammo[Guns.ChainGun] = playerWeaponManager.Ammo[Guns.ChainGun] + 20;
+                break;
+            case PowerUps.MegaGatling:
+                playerWeaponManager.Ammo[Guns.MegaGatling] = playerWeaponManager.Ammo[Guns.MegaGatling] + 50;
+                break;
+            case PowerUps.Sniper:
+                playerWeaponManager.Ammo[Guns.Sniper] = playerWeaponManager.Ammo[Guns.Sniper] + 5;
+                break;
+            case PowerUps.FiftyCal:
+                playerWeaponManager.Ammo[Guns.FiftyCal] = playerWeaponManager.Ammo[Guns.FiftyCal] + 3;
+                break;
             default:
                 break;
         }

@@ -22,14 +22,35 @@ class PowerUp {
     }
 
     getPowerUpType(number) {
-        if (number < 20) {
-            return PowerUps.Nuke;
+        if (number < 25) {
+            return PowerUps.Armor;
+            }
+        if (number < 50) {
+            return PowerUps.HP;
+        }
+        if (number < 55) {
+            return PowerUps.ShotGunAmmo;
+        }
+        if (number < 60) {
+            return PowerUps.GrenadeLauncherAmmo;
+        }
+        if (number < 65) {
+            return PowerUps.MachineGunAmmo;
         }
         if (number < 70) {
-            return PowerUps.Armor;
+            return PowerUps.ChainGunAmmo;
+        }
+        if (number < 75) {
+            return PowerUps.SniperAmmo;
+        }
+        if (number < 85) {
+            return PowerUps.FiftyCalAmmo;
+        }
+        if (number < 90) {
+            return PowerUps.MegaGatlingAmmo;
         }
         if (number < 100) {
-            return PowerUps.HP;
+            return PowerUps.Nuke;
         }
     }
 
@@ -44,9 +65,36 @@ class PowerUp {
             case PowerUps.Nuke: {
                 return "./Images/nuke.png";
             }
+            case PowerUps.ShotGun: {
+                return "./Images/ShotGunAmmo.png";
+            }
+            case PowerUps.GrenadeLauncher: {
+                return "./Images/GrenadeLauncherAmmo.png";
+            }
+            case PowerUps.MachineGun: {
+                return "./Images/MachineGunAmmo.png";
+            }
+            case PowerUps.ChainGun: {
+                return "./Images/ChainGunAmmo.png";
+            }
+            case PowerUps.MegaGatling: {
+                return "./Images/MegaGatlingAmmo.png";
+            }
+            case PowerUps.Sniper: {
+                return "./Images/SniperAmmo.png";
+            }
+            case PowerUps.FiftyCal: {
+                return "./Images/FiftyCalAmmo.png";
+            }
             default:
         }
     }
+
+
+
+
+
+
 
     collidesWith(character) {
         return (
