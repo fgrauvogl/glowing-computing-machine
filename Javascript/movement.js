@@ -2,6 +2,7 @@
 
 window.addEventListener('keydown', function (e) {
     keyState[e.keyCode || e.which] = true;
+    console.log(keyState);
     if (e.key == "e") {
         playerWeaponManager.switchGunRight();
     }
@@ -20,7 +21,12 @@ window.addEventListener('keydown', function (e) {
 }, true);
 window.addEventListener('keyup', function (e) {
     keyState[e.keyCode || e.which] = false;
+    console.log(keyState);
+
 }, true);
+window.oncontextmenu = function () {
+    keyState = {};
+}
 
 window.addEventListener('mousedown', function (e) {
     isMouseDown = true;

@@ -147,6 +147,7 @@ function showDeathScreen() {
 }
 
 function restart() {
+    keyState = {};
     clearCtx();
     unpause();
     pausemenu.style.display = "none";
