@@ -29,7 +29,6 @@ function animate() {
     playerWeaponManager.update();
     console.log(characterProjectileArray);
     drawAmmoBar();
-    frame += 1;
     window.requestAnimationFrame(animate);
 }
 
@@ -42,6 +41,7 @@ function clearCtx() {
 }
 
 function handleLevelUp() {
+
     if (enemiesArray.length == 0) {
 
         if (level == maxLevel) {
@@ -60,6 +60,8 @@ function winGame() {
 
 function levelUp() {
     level += 1;
+
+    levelCounter.innerText = level;
 
     for (let i = 0; i < monstersPerLevel * level; i++) {
         enemiesArray.push(new Enemy());

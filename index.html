@@ -6,14 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gameooooooooooo!</title>
     <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.cdnfonts.com/css/games" rel="stylesheet">
 </head>
 <body>
-    <audio id="pew" src="Audio\pew.mp3"></audio>
-    <audio id="shotgun" src="Audio\bestshotgun.mp3"></audio>
-    <audio id="grenadeLauncher" src="Audio\grenadeLauncher.mp3"></audio>
-    <span id="grenadeExplosion"></span>
-
-
     <canvas id="canvas1"></canvas>
     <canvas id="item-canvas"></canvas>
 
@@ -24,7 +19,8 @@
     </div>
 
     <img src="Images\heart.png" alt="health"
-         id="heart" />
+        id="heart" />
+    
     <img src="Images\Armor.png" style="z-index: -1" alt="armor"
          id="armor" />
 
@@ -37,13 +33,13 @@
         <h1 id="menu-text">Menu</h1>
         <img src="Images\mute.png" id="mute-image" onclick="handleMute()" />
         <h2 id="audio-text">Audio</h2>
-        <input type="range" min="0" max="100" value="50" id="volume-bar">
+        <input type="range" min="0" max="100" value="30" id="volume-bar">
         <button onclick="restart()" id="play-again-button">Restart</button>
     </div>
 
     <img src="Images\pause.png" alt="Alternate Text" id="pause-button" />
 
-
+    <div id="levelCounter">1</div>
 
 
     <script src="Javascript\variables.js"></script>

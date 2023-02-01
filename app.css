@@ -57,3 +57,13 @@ body {
     z-index: -2;
     position: absolute;
 }
+
+#levelCounter {
+    display: inline-block;
+    position: absolute;
+    top: -5px;
+    right: 12px;
+    font-size: 60px;
+    font-weight: 900;
+    font-family: 'Games', sans-serif;
+}
