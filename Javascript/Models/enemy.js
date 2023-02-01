@@ -84,7 +84,7 @@ class Enemy {
     }
 
     fireGun() {
-        if (isPaused || this.isWeaponCoolDown) {
+        if (isPaused || this.isWeaponCoolDown || !this.gun) {
             return;
         }
         this.setWeaponCoolDown(automaticGuns[this.gun]);
