@@ -11,6 +11,8 @@
 <body>
     <canvas id="canvas1"></canvas>
     <canvas id="item-canvas"></canvas>
+    <audio id="music">
+    </audio>
 
     <div id="death-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
         <h1>You Are Dead</h1>
@@ -35,6 +37,7 @@
         <h2 id="audio-text">Audio</h2>
         <input type="range" min="0" max="100" value="30" id="volume-bar">
         <button onclick="restart()" id="play-again-button">Restart</button>
+        <button onclick="toggleDoomMode()" id="doom-button">Doom</button>
     </div>
 
     <img src="Images\pause.png" alt="Alternate Text" id="pause-button" />

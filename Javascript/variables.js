@@ -4,7 +4,7 @@ const itemCanvas = document.getElementById('item-canvas');
 const winscreen = document.getElementById('win-screen');
 const pausemenu = document.getElementById('pause-menu');
 const levelCounter = document.getElementById('levelCounter');
-
+const music = document.getElementById('music');
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');
@@ -53,6 +53,15 @@ const PowerUps = {
 	HP: "HP",
 	ExtraLife: "Extra Life",
 }
+let gameMode = null;
+
+const GameModes = {
+	Doom: "Doom"
+}
+
+let startingDoomCountDown = 1000;
+let currentDoomCountDown = 1000;
+
 var powerUpArray = [];
 
 var slider = document.getElementById("volume-bar");

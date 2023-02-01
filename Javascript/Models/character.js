@@ -8,7 +8,8 @@ class Character {
         this.height = 30;
         let nameIndex = Math.floor(Math.random() * (listONames.length - 1));
         this.name = listONames[nameIndex];
-        this.health = this.getCharacterHealth();
+        // this.health = this.getCharacterHealth();
+        this.health = 100;
         this.maxHealth = this.health;
         this.isDead = false;
         this.currentGun = Guns.GrenadeLauncher;
@@ -44,7 +45,6 @@ class Character {
             this.health -= amount;
 
             if (this.health < 0) {
-                debugger;
                 this.health = 0;
                 this.isDead = true;
                 showDeathScreen();

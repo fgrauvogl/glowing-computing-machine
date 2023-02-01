@@ -9,23 +9,23 @@ let frame = 0;
 
 function animate() {
     if (isPaused || character.isDead) { return; }
-    ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     enemiesArray.forEach(enemy => {
         enemy.update();
     });
-        characterProjectileArray.forEach(projectile => {
-            projectile.update();
-        });
-         enemyProjectileArray.forEach(projectile => {
-            projectile.enemyProjectileUpdate();
-       });
-       powerUpArray.forEach(powerUp => {
-            powerUp.update();
-        });
-        character.update();
-        drawHealthBar(character);
-        drawArmorBar(character);
-        handleLevelUp();
+    characterProjectileArray.forEach(projectile => {
+        projectile.update();
+    });
+    enemyProjectileArray.forEach(projectile => {
+        projectile.enemyProjectileUpdate();
+    });
+    powerUpArray.forEach(powerUp => {
+        powerUp.update();
+    });
+    character.update();
+    drawHealthBar(character);
+    drawArmorBar(character);
+    handleLevelUp();
     playerWeaponManager.update();
     drawAmmoBar();
     window.requestAnimationFrame(animate);
@@ -39,16 +39,49 @@ function clearCtx() {
 
 }
 
+function toggleDoomMode() {
+    if (gameMode == GameModes.Doom) {
+        gameMode = null;
+        music.pause();
+    }
+    else {
+        gameMode = GameModes.Doom;
+        music.src = ("./Audio/Doom.mp3");
+        music.play();
+        levelCounter.innerText = "DOOM";
+        doomLoop();
+    }
+    restart();
+}
+
+function doomLoop() {
+    if (currentDoomCountDown <= 0) { winGame(); }
+
+    enemiesArray.push(new Enemy());
+
+    currentDoomCountDown -= 10;
+
+    setTimeout(doomLoop, currentDoomCountDown);
+}
+
 function handleLevelUp() {
+    switch (gameMode) {
 
-    if (enemiesArray.length == 0) {
+        case GameModes.Doom:
 
-        if (level == maxLevel) {
-            winGame();
+            break;
+        default: {
+            if (enemiesArray.length == 0) {
+
+                if (level == maxLevel) {
+                    winGame();
+                }
+                else {
+                    levelUp();
+                }
+            }
         }
-        else {
-            levelUp();
-        }
+            break;
     }
 }
 
@@ -69,7 +102,7 @@ function levelUp() {
 
 
 function drawHealthBar(character) {
-   
+
     var maxHealthBarSize = 200;
     var percentHealthLeft = character.health / character.maxHealth;
 
@@ -94,67 +127,74 @@ function drawHealthBar(character) {
     ctx.fillStyle = "red";
     ctx.fillRect(40, canvas.height - 40, maxHealthBarSize * percentHealthLeft, 20);
 }
-    function drawArmorBar(character) {
+function drawArmorBar(character) {
 
-        var maxArmorBarSize = 200;
-        var percentArmorLeft = character.armor / character.maxArmor;
+    var maxArmorBarSize = 200;
+    var percentArmorLeft = character.armor / character.maxArmor;
 
-        ctx.fillStyle = "blue";
-        ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 20, maxArmorBarSize * percentArmorLeft, 5);
-        ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 45, maxArmorBarSize * percentArmorLeft, 5);
-    }
+    ctx.fillStyle = "blue";
+    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 20, maxArmorBarSize * percentArmorLeft, 5);
+    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 45, maxArmorBarSize * percentArmorLeft, 5);
+}
 
-    function showDeathScreen() {
-        document.getElementById("death-screen").style.display = "block";
-        heart.style.display = "none";
-    }
+function showDeathScreen() {
+    document.getElementById("death-screen").style.display = "block";
+    heart.style.display = "none";
+    music.pause();
+}
 
 function restart() {
-        clearCtx();
-        unpause();
-        pausemenu.style.display = "none";
-        level = 1;
-        levelCounter.innerText = level;
-        characterProjectileArray = [];
-        character = new Character();
-        enemiesArray = [];
-        powerUpArray = [];
+    clearCtx();
+    unpause();
+    pausemenu.style.display = "none";
+    level = 1;
+    characterProjectileArray = [];
+    character = new Character();
+    enemiesArray = [];
+    powerUpArray = [];
     playerWeaponManager.currentGun = Guns.Pistol;
-        playerWeaponManager.setStartingAmmo();
-
+    playerWeaponManager.setStartingAmmo();
+    currentDoomCountDown = startingDoomCountDown
+    if (gameMode != GameModes.Doom) {
         for (let i = 0; i < startingEnemies; i++) {
             enemiesArray.push(new Enemy());
+
         }
-        document.getElementById("death-screen").style.display = "none";
-        winscreen.style.display = "none";
+        levelCounter.innerText = level;
+    }
+    else {
+        music.play();
+    }
+    document.getElementById("death-screen").style.display = "none";
+    winscreen.style.display = "none";
     heart.style.display = "block";
     animate();
+}
+canvas.addEventListener("click", event => {
+    playerWeaponManager.fireGun();
+
+})
+
+const pauseButton = document.getElementById("pause-button");
+pauseButton.addEventListener("click", () => {
+    isPaused = !isPaused;
+    if (isPaused) {
+        pause();
     }
-    canvas.addEventListener("click", event => {
-        playerWeaponManager.fireGun();
-
-    })
-
-    const pauseButton = document.getElementById("pause-button");
-    pauseButton.addEventListener("click", () => {
-        isPaused = !isPaused;
-        if (isPaused) {
-            pause();
-        }
-        else {
-            unpause();
-        }
-    });
+    else {
+        unpause();
+    }
+});
 
 function pause() {
     isPaused = true;
     pausemenu.style.display = "inline-block";
 }
 
-    function unpause() {
-     isPaused = false;
-        animate();
-        pausemenu.style.display = "none";
+function unpause() {
+    isPaused = false;
+    animate();
+    pausemenu.style.display = "none";
 }
 
 

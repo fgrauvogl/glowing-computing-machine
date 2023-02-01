@@ -165,7 +165,8 @@ class Enemy {
                 for (var i = 0; i < 100; i++) {
                     let projectile2 = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 20, character.x, character.y, projectile.angle + .5 * (.5 - Math.random()));
                     projectile.isEnemyProjectile = true;
-                    characterProjectileArray.push(projectile2);
+                    projectile.color = this.enemycolor;
+                    enemyProjectileArray.push(projectile2);
                 }
 
                 break;
