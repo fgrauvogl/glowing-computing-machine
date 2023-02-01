@@ -52,7 +52,6 @@ class Projectile {
         else {
             shotsHit[this.gunType] = 1;
         }
-        console.log(`${this.gunType} has hit ${shotsHit[this.gunType]} times.`);
     }
 
     checkForCharacterCollisions() {

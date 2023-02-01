@@ -51,7 +51,7 @@ function toggleDoomMode() {
         levelCounter.innerText = "DOOM";
         doomLoop();
     }
-    restart();
+    restart(false);
 }
 
 function doomLoop() {
@@ -146,7 +146,7 @@ function showDeathScreen() {
     music.pause();
 }
 
-function restart() {
+function restart(needsAnimationReset = true) {
     keyState = {};
     clearCtx();
     unpause();
@@ -169,7 +169,9 @@ function restart() {
     document.getElementById("death-screen").style.display = "none";
     winscreen.style.display = "none";
     heart.style.display = "block";
-    animate();
+    if (needsAnimationReset) {
+        animate();
+    }
 }
 canvas.addEventListener("click", event => {
     playerWeaponManager.fireGun();
