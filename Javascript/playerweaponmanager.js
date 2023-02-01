@@ -198,7 +198,7 @@ class PlayerWeaponManager {
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y, 0, this.currentGun);
 
                 characterProjectileArray.push(projectile);
-
+                shotsFired[this.currentGun] += 100;
                 for (var i = 0; i < 100; i++) {
                     let projectile2 = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y, projectile.angle + .5 * (.5 - Math.random()), this.currentGun);
                     characterProjectileArray.push(projectile2);
