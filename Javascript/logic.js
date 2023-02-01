@@ -55,11 +55,13 @@ function toggleDoomMode() {
 }
 
 function doomLoop() {
-    if (currentDoomCountDown <= 0) { winGame(); }
+    if (currentDoomCountDown <= 0 && enemiesArray.length == 0) { winGame(); }
 
     enemiesArray.push(new Enemy());
 
     currentDoomCountDown -= 10;
+
+    if (currentDoomCountDown < 100) { currentDoomCountDown = 100; }
 
     setTimeout(doomLoop, currentDoomCountDown);
 }
@@ -149,6 +151,7 @@ function restart() {
     pausemenu.style.display = "none";
     level = 1;
     characterProjectileArray = [];
+    enemyProjectileArray = [];
     character = new Character();
     enemiesArray = [];
     powerUpArray = [];
@@ -156,11 +159,7 @@ function restart() {
     playerWeaponManager.setStartingAmmo();
     currentDoomCountDown = startingDoomCountDown
     if (gameMode != GameModes.Doom) {
-        for (let i = 0; i < startingEnemies; i++) {
-            enemiesArray.push(new Enemy());
-
-        }
-        levelCounter.innerText = level;
+        startLevel();
     }
     else {
         music.play();
@@ -174,6 +173,13 @@ canvas.addEventListener("click", event => {
     playerWeaponManager.fireGun();
 
 })
+
+function startLevel() {
+    for (let i = 0; i < startingEnemies; i++) {
+        enemiesArray.push(new Enemy());
+    }
+    levelCounter.innerText = level;
+}
 
 const pauseButton = document.getElementById("pause-button");
 pauseButton.addEventListener("click", () => {
