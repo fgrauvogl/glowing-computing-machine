@@ -16,6 +16,7 @@ class Character {
         this.armor = 500;
         this.maxArmor = this.armor;
         this.speed = 3;
+
     }
     Movement(x, y) {
         if (this.isDead) {
