@@ -38,13 +38,11 @@ class Enemy {
     }
 
     getGun() {
-       // if (this.EnemyType != "omega") {
-         //   return;
-       // }
+        if (this.EnemyType != "omega") { return; }
 
         let randomGunIndex = Math.floor(gunsList.length * Math.random());
 
-        this.gun = gunsList[0];
+        return gunsList[randomGunIndex];
 
     }
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -93,7 +91,7 @@ class Enemy {
         }
         this.setWeaponCoolDown(automaticGuns[this.gun]);
 
-        switch (playerWeaponManager.currentGun) {
+        switch (this.gun) {
 
             case Guns.ShotGun: {
 

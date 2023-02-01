@@ -27,7 +27,6 @@ function animate() {
         drawArmorBar(character);
         handleLevelUp();
     playerWeaponManager.update();
-    console.log(characterProjectileArray);
     drawAmmoBar();
     window.requestAnimationFrame(animate);
 }
@@ -115,6 +114,7 @@ function restart() {
         unpause();
         pausemenu.style.display = "none";
         level = 1;
+        levelCounter.innerText = level;
         characterProjectileArray = [];
         character = new Character();
         enemiesArray = [];

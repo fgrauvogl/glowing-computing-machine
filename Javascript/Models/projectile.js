@@ -127,14 +127,17 @@ class Projectile {
     }
 
     testFunction() {
-        console.log(this.lifespan);
+        if (this.lifespan != -1) {
+            debugger;
+
+        }
         if (this.lifespan < 0) {
             return;
         }
         this.lifespan -= 1;
 
         if (this.lifespan <= 0) {
-            removeProjectile(this.id);
+            this.removeMyself();
 
         }
     }

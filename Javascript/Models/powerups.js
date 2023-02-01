@@ -55,7 +55,6 @@ class PowerUp {
     }
 
     getPowerUpImage(powerUpType) {
-        console.log(powerUpType);
         switch (powerUpType) {
             case PowerUps.Armor: {
                 return "./Images/Armor.png";
