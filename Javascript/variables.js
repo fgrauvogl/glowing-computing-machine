@@ -38,9 +38,13 @@ var shotGunPellets = 6;
 var shotGunSpread = [1, .5, -.5, -1];
 const PowerUps = {
 	Armor: "Armor",
-	ShotGun: "Shot Gun",
-	MachineGun: "Machine Gun",
-	GrenadeLauncher: "Grenade Launcher",
+	ShotGunAmmo: "Shot Gun Ammo",
+	MachineGunAmmo: "Machine Gun AMmo",
+	GrenadeLauncherAmmo: "Grenade Launcher Ammo",
+	ChainGunAmmo: "Chain Gun Ammo",
+	FiftyCalAmmo: "Fifty Cal Ammo",
+	MegaGatlingAmmo: "Mega Gatling Ammo",
+	SniperAmmo: "Sniper Ammo",
 	SpeedUp: "Speed Up",
 	Nuke: "Nuke",
 	HP: "HP",

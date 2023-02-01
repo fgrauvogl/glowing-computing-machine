@@ -115,25 +115,25 @@ class Character {
                 });
                 enemiesArray = [];
                 break;
-            case PowerUps.ShotGun:
+            case PowerUps.ShotGunAmmo:
                 playerWeaponManager.Ammo[Guns.ShotGun] = playerWeaponManager.Ammo[Guns.ShotGun] + 10;
                 break;
-            case PowerUps.GrenadeLauncher:
+            case PowerUps.GrenadeLauncherAmmo:
                 playerWeaponManager.Ammo[Guns.GrenadeLauncher] = playerWeaponManager.Ammo[Guns.GrenadeLauncher] + 5;
                 break;
-            case PowerUps.MachineGun:
+            case PowerUps.MachineGunAmmo:
                 playerWeaponManager.Ammo[Guns.MachineGun] = playerWeaponManager.Ammo[Guns.MachineGun] + 25;
                 break;
-            case PowerUps.ChainGun:
+            case PowerUps.ChainGunAmmo:
                 playerWeaponManager.Ammo[Guns.ChainGun] = playerWeaponManager.Ammo[Guns.ChainGun] + 20;
                 break;
-            case PowerUps.MegaGatling:
+            case PowerUps.MegaGatlingAmmo:
                 playerWeaponManager.Ammo[Guns.MegaGatling] = playerWeaponManager.Ammo[Guns.MegaGatling] + 50;
                 break;
-            case PowerUps.Sniper:
+            case PowerUps.SniperAmmo:
                 playerWeaponManager.Ammo[Guns.Sniper] = playerWeaponManager.Ammo[Guns.Sniper] + 5;
                 break;
-            case PowerUps.FiftyCal:
+            case PowerUps.FiftyCalAmmo:
                 playerWeaponManager.Ammo[Guns.FiftyCal] = playerWeaponManager.Ammo[Guns.FiftyCal] + 3;
                 break;
             default:

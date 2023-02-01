@@ -55,6 +55,7 @@ class PowerUp {
     }
 
     getPowerUpImage(powerUpType) {
+        console.log(powerUpType);
         switch (powerUpType) {
             case PowerUps.Armor: {
                 return "./Images/Armor.png";
@@ -65,25 +66,25 @@ class PowerUp {
             case PowerUps.Nuke: {
                 return "./Images/nuke.png";
             }
-            case PowerUps.ShotGun: {
-                return "./Images/ShotGunAmmo.png";
+            case PowerUps.ShotGunAmmo: {
+                return "./Images/ShotgunAmmo.png";
             }
-            case PowerUps.GrenadeLauncher: {
+            case PowerUps.GrenadeLauncherAmmo: {
                 return "./Images/GrenadeLauncherAmmo.png";
             }
-            case PowerUps.MachineGun: {
+            case PowerUps.MachineGunAmmo: {
                 return "./Images/MachineGunAmmo.png";
             }
-            case PowerUps.ChainGun: {
+            case PowerUps.ChainGunAmmo: {
                 return "./Images/ChainGunAmmo.png";
             }
-            case PowerUps.MegaGatling: {
+            case PowerUps.MegaGatlingAmmo: {
                 return "./Images/MegaGatlingAmmo.png";
             }
-            case PowerUps.Sniper: {
+            case PowerUps.SniperAmmo: {
                 return "./Images/SniperAmmo.png";
             }
-            case PowerUps.FiftyCal: {
+            case PowerUps.FiftyCalAmmo: {
                 return "./Images/FiftyCalAmmo.png";
             }
             default:
