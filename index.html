@@ -9,58 +9,58 @@
     <link href="https://fonts.cdnfonts.com/css/games" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <canvas id="canvas1"></canvas>
-    <canvas id="item-canvas"></canvas>
-    <audio id="music">
-    </audio>
+<body onresize="resize()">
+        <canvas id="canvas1"></canvas>
+        <canvas id="item-canvas"></canvas>
+        <audio id="music">
+        </audio>
 
-    <div id="death-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
-        <h1>You Are Dead</h1>
-        <p>Your journey ends here.</p>
-        <button onclick="restart()" class="btn btn-primary">Restart</button>
-    </div>
+        <div id="death-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
+            <h1>You Are Dead</h1>
+            <p>Your journey ends here.</p>
+            <button onclick="restart()" class="btn btn-primary">Restart</button>
+        </div>
 
-    <img src="Images\heart.png" alt="health"
-        id="heart" />
-    
-    <img src="Images\Armor.png" style="z-index: -1" alt="armor"
-         id="armor" />
+        <img src="Images\heart.png" alt="health"
+             id="heart" />
 
-    <div id="win-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
-        <h1>Congratulations! You won!</h1>
-        <button onclick="restart()" id="play-again-button" class="btn btn-primary">Play Again</button>
-    </div>
+        <img src="Images\Armor.png" style="z-index: -1" alt="armor"
+             id="armor" />
 
-    <div id="pause-menu">
-        <h1 id="menu-text">Menu</h1>
-        <img src="Images\mute.png" id="mute-image" style="display:none" onclick="handleMute()" />
-        <img src="Images\audioOn.png" id="audioOn-image" onclick="handleMute()" />
-        <h2 id="audio-text">Audio</h2>
-        <input type="range" min="0" max="100" value="30" id="volume-bar">
-        <button onclick="restart()" id="play-again-button" class="btn btn-primary">Restart</button>
-        <button onclick="toggleDoomMode()" id="doom-button" class="btn btn-danger">Doom</button>
-        <h3 class="inline-block">Accuracy</h3>
-        <h4 class="inline-block" id= "accuracy-%">0</h4>
-    </div>
+        <div id="win-screen" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:black; color:white; text-align:center;">
+            <h1>Congratulations! You won!</h1>
+            <button onclick="restart()" id="play-again-button" class="btn btn-primary">Play Again</button>
+        </div>
 
-    <img src="Images\pause.png" alt="Alternate Text" id="pause-button" />
+        <div id="pause-menu">
+            <h1 id="menu-text">Menu</h1>
+            <img src="Images\mute.png" id="mute-image" style="display:none" onclick="handleMute()" />
+            <img src="Images\audioOn.png" id="audioOn-image" onclick="handleMute()" />
+            <h2 id="audio-text">Audio</h2>
+            <input type="range" min="0" max="100" value="30" id="volume-bar">
+            <button onclick="restart()" id="play-again-button" class="btn btn-primary">Restart</button>
+            <button onclick="toggleDoomMode()" id="doom-button" class="btn btn-danger">Doom</button>
+            <h3 class="inline-block">Accuracy</h3>
+            <h4 class="inline-block" id="accuracy-%">0</h4>
+        </div>
 
-    <div id="levelCounter">1</div>
+        <img src="Images\pause.png" alt="Alternate Text" id="pause-button" />
+
+        <div id="levelCounter">1</div>
 
 
-    <script src="Javascript\variables.js"></script>
-    <script src="Javascript\utility.js"></script>
-    <script src="Javascript\playerweaponmanager.js"></script>
-    <script src="Javascript\heart.js"></script>
-    <script src="Javascript\armor.js"></script>
-    <script src="Javascript\Models\projectile.js"></script>
-    <script src="Javascript\Models\powerups.js"></script>
-    <script src="Javascript\Models\enemy.js"></script>
-    <script src="Javascript\names.js"></script>
-    <script src="Javascript\Models\character.js"></script>
-    <script src="Javascript\logic.js"></script>
-    <script src="Javascript\movement.js"></script>
-</body>
+        <script src="Javascript\variables.js"></script>
+        <script src="Javascript\utility.js"></script>
+        <script src="Javascript\playerweaponmanager.js"></script>
+        <script src="Javascript\heart.js"></script>
+        <script src="Javascript\armor.js"></script>
+        <script src="Javascript\Models\projectile.js"></script>
+        <script src="Javascript\Models\powerups.js"></script>
+        <script src="Javascript\Models\enemy.js"></script>
+        <script src="Javascript\names.js"></script>
+        <script src="Javascript\Models\character.js"></script>
+        <script src="Javascript\logic.js"></script>
+        <script src="Javascript\movement.js"></script>
+    </body>
 
 </html>
