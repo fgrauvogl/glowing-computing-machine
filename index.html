@@ -34,7 +34,8 @@
 
     <div id="pause-menu">
         <h1 id="menu-text">Menu</h1>
-        <img src="Images\mute.png" id="mute-image" onclick="handleMute()" />
+        <img src="Images\mute.png" id="mute-image" style="display:none" onclick="handleMute()" />
+        <img src="Images\audioOn.png" id="audioOn-image" onclick="handleMute()" />
         <h2 id="audio-text">Audio</h2>
         <input type="range" min="0" max="100" value="30" id="volume-bar">
         <button onclick="restart()" id="play-again-button" class="btn btn-primary">Restart</button>
