@@ -197,6 +197,9 @@ pauseButton.addEventListener("click", () => {
 function pause() {
     isPaused = true;
     pausemenu.style.display = "inline-block";
+    let text = (shotsHit[playerWeaponManager.currentGun] / shotsFired[playerWeaponManager.currentGun]) * 100;
+    accuracyText.innerText = text.toFixed(2) + "%";
+
 }
 
 function unpause() {

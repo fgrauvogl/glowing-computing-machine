@@ -5,6 +5,7 @@ const winscreen = document.getElementById('win-screen');
 const pausemenu = document.getElementById('pause-menu');
 const levelCounter = document.getElementById('levelCounter');
 const music = document.getElementById('music');
+var accuracyText = document.getElementById('accuracy-%');
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');

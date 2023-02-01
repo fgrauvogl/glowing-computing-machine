@@ -39,12 +39,14 @@ body {
 
 #volume-bar{
     position:absolute;
-    left:10px;
+    right:10px;
 }
 
 #audio-text {
-    display:inline-block;
-    left:10px;
+    display: inline-block;
+    position: absolute;
+    right:80px;
+    top: 10px;
 }
 
 #item-canvas {
@@ -66,4 +68,13 @@ body {
     font-size: 60px;
     font-weight: 900;
     font-family: 'Games', sans-serif;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+#play-again-button, #doom-button {
+    display: block;
+    margin: 10px;
 }

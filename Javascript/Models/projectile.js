@@ -3,7 +3,7 @@ let grenadePellets = 10;
 
 class Projectile {
     isArmorPiercing = false;
-    constructor(x, y, speed, endingx, endingy, angle = 0) {
+    constructor(x, y, speed, endingx, endingy, angle = 0, gunType = null) {
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -30,6 +30,7 @@ class Projectile {
         this.radius = 5;
         this.isEnemyProjectile = false;
         this.color = "black";
+        this.gunType = gunType;
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -43,6 +44,17 @@ class Projectile {
             return false;
         }
     }
+
+    recordShotsHit() {
+        if (shotsHit[this.gunType]) {
+            shotsHit[this.gunType] += 1;
+        }
+        else {
+            shotsHit[this.gunType] = 1;
+        }
+        console.log(`${this.gunType} has hit ${shotsHit[this.gunType]} times.`);
+    }
+
     checkForCharacterCollisions() {
 
         var result = this.collision(this.x, this.y, this.projectileHeight, this.projectileWidth, character.x, character.y, character.width, character.height);
@@ -66,6 +78,7 @@ class Projectile {
 
             var result = this.collision(this.x, this.y, this.projectileHeight, this.projectileWidth, enemy.x, enemy.y, enemy.width, enemy.height);
 
+
             if (result) {
                 playAudio("./Audio/impact.mp3");
                 enemy.health -= this.damage;
@@ -76,6 +89,7 @@ class Projectile {
                 if (!this.isArmorPiercing) {
                     removeProjectile(this.id);
                 }
+                this.recordShotsHit();
             }
         });
 
