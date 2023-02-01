@@ -3,6 +3,7 @@ const canvas = document.getElementById('canvas1');
 const itemCanvas = document.getElementById('item-canvas');
 const winscreen = document.getElementById('win-screen');
 const pausemenu = document.getElementById('pause-menu');
+const levelCounter = document.getElementById('levelCounter');
 
 
 const ctx = canvas.getContext('2d');
