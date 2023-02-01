@@ -46,15 +46,22 @@ function toggleDoomMode() {
     }
     else {
         gameMode = GameModes.Doom;
+        music = new Audio();
         music.src = ("./Audio/Doom.mp3");
-        music.play();
         levelCounter.innerText = "DOOM";
         doomLoop();
+        if (!isMuted) {
+            music.play();
+        }
     }
     restart(false);
 }
 
 function doomLoop() {
+    if (gameMode != GameModes.Doom) {
+        return;
+    }
+
     if (currentDoomCountDown <= 0 && enemiesArray.length == 0) { winGame(); }
 
     enemiesArray.push(new Enemy());
@@ -65,6 +72,7 @@ function doomLoop() {
     else {
         setTimeout(doomLoop, currentDoomCountDown);
     }
+
 }
 
 function handleLevelUp() {
@@ -163,7 +171,7 @@ function restart(needsAnimationReset = true) {
     if (gameMode != GameModes.Doom) {
         startLevel();
     }
-    else {
+    if (!isMuted) {
         music.play();
     }
     document.getElementById("death-screen").style.display = "none";
@@ -215,11 +223,16 @@ function handleMute() {
     isMuted = !isMuted;
     if (isMuted) {
         music.pause();
+        audioOnImage.style.display = "none";
+        muteImage.style.display = "inline-block";
+        
     }
     else {
         if (gameMode == GameModes.Doom) {
             music.play();
         }
+        audioOnImage.style.display = "inline-block";
+        muteImage.style.display = "none";
     }
 }
 
