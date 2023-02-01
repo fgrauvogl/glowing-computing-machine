@@ -65,8 +65,6 @@ function doomLoop() {
     else {
         setTimeout(doomLoop, currentDoomCountDown);
     }
-
-    
 }
 
 function handleLevelUp() {
