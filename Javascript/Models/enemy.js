@@ -68,10 +68,8 @@ class Enemy {
         if (enemiesArray.length <= maxEnemies) {
             enemiesArray.push(new Enemy());
             this.resetPosition();
-
         }
     }
-
 
     update() {
         this.handleAge();
