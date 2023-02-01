@@ -61,9 +61,10 @@ function doomLoop() {
 
     currentDoomCountDown -= 10;
 
-    if (currentDoomCountDown < 100) { currentDoomCountDown = 100; }
-
-    setTimeout(doomLoop, currentDoomCountDown);
+    if (currentDoomCountDown < 100) { setTimeout(doomLoop, 100); }
+    else {
+        setTimeout(doomLoop, currentDoomCountDown);
+    }
 }
 
 function handleLevelUp() {
