@@ -244,7 +244,7 @@ class Enemy {
         if (distanceToCharacter < 10000) {
             this.ismovingtowardsplayer = true;
 
-            this.angle = Math.atan2(character.y - character.height / 2 - this.y, character.x - character.width / 2 - this.x);
+            this.angle = Math.atan2((character.y - character.height / 2) - (this.y), (character.x - character.width / 2) - (this.x - this.width/ 2) );
 
             this.x += this.moveSpeed * Math.cos(this.angle);
 
