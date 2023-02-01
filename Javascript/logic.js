@@ -6,9 +6,11 @@ var playerWeaponManager = new PlayerWeaponManager();
 
 var character = new Character();
 
+let frame = 0;
+
 
 function animate() {
-    if (isPaused) { return; }
+    if (isPaused || character.isDead) { return; }
     ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
     enemiesArray.forEach(enemy => {
         enemy.update();
@@ -24,11 +26,19 @@ function animate() {
         drawArmorBar(character);
         handleLevelUp();
         playerWeaponManager.update();
-        drawAmmoBar();
-        window.requestAnimationFrame(animate);
+    drawAmmoBar();
+    frame += 1;
+    console.log(frame);
+    window.requestAnimationFrame(animate);
 }
 
 animate();
+
+function clearCtx() {
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    itemCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+}
 
 function handleLevelUp() {
     if (enemiesArray.length == 0) {
@@ -97,19 +107,25 @@ function drawHealthBar(character) {
         heart.style.display = "none";
     }
 
-    function restart() {
+function restart() {
+        clearCtx();
+        unpause();
+        pausemenu.style.display = "none";
         level = 1;
         projectileArray = [];
         character = new Character();
         enemiesArray = [];
         powerUpArray = [];
+    playerWeaponManager.currentGun = Guns.Pistol;
+        playerWeaponManager.setStartingAmmo();
 
         for (let i = 0; i < startingEnemies; i++) {
             enemiesArray.push(new Enemy());
         }
         document.getElementById("death-screen").style.display = "none";
         winscreen.style.display = "none";
-        heart.style.display = "block";
+    heart.style.display = "block";
+    animate();
     }
     canvas.addEventListener("click", event => {
         playerWeaponManager.fireGun();

@@ -14,6 +14,7 @@ class Character {
         this.currentGun = Guns.GrenadeLauncher;
         this.armor = 500;
         this.maxArmor = this.armor;
+        this.speed = 3;
     }
     Movement(x, y) {
         if (this.isDead) {
@@ -51,39 +52,39 @@ class Character {
 
         // checks for up and left
         if (keyState[87] && keyState[65]) {
-            character.Movement(-3, 0);
-            character.Movement(0, -3);
+            character.Movement(-this.speed, 0);
+            character.Movement(0, -this.speed);
         }
         // checks for up and right
         else if (keyState[87] && keyState[68]) {
-            character.Movement(3, 0);
-            character.Movement(0, -3);
+            character.Movement(this.speed, 0);
+            character.Movement(0, -this.speed);
         }
         // checks for down and left
         else if (keyState[83] && keyState[65]) {
-            character.Movement(-3, 0);
-            character.Movement(0, 3);
+            character.Movement(-this.speed, 0);
+            character.Movement(0, this.speed);
         }
         // checks for down and right
         else if (keyState[83] && keyState[68]) {
-            character.Movement(3, 0);
-            character.Movement(0, 3);
+            character.Movement(this.speed, 0);
+            character.Movement(0, this.speed);
         }
         // checks for up
         else if (keyState[87]) {
-            character.Movement(0, -3);
+            character.Movement(0, -this.speed);
         }
         // checks for down
         else if (keyState[83]) {
-            character.Movement(0, 3);
+            character.Movement(0, this.speed);
         }
         // checks for right
         else if (keyState[68]) {
-            character.Movement(3, 0);
+            character.Movement(this.speed, 0);
         }
         // checks for left
         else if (keyState[65]) {
-            character.Movement(-3, 0);
+            character.Movement(-this.speed, 0);
         }
     }
 
