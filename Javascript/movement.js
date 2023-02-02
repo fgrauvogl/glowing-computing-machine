@@ -1,6 +1,6 @@
 var keysPressed = { };
 var releaseTime = {};
-MAX_KEY_DELAY = 100;
+MAX_KEY_DELAY = 10;
 
 window.addEventListener('keydown', function (e) {
 
