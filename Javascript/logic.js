@@ -153,6 +153,7 @@ function restart(needsAnimationReset = true) {
     playerWeaponManager.currentGun = Guns.Pistol;
     playerWeaponManager.setStartingAmmo();
     currentDoomCountDown = startingDoomCountDown
+    updateWeaponExperience();
     if (gameMode != GameModes.Doom) {
         startLevel();
     }
