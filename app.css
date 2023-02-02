@@ -98,11 +98,10 @@ body {
 
 .experience-number {
     color: #333;
-    font-size: 12px;
+    font-size: 9px;
     position: absolute;
-    left: 65px;
-    bottom: -3px;
-    text-align: center;
+    left: 50px;
+    bottom: 0px;
 }
 
 .character-experience-container, .hpbar-container, .experience-container, .armorbar-container {

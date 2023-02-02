@@ -122,10 +122,11 @@ function drawHealthBar(character) {
 function drawAmmoBar() {
     let currentAmmo = playerWeaponManager.getCurrentAmmoOfCurrentGun();
     if (playerWeaponManager.currentGun == Guns.Pistol) {
-        currentAmmo = "Infinite";
+        currentAmmo = "INF";
     }
     ctx.fillStyle = "black";
-    ctx.fillText(`${playerWeaponManager.currentGun} ${currentAmmo}`, canvas.width - 100, canvas.height - 5, 100);
+    ctx.font = "20px Games";
+    ctx.fillText(`${currentAmmo}`, canvas.width - 40, canvas.height - 5, 35);
 }
 
 
@@ -226,7 +227,9 @@ const updateWeaponExperience = () => {
 
     let progressPercent = (expCharacterHasForCurrentLevelSoFar / expDifferenceNeededForCurrentLevel) * 100;
 
-    experienceText.textContent = `Level ${currentGunLevel}: XP ${playerWeaponExp[playerWeaponManager.currentGun]}/${weaponExpToLevel[currentGunLevel + 1]}`;
+    let gun = playerWeaponManager.currentGun;
+
+    experienceText.innerText = `${gun} Lvl ${currentGunLevel}: XP ${playerWeaponExp[playerWeaponManager.currentGun]}/${weaponExpToLevel[currentGunLevel + 1]}`;
 
     experienceBar.style.width = `${progressPercent}%`;
 
