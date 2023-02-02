@@ -18,7 +18,6 @@ const hpBar = document.querySelector('.hp-bar');
 const hpText = document.querySelector('#hp');
 const chatInput = document.querySelector('.chat-input');
 const chatMessages = document.querySelector('.chat-messages');
-
 let experience = 0;
 
 const ctx = canvas.getContext('2d');

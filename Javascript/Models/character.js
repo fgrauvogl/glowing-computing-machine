@@ -9,13 +9,14 @@ class Character {
         let nameIndex = Math.floor(Math.random() * (listONames.length - 1));
         this.name = listONames[nameIndex];
         // this.health = this.getCharacterHealth();
-        this.health = 100;
+        this.health = 10000;
         this.maxHealth = this.health;
         this.isDead = false;
         this.currentGun = Guns.GrenadeLauncher;
         this.armor = 500;
         this.maxArmor = this.armor;
         this.speed = 3;
+
     }
     GetXMidPoint() {
         return this.x + this.width / 2;
