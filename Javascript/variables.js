@@ -90,7 +90,7 @@ var powerUpArray = [];
 
 var slider = document.getElementById("volume-bar");
 
-let volume = 30;
+let volume = 25;
 
 slider.oninput = function () {
 	volume = this.value;
