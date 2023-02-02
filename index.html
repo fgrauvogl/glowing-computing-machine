@@ -21,12 +21,13 @@
         <button onclick="restart()" class="btn btn-primary">Restart</button>
     </div>
     <div class="experience-container">
-        <div class="experience-bar"></div>
-        <p class="experience-text">Experience: <span id="experience">0</span> / 100</p>
+        <div class="experience-number" id="experience"></div>
+        <div class="experience-bar">
+        </div>
     </div>
     <div class="character-experience-container">
         <div class="character-experience-bar"></div>
-        <p class="character-experience-text">Experience: <span id="character-experience">0</span> / 100</p>
+        <p class="character-experience-text">Experience: <span id="character-experience"></span> / 100</p>
     </div>
     <div class="hpbar-container">
         <div class="hp-bar"></div>
@@ -61,6 +62,7 @@
 
     <script src="Javascript\variables.js"></script>
     <script src="Javascript\utility.js"></script>
+    <script src="Javascript\playerWeaponExp.js"></script>
     <script src="Javascript\playerweaponmanager.js"></script>
     <script src="Javascript\heart.js"></script>
     <script src="Javascript\armor.js"></script>

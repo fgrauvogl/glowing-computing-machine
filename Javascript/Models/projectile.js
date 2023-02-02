@@ -46,6 +46,9 @@ class Projectile {
     }
 
     recordShotsHit() {
+        playerWeaponExp[this.gunType] += 1;
+        updateWeaponExperience();
+
         if (shotsHit[this.gunType]) {
             shotsHit[this.gunType] += 1;
         }

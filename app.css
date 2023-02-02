@@ -32,20 +32,20 @@ body {
 #mute-image, #audioOn-image {
     right: 10px;
     top: 10px;
-    position:absolute;
+    position: absolute;
     width: 40px;
     height: 40px;
 }
 
-#volume-bar{
-    position:absolute;
-    right:10px;
+#volume-bar {
+    position: absolute;
+    right: 10px;
 }
 
 #audio-text {
     display: inline-block;
     position: absolute;
-    right:80px;
+    right: 80px;
     top: 10px;
 }
 
@@ -78,6 +78,7 @@ body {
     display: block;
     margin: 10px;
 }
+
 .experience-container {
     width: 200px;
     border: 1px solid #ccc;
@@ -92,26 +93,21 @@ body {
     width: 0%;
     height: 100%;
     background-color: #2eb82e;
-    transition: width 0.5s ease-out;
+    transition: width 0.3s ease-out;
 }
 
-.experience-text {
-    text-align: center;
-    line-height: 30px;
+.experience-number {
     color: #333;
+    font-size: 12px;
+    position: absolute;
+    left: 65px;
+    bottom: -3px;
+    text-align: center;
 }
 
-
-
-
-
-
-.character-experience-container, .hpbar-container, .experience-container, .armorbar-container{
+.character-experience-container, .hpbar-container, .experience-container, .armorbar-container {
     height: 15px;
 }
-
-
-
 
 .character-experience-container {
     width: 200px;
@@ -135,17 +131,6 @@ body {
     line-height: 30px;
     color: #333;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .hpbar-container {
     width: 200px;
@@ -194,4 +179,3 @@ body {
     color: #333;
     bottom: 65px;
 }
-

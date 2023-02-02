@@ -4,9 +4,13 @@ window.addEventListener('keydown', function (e) {
     keyState[e.keyCode || e.which] = true;
     if (e.key == "e") {
         playerWeaponManager.switchGunRight();
+        updateWeaponExperience();
+
     }
     else if (e.key == "q") {
         playerWeaponManager.switchGunLeft();
+        updateWeaponExperience();
+
     }
     else if (e.key == "p") {
         isPaused = !isPaused;

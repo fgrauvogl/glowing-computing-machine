@@ -8,7 +8,6 @@ automaticGuns[Guns.MegaGatling] = 2;
 
 var shotsFired = {};
 var shotsHit = {};
-var weaponExp = {};
 
 var ammoPerShot = {};
 ammoPerShot[Guns.MegaGatling] = 100;
@@ -63,6 +62,7 @@ class PlayerWeaponManager {
     }
 
     switchGunLeft() {
+
         let startingIndex = this.gunIndex;
 
         let index = startingIndex -= 1;
@@ -84,6 +84,7 @@ class PlayerWeaponManager {
             this.gunIndex = index;
         }
         this.switchGunLeft();
+
     }
 
     switchGun(gunType) {

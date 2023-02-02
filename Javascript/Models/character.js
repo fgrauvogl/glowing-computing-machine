@@ -16,7 +16,6 @@ class Character {
         this.armor = 500;
         this.maxArmor = this.armor;
         this.speed = 3;
-
     }
     GetXMidPoint() {
         return this.x + this.width / 2;
