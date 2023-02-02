@@ -6,7 +6,6 @@ var character = new Character();
 
 let frame = 0;
 
-
 function animate() {
     if (isPaused || character.isDead) { return; }
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -129,23 +128,6 @@ function drawAmmoBar() {
     ctx.fillText(`${playerWeaponManager.currentGun} ${currentAmmo}`, canvas.width - 100, canvas.height - 5, 100);
 }
 
-function drawHealthBar(character) {
-
-    var maxHealthBarSize = 200;
-    var percentHealthLeft = character.health / character.maxHealth;
-
-    ctx.fillStyle = "red";
-    ctx.fillRect(40, canvas.height - 40, maxHealthBarSize * percentHealthLeft, 20);
-}
-function drawArmorBar(character) {
-
-    var maxArmorBarSize = 200;
-    var percentArmorLeft = character.armor / character.maxArmor;
-
-    ctx.fillStyle = "blue";
-    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 20, maxArmorBarSize * percentArmorLeft, 5);
-    ctx.fillRect(40 + (maxArmorBarSize * (1 - percentArmorLeft)), canvas.height - 45, maxArmorBarSize * percentArmorLeft, 5);
-}
 
 function showDeathScreen() {
     playAudio("./Audio/mariodeath.mp3");
@@ -233,3 +215,24 @@ function handleMute() {
         muteImage.style.display = "none";
     }
 }
+
+const updateWeaponExperience = () => {
+
+    let currentGunLevel = playerGunLevel[playerWeaponManager.currentGun];
+
+    let expDifferenceNeededForCurrentLevel = weaponExpToLevel[currentGunLevel + 1] - weaponExpToLevel[currentGunLevel];
+
+    let expCharacterHasForCurrentLevelSoFar = playerWeaponExp[playerWeaponManager.currentGun] - weaponExpToLevel[currentGunLevel];
+
+    let progressPercent = (expCharacterHasForCurrentLevelSoFar / expDifferenceNeededForCurrentLevel) * 100;
+
+    experienceText.textContent = `Level ${currentGunLevel}: XP ${playerWeaponExp[playerWeaponManager.currentGun]}/${weaponExpToLevel[currentGunLevel + 1]}`;
+
+    experienceBar.style.width = `${progressPercent}%`;
+
+    if (progressPercent >= 100) {
+        playerGunLevel[playerWeaponManager.currentGun] += 1;
+    }
+};
+
+updateWeaponExperience();

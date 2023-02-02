@@ -9,15 +9,6 @@ function playAudio(fileLocation) {
     audio.play();
 }
 
-const updateWeaponExperience = () => {
-    experience += 10;
-    experienceText.textContent = experience;
-    experienceBar.style.width = `${experience}%`;
-    if (experience === 100) {
-        alert('Level up!');
-    }
-};
-
 let characterExperience = 5;
 
 const updateCharacterExperience = () => {
