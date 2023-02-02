@@ -22,6 +22,7 @@ class Enemy {
         this.maxHealth = this.health;
         this.gun = this.getGun();
         this.isWeaponCoolDown = false;
+        this.experienceGranted = 1;
 
         enemyid += 1;
     }
@@ -89,11 +90,15 @@ class Enemy {
         }
         this.setWeaponCoolDown(automaticGuns[this.gun]);
 
+        let characterMidX = character.GetXMidPoint();
+
+        let characterMidY = character.GetYMidPoint();
+
         switch (this.gun) {
 
             case Guns.ShotGun: {
 
-                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 8, character.x, character.y);
+                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 8, characterMidX, characterMidY);
 
                 projectile.isEnemyProjectile = true;
 
@@ -102,7 +107,7 @@ class Enemy {
                 enemyProjectileArray.push(projectile);
 
                 for (var i = 0; i < shotGunPellets; i++) {
-                    let projectile2 = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 8, character.x, character.y, projectile.angle + .3 * (.5 - Math.random()));
+                    let projectile2 = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 8, characterMidX, characterMidY, projectile.angle + .3 * (.5 - Math.random()));
                     projectile2.color = this.enemycolor;
                     projectile2.isEnemyProjectile = true;
                     enemyProjectileArray.push(projectile2);
@@ -113,7 +118,7 @@ class Enemy {
             case Guns.GrenadeLauncher: {
 
 
-                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 8, character.x, character.y);
+                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 8, characterMidX, characterMidY);
                 projectile.isEnemyProjectile = true;
                 projectile.radius = 12;
                 projectile.color = this.enemycolor;
@@ -128,7 +133,7 @@ class Enemy {
             case Guns.MachineGun: {
 
 
-                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 12, character.x, character.y);
+                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 12, characterMidX, characterMidY);
 
                 projectile.color = this.enemycolor;
 
@@ -141,7 +146,7 @@ class Enemy {
             case Guns.ChainGun: {
 
 
-                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 15, character.x, character.y);
+                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 15, characterMidX, characterMidY);
 
                 projectile.color = this.enemycolor;
 
@@ -154,7 +159,7 @@ class Enemy {
             case Guns.MegaGatling: {
 
 
-                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 20, character.x, character.y);
+                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 20, characterMidX, characterMidY);
 
                 projectile.color = this.enemycolor;
 
@@ -163,7 +168,7 @@ class Enemy {
                 enemyProjectileArray.push(projectile);
 
                 for (var i = 0; i < 100; i++) {
-                    let projectile2 = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 20, character.x, character.y, projectile.angle + .5 * (.5 - Math.random()));
+                    let projectile2 = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 20, characterMidX, characterMidY, projectile.angle + .5 * (.5 - Math.random()));
                     projectile.isEnemyProjectile = true;
                     projectile.color = this.enemycolor;
                     enemyProjectileArray.push(projectile2);
@@ -173,7 +178,7 @@ class Enemy {
             }
             case Guns.Sniper: {
 
-                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 30, character.x, character.y);
+                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 30, characterMidX, characterMidY);
 
                 projectile.isEnemyProjectile = true;
 
@@ -190,7 +195,7 @@ class Enemy {
             case Guns.FiftyCal: {
 
 
-                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 30, character.x, character.y);
+                let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 30, characterMidX, characterMidY);
 
                 projectile.isEnemyProjectile = true;
 
@@ -209,7 +214,7 @@ class Enemy {
 
             default:
                 {
-                    let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 4, character.x, character.y);
+                    let projectile = new Projectile(this.x + this.width / 2, this.y + this.height / 2, 4, characterMidX, characterMidY);
 
                     projectile.color = this.enemycolor;
 
@@ -436,15 +441,18 @@ function getEnemySize(enemyName) {
     }
 }
 
-function getEnemyHealth(enemyName) {
-    if (enemyName == "grunt") {
-        return 10;
-    }
-    else if (enemyName == "alien") {
-        return 100;
-    }
-    else if (enemyName == "omega") {
-        return 300;
+function getEnemyHealth(enemyType) {
+    switch (enemyType) {
+        case MobTypes.Grunt:
+            return 10;
+            break;
+        case MobTypes.Alien:
+            return 200;
+            break;
+        case MobTypes.Omega:
+            return 300;
+            break;
+        default:
     }
 }
 

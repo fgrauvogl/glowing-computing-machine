@@ -63,6 +63,7 @@ class Projectile {
             character.hitPlayer(this.damage);
             if (character.health <= 0) {
                 character.isDead = true;
+                showDeathScreen();
             }
             if (!this.isArmorPiercing) {
                 removeEnemyProjectile(this.id);

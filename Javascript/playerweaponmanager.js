@@ -8,6 +8,7 @@ automaticGuns[Guns.MegaGatling] = 2;
 
 var shotsFired = {};
 var shotsHit = {};
+var weaponExp = {};
 
 var ammoPerShot = {};
 ammoPerShot[Guns.MegaGatling] = 100;

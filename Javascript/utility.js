@@ -9,4 +9,33 @@ function playAudio(fileLocation) {
     audio.play();
 }
 
+const updateWeaponExperience = () => {
+    experience += 10;
+    experienceText.textContent = experience;
+    experienceBar.style.width = `${experience}%`;
+    if (experience === 100) {
+        alert('Level up!');
+    }
+};
 
+let characterExperience = 5;
+
+const updateCharacterExperience = () => {
+    characterExperience += 5;
+    characterExperienceText.textContent = experience;
+    characterExperienceBar.style.width = `${experience}%`;
+    if (experience === 100) {
+        alert('Character Level up!');
+    }
+};
+const updateArmor = () => {
+    let percentArmor = (character.armor / character.maxArmor) * 100;
+    armorText.textContent = character.armor;
+    armorBar.style.width = `${percentArmor}%`;
+};
+
+const updateHealth = () => {
+    let percentHealth = (character.health / character.maxHealth) * 100;
+    hpText.textContent = percentHealth;
+    hpBar.style.width = `${percentHealth}%`;
+};

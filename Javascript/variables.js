@@ -8,6 +8,15 @@ var music = document.getElementById('music');
 var accuracyText = document.getElementById('accuracy-%');
 var muteImage = document.getElementById('mute-image');
 var audioOnImage = document.getElementById('audioOn-image');
+const characterExperienceBar = document.querySelector('.character-experience-bar');
+const characterExperienceText = document.querySelector('#character-experience');
+const experienceBar = document.querySelector('.experience-bar');
+const experienceText = document.querySelector('#experience');
+const armorBar = document.querySelector('.armor-bar');
+const armorText = document.querySelector('#armor');
+const hpBar = document.querySelector('.hp-bar');
+const hpText = document.querySelector('#hp');
+let experience = 0;
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');
@@ -61,6 +70,13 @@ const PowerUps = {
 	HP: "HP",
 	ExtraLife: "Extra Life",
 }
+
+const MobTypes = {
+	Grunt: "grunt",
+	Alien: "alien",
+	Omega: "omega"
+	}
+
 let gameMode = null;
 
 const GameModes = {

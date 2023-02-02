@@ -23,8 +23,8 @@ function animate() {
         powerUp.update();
     });
     character.update();
-    drawHealthBar(character);
-    drawArmorBar(character);
+    updateArmor();
+    updateHealth();
     handleLevelUp();
     playerWeaponManager.update();
     drawAmmoBar();
@@ -98,7 +98,6 @@ function handleLevelUp() {
 
 function winGame() {
     winscreen.style.display = "block";
-    heart.style.display = "none";
 }
 
 function levelUp() {
@@ -127,7 +126,7 @@ function drawAmmoBar() {
         currentAmmo = "Infinite";
     }
     ctx.fillStyle = "black";
-    ctx.fillText(`${playerWeaponManager.currentGun} ${currentAmmo}`, 80, canvas.height - 50);
+    ctx.fillText(`${playerWeaponManager.currentGun} ${currentAmmo}`, canvas.width - 100, canvas.height - 5, 100);
 }
 
 function drawHealthBar(character) {
@@ -149,8 +148,8 @@ function drawArmorBar(character) {
 }
 
 function showDeathScreen() {
+    playAudio("./Audio/mariodeath.mp3");
     document.getElementById("death-screen").style.display = "block";
-    heart.style.display = "none";
     music.pause();
 }
 
@@ -176,7 +175,6 @@ function restart(needsAnimationReset = true) {
     }
     document.getElementById("death-screen").style.display = "none";
     winscreen.style.display = "none";
-    heart.style.display = "block";
     if (needsAnimationReset) {
         animate();
     }
@@ -235,4 +233,3 @@ function handleMute() {
         muteImage.style.display = "none";
     }
 }
-

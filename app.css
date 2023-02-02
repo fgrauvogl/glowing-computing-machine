@@ -78,3 +78,120 @@ body {
     display: block;
     margin: 10px;
 }
+.experience-container {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+.experience-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #2eb82e;
+    transition: width 0.5s ease-out;
+}
+
+.experience-text {
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+}
+
+
+
+
+
+
+.character-experience-container, .hpbar-container, .experience-container, .armorbar-container{
+    height: 15px;
+}
+
+
+
+
+.character-experience-container {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 25px;
+    left: 5px;
+}
+
+.character-experience-bar {
+    width: 0%;
+    height: 100%;
+    background-color: white;
+    transition: width 0.5s ease-out;
+}
+
+.character-experience-text {
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.hpbar-container {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 45px;
+    left: 5px;
+}
+
+.hp-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #e60000;
+    transition: width 0.5s ease-out;
+}
+
+.hp-text {
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+}
+
+.armorbar-container {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 65px;
+    left: 5px;
+}
+
+.armor-bar {
+    width: 0%;
+    height: 100%;
+    background-color: dodgerblue;
+    transition: width 0.5s ease-out;
+    bottom: 65px;
+}
+
+.armor-text {
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+    bottom: 65px;
+}
+

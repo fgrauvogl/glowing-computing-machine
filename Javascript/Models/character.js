@@ -18,6 +18,13 @@ class Character {
         this.speed = 3;
 
     }
+    GetXMidPoint() {
+        return this.x + this.width / 2;
+    }
+    GetYMidPoint() {
+        return this.y + this.height / 2;
+    }
+
     Movement(x, y) {
         if (this.isDead) {
             return;
