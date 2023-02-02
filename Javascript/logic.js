@@ -245,3 +245,13 @@ const updateWeaponExperience = () => {
 };
 
 updateWeaponExperience();
+
+const toggleChat = () => {
+    isChatActive = !isChatActive;
+    if (isChatActive) {
+        commandLine.style.display = "inline-block";
+    }
+    else {
+        commandLine.style.display = "none";
+    }
+};

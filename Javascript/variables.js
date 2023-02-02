@@ -16,6 +16,9 @@ const armorBar = document.querySelector('.armor-bar');
 const armorText = document.querySelector('#armor');
 const hpBar = document.querySelector('.hp-bar');
 const hpText = document.querySelector('#hp');
+const chatInput = document.querySelector('.chat-input');
+const chatMessages = document.querySelector('.chat-messages');
+
 let experience = 0;
 
 const ctx = canvas.getContext('2d');
@@ -33,6 +36,7 @@ const monstersPerLevel = 3;
 var isMouseDown = false;
 let isPaused = false;
 let isMuted = false;
+let isChatActive = false;
 let mouseX = 0;
 let mouseY = 0;
 var level = 1;

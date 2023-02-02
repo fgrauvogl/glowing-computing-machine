@@ -2,7 +2,7 @@ body {
     float: left;
     margin: 0px;
     background: linear-gradient( 0deg, rgb( 255, 152, 129) 0%, rgb( 131, 164, 255) 100% );
-    overflow: hidden;
+    overflow:hidden;
 }
 
 #pause-menu {
@@ -177,18 +177,4 @@ body {
     line-height: 30px;
     color: #333;
     bottom: 65px;
-}
-
-#background-canvas {
-    z-index: -15;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient( 0deg, rgb( 255, 152, 129) 0%, rgb( 131, 164, 255) 100% );
-}
-
-#doom-image {
-    z-index: -10;
-    position: absolute;
-    display: none;
 }

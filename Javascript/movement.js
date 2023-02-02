@@ -3,28 +3,31 @@ var releaseTime = {};
 MAX_KEY_DELAY = 10;
 
 window.addEventListener('keydown', function (e) {
-
+    let key = e.key.toLowerCase();
     var time = new Date().getTime();
     if (releaseTime[event.keyCode] &&
         time < releaseTime[event.keyCode] + MAX_KEY_DELAY) {
         return false;
     }
 
-    this.keysPressed[event.keyCode] = true;
+    keysPressed[event.keyCode] = true;
 
     keyState[e.keyCode || e.which] = true;
 
-    if (e.key == "e") {
+    if (key == "e") {
         playerWeaponManager.switchGunRight();
         updateWeaponExperience();
 
     }
-    else if (e.key == "q") {
+    else if (key == "`") {
+        toggleChat();
+    }
+    else if (key == "q") {
         playerWeaponManager.switchGunLeft();
         updateWeaponExperience();
 
     }
-    else if (e.key == "p") {
+    else if (key == "p") {
         isPaused = !isPaused;
         if (!isPaused) {
             unpause();
@@ -33,6 +36,10 @@ window.addEventListener('keydown', function (e) {
             pause();
         }
     }
+    else if (key === 'enter') {
+        addCommand();
+    }
+ 
 }, true);
 window.addEventListener('keyup', function (e) {
     delete keysPressed[event.keyCode];
