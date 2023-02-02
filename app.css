@@ -1,14 +1,8 @@
 body {
     float: left;
     margin: 0px;
-}
-
-#background-canvas {
-    z-index: -15;
-    position:absolute;
-    width:100vw;
-    height:100vh;
     background: linear-gradient( 0deg, rgb( 255, 152, 129) 0%, rgb( 131, 164, 255) 100% );
+    overflow: hidden;
 }
 
 #pause-menu {
@@ -185,8 +179,16 @@ body {
     bottom: 65px;
 }
 
+#background-canvas {
+    z-index: -15;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient( 0deg, rgb( 255, 152, 129) 0%, rgb( 131, 164, 255) 100% );
+}
+
 #doom-image {
     z-index: -10;
-    position:absolute;
-    display:none;
+    position: absolute;
+    display: none;
 }
