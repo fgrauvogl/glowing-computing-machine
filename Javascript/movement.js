@@ -1,7 +1,19 @@
-
+var keysPressed = { };
+var releaseTime = {};
+MAX_KEY_DELAY = 100;
 
 window.addEventListener('keydown', function (e) {
+
+    var time = new Date().getTime();
+    if (releaseTime[event.keyCode] &&
+        time < releaseTime[event.keyCode] + MAX_KEY_DELAY) {
+        return false;
+    }
+
+    this.keysPressed[event.keyCode] = true;
+
     keyState[e.keyCode || e.which] = true;
+
     if (e.key == "e") {
         playerWeaponManager.switchGunRight();
         updateWeaponExperience();
@@ -23,6 +35,8 @@ window.addEventListener('keydown', function (e) {
     }
 }, true);
 window.addEventListener('keyup', function (e) {
+    delete keysPressed[event.keyCode];
+    releaseTime[event.keyCode] = new Date().getTime();
     keyState[e.keyCode || e.which] = false;
 }, true);
 window.oncontextmenu = function () {
