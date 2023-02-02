@@ -65,7 +65,7 @@ window.addEventListener('mousemove', function (e) {
 
 window.onclick = function (e) {
     getCursorPosition(canvas, e);
-
+    playerWeaponManager.fireGun();
     }
 
 function getCursorPosition(canvas, event)
