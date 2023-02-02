@@ -14,6 +14,7 @@
 <body onresize="resize()">
     <canvas id="canvas1"></canvas>
     <canvas id="item-canvas"></canvas>
+    <canvas id="background-canvas"></canvas>
     <audio id="music">
     </audio>
 
@@ -51,6 +52,10 @@
         <button onclick="restart()" id="play-again-button" class="btn btn-primary">Play Again</button>
     </div>
 
+    <div id="doom-background" style="position:absolute; width:100vw; height:100vh">
+        <img src="Images\doom-background.png" id="doom-image" />
+    </div>
+    
     <div id="pause-menu">
         <h1 id="menu-text">Menu</h1>
         <img src="Images\mute.png" id="mute-image" style="display:none" onclick="handleMute()" />
@@ -66,6 +71,8 @@
     <img src="Images\pause.png" alt="Alternate Text" id="pause-button" />
 
     <div id="levelCounter">1</div>
+
+
 
 
     <script src="Javascript\variables.js"></script>

@@ -42,14 +42,17 @@ function toggleDoomMode() {
     if (gameMode == GameModes.Doom) {
         gameMode = null;
         music.pause();
+        document.getElementById("doom-image").style.display = "none";
     }
     else {
         gameMode = GameModes.Doom;
-        music = new Audio();
-        music.src = ("./Audio/Doom.mp3");
+
         levelCounter.innerText = "DOOM";
         doomLoop();
+        document.getElementById("doom-image").style.display = "inline-block";
+
         if (!isMuted) {
+            music.src = ("./Audio/Doom.mp3");
             music.play();
         }
     }
@@ -153,9 +156,12 @@ function restart(needsAnimationReset = true) {
     if (gameMode != GameModes.Doom) {
         startLevel();
     }
-    if (!isMuted) {
+    else {
+        if (!isMuted) {
         music.play();
+        }
     }
+   
     document.getElementById("death-screen").style.display = "none";
     winscreen.style.display = "none";
     if (needsAnimationReset) {

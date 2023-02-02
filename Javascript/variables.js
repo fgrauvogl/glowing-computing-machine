@@ -4,7 +4,7 @@ const itemCanvas = document.getElementById('item-canvas');
 const winscreen = document.getElementById('win-screen');
 const pausemenu = document.getElementById('pause-menu');
 const levelCounter = document.getElementById('levelCounter');
-var music = document.getElementById('music');
+const music = document.getElementById('music');
 var accuracyText = document.getElementById('accuracy-%');
 var muteImage = document.getElementById('mute-image');
 var audioOnImage = document.getElementById('audioOn-image');
@@ -94,7 +94,7 @@ var powerUpArray = [];
 
 var slider = document.getElementById("volume-bar");
 
-let volume = 30;
+let volume = 25;
 
 slider.oninput = function () {
 	volume = this.value;
