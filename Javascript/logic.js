@@ -84,7 +84,7 @@ function handleLevelUp() {
 
             break;
         default: {
-            if (enemiesArray.length == 0) {
+            if (enemiesArray.length == 0 && stagedEnemiesArray.length == 0) {
 
                 if (level == maxLevel) {
                     winGame();
@@ -102,14 +102,32 @@ function winGame() {
     winscreen.style.display = "block";
 }
 
+function spawnFromStagedEnemy(timeInMs) {
+    if (stagedEnemiesArray.length == 0) { return };
+    enemiesArray.push(stagedEnemiesArray[0]);
+    stagedEnemiesArray.splice(0, 1);
+    spawnRate = timeInMs ?? defaultMobSpawnRate;
+    setTimeout(spawnFromStagedEnemy, spawnRate);
+}
+
+function spawnRandomEnemies(number, spanOfTimeSeconds) {
+    for (let i = 0; i < number; i++) {
+        stagedEnemiesArray.push(new Enemy());
+    }
+
+    //time in ms needed to spawn each enemy in given timeperiod
+    let timeInMs = (spanOfTimeSeconds * 1000) / number;
+
+    spawnFromStagedEnemy(timeInMs);
+}
+
+
 function levelUp() {
     level += 1;
 
     levelCounter.innerText = level;
 
-    for (let i = 0; i < monstersPerLevel * level; i++) {
-        enemiesArray.push(new Enemy());
-    }
+    spawnRandomEnemies(level * monstersPerLevel, level);
 }
 
 
