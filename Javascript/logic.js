@@ -171,8 +171,9 @@ function showDeathScreen() {
 function restart(needsAnimationReset = true) {
     keyState = {};
     clearCtx();
-    unpause();
+    hidePauseMenu();
     pausemenu.style.display = "none";
+    isPaused = false;
     level = 1;
     characterProjectileArray = [];
     enemyProjectileArray = [];
@@ -233,6 +234,10 @@ function pause() {
 function unpause() {
     isPaused = false;
     animate();
+    pausemenu.style.display = "none";
+}
+
+function hidePauseMenu() {
     pausemenu.style.display = "none";
 }
 
