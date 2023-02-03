@@ -41,15 +41,17 @@ function clearCtx() {
 function toggleDoomMode() {
     if (gameMode == GameModes.Doom) {
         gameMode = null;
+        healthBarColor = "red";
         music.pause();
         document.getElementById("doom-image").style.display = "none";
+
     }
     else {
         gameMode = GameModes.Doom;
-
         levelCounter.innerText = "DOOM";
         doomLoop();
         document.getElementById("doom-image").style.display = "inline-block";
+        healthBarColor = "blue";
 
         if (!isMuted) {
             music.src = ("./Audio/Doom.mp3");

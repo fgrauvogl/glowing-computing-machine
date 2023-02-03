@@ -23,6 +23,7 @@ class Enemy {
         this.gun = this.getGun();
         this.isWeaponCoolDown = false;
         this.experienceGranted = 1;
+        this.enemyHealthColor = healthBarColor;
 
         enemyid += 1;
     }
@@ -78,10 +79,10 @@ class Enemy {
         this.handleCollision();
         this.fireGun();
         var isCollision = this.collision(character.x, character.y, character.width, character.height, this.x, this.y, this.width, this.height);
-        this.draw();
         if (isCollision) {
         this.hitPlayer();
         }
+        this.draw();
     }
 
     fireGun() {
@@ -304,13 +305,12 @@ class Enemy {
     draw() {
         ctx.fillStyle = this.enemycolor;
         ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.fillStyle = "red";
+        ctx.fillStyle = this.enemyHealthColor;
         var currentHealthPercentage = this.health / this.maxHealth;
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y + this.height), this.width * currentHealthPercentage, this.height / 8);
         ctx.fillStyle = "black";
         ctx.font = "10px Tahoma";
         ctx.fillText(this.enemyName, this.x + (this.width /2), this.y);
-
     }
     handleAge() {
         this.age = this.age + .01 * Math.random();
@@ -504,4 +504,5 @@ function getRandomYCoord(x) {
             return canvas.height + 100;
         }
     }
-}
+}
+
