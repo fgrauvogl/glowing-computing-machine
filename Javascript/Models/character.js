@@ -35,15 +35,19 @@ class Character {
 
         if (this.x < 0) {
             this.x = 0;
+            keyState[65] = false;
         }
         else if (this.x > canvas.width - this.width) {
             this.x = canvas.width - this.width;
+            keyState[68] = false;
         }
         if (this.y < 0) {
             this.y = 0;
+            keyState[87] = false;
         }
         else if (this.y > canvas.height - this.height) {
             this.y = canvas.height - this.height;
+            keyState[83] = false;
         }
     }
     hitPlayer(amount) {

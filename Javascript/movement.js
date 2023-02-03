@@ -13,7 +13,6 @@ window.addEventListener('keydown', function (e) {
     keysPressed[event.keyCode] = true;
 
     keyState[e.keyCode || e.which] = true;
-
     if (key == "e") {
         playerWeaponManager.switchGunRight();
         updateWeaponExperience();
