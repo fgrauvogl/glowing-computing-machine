@@ -59,10 +59,16 @@ class Character {
             if (this.health < 0) {
                 this.health = 0;
                 this.isDead = true;
-                showDeathScreen();
             }
         }
     }
+
+    characterDeadDead() {
+        if (this.isDead)
+            showDeathScreen();
+            return;
+    }
+
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y), this.width, this.height);

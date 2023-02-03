@@ -78,10 +78,10 @@ class Enemy {
         this.handleCollision();
         this.fireGun();
         var isCollision = this.collision(character.x, character.y, character.width, character.height, this.x, this.y, this.width, this.height);
+        this.draw();
         if (isCollision) {
         this.hitPlayer();
         }
-        this.draw();
     }
 
     fireGun() {
