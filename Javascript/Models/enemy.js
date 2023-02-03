@@ -23,7 +23,7 @@ class Enemy {
         this.gun = this.getGun();
         this.isWeaponCoolDown = false;
         this.experienceGranted = 1;
-        this.enemyHealthColor = healthBarColor;
+
 
         enemyid += 1;
     }
@@ -305,7 +305,7 @@ class Enemy {
     draw() {
         ctx.fillStyle = this.enemycolor;
         ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.fillStyle = this.enemyHealthColor;
+        ctx.fillStyle = healthBarColor;
         var currentHealthPercentage = this.health / this.maxHealth;
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y + this.height), this.width * currentHealthPercentage, this.height / 8);
         ctx.fillStyle = "black";

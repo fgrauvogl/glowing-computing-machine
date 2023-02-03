@@ -20,7 +20,8 @@ const chatInput = document.querySelector('.chat-input');
 const chatMessages = document.querySelector('.chat-messages');
 let defaultMobSpawnRate = 500;
 let experience = 0;
-var healthBarColor = "red"
+var healthBarColor = "red";
+var winner = false;
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');
