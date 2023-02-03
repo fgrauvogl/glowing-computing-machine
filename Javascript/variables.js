@@ -20,6 +20,7 @@ const chatInput = document.querySelector('.chat-input');
 const chatMessages = document.querySelector('.chat-messages');
 let defaultMobSpawnRate = 500;
 let experience = 0;
+var healthBarColor = "red"
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');
@@ -40,7 +41,7 @@ let isChatActive = false;
 let mouseX = 0;
 let mouseY = 0;
 var level = 1;
-var maxLevel = 30;
+var maxLevel = 3;
 var enemiesArray = [];
 var stagedEnemiesArray = [];
 var characterProjectileArray = [];

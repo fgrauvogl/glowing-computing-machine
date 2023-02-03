@@ -4,10 +4,12 @@ for (let i = 0; i < startingEnemies; i++) {
 
 var character = new Character();
 
+var winner = false;
+
 let frame = 0;
 
 function animate() {
-    if (isPaused || character.isDead) { return; }
+    if (isPaused || character.isDead || winner) { return; }
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     enemiesArray.forEach(enemy => {
         enemy.update();
@@ -41,15 +43,17 @@ function clearCtx() {
 function toggleDoomMode() {
     if (gameMode == GameModes.Doom) {
         gameMode = null;
+        healthBarColor = "red";
         music.pause();
         document.getElementById("doom-image").style.display = "none";
+
     }
     else {
         gameMode = GameModes.Doom;
-
         levelCounter.innerText = "DOOM";
         doomLoop();
         document.getElementById("doom-image").style.display = "inline-block";
+        healthBarColor = "blue";
 
         if (!isMuted) {
             music.src = ("./Audio/Doom.mp3");
@@ -99,7 +103,9 @@ function handleLevelUp() {
 }
 
 function winGame() {
+    winner = true;
     winscreen.style.display = "block";
+    return;
 }
 
 function spawnFromStagedEnemy(timeInMs) {
@@ -165,8 +171,9 @@ function showDeathScreen() {
 function restart(needsAnimationReset = true) {
     keyState = {};
     clearCtx();
-    unpause();
+    hidePauseMenu();
     pausemenu.style.display = "none";
+    isPaused = false;
     level = 1;
     characterProjectileArray = [];
     enemyProjectileArray = [];
@@ -177,6 +184,7 @@ function restart(needsAnimationReset = true) {
     playerWeaponManager.setStartingAmmo();
     currentDoomCountDown = startingDoomCountDown
     updateWeaponExperience();
+    winner = false;
     if (gameMode != GameModes.Doom) {
         startLevel();
     }
@@ -226,6 +234,10 @@ function pause() {
 function unpause() {
     isPaused = false;
     animate();
+    pausemenu.style.display = "none";
+}
+
+function hidePauseMenu() {
     pausemenu.style.display = "none";
 }
 
