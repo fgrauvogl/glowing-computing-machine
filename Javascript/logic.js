@@ -4,10 +4,12 @@ for (let i = 0; i < startingEnemies; i++) {
 
 var character = new Character();
 
+var winner = false;
+
 let frame = 0;
 
 function animate() {
-    if (isPaused || character.isDead) { return; }
+    if (isPaused || character.isDead || winner) { return; }
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     enemiesArray.forEach(enemy => {
         enemy.update();
@@ -101,7 +103,9 @@ function handleLevelUp() {
 }
 
 function winGame() {
+    winner = true;
     winscreen.style.display = "block";
+    return;
 }
 
 function spawnFromStagedEnemy(timeInMs) {
@@ -179,6 +183,7 @@ function restart(needsAnimationReset = true) {
     playerWeaponManager.setStartingAmmo();
     currentDoomCountDown = startingDoomCountDown
     updateWeaponExperience();
+    winner = false;
     if (gameMode != GameModes.Doom) {
         startLevel();
     }

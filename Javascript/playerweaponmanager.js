@@ -120,7 +120,7 @@ class PlayerWeaponManager {
 
 
     fireGun() {
-        if (isPaused || character.isDead) {
+        if (isPaused || character.isDead || winner) {
             return;
         }
 
