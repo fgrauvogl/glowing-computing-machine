@@ -18,6 +18,7 @@ const hpBar = document.querySelector('.hp-bar');
 const hpText = document.querySelector('#hp');
 const chatInput = document.querySelector('.chat-input');
 const chatMessages = document.querySelector('.chat-messages');
+let defaultMobSpawnRate = 500;
 let experience = 0;
 
 const ctx = canvas.getContext('2d');
@@ -31,7 +32,7 @@ function resize() {
 	CANVAS_HEIGHT = itemCanvas.height = canvas.height = window.innerHeight;
 }
 const startingEnemies = 1;
-const monstersPerLevel = 3;
+const monstersPerLevel = 2;
 var isMouseDown = false;
 let isPaused = false;
 let isMuted = false;
@@ -41,6 +42,7 @@ let mouseY = 0;
 var level = 1;
 var maxLevel = 30;
 var enemiesArray = [];
+var stagedEnemiesArray = [];
 var characterProjectileArray = [];
 var enemyProjectileArray = [];
 
