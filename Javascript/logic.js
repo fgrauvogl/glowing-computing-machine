@@ -4,8 +4,6 @@ for (let i = 0; i < startingEnemies; i++) {
 
 var character = new Character();
 
-var winner = false;
-
 let frame = 0;
 
 function animate() {
