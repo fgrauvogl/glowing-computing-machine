@@ -10,7 +10,7 @@ class Enemy {
         this.height = getEnemySize(this.EnemyType);
         this.age = 50 * Math.random();
         this.id = enemyid;
-        this.moveSpeed = 100 / (this.width);
+        this.moveSpeed = 50 / (this.width);
         this.velocityX = this.moveSpeed;
         this.velocityY = this.moveSpeed;
         this.enemycolor = getEnemyColor(this.EnemyType);
