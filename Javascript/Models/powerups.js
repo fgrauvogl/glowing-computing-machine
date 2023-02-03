@@ -4,7 +4,7 @@ var powerUpId = 1;
 class PowerUp {
     constructor(x, y, lootRoll) {
         this.x = Math.round(x);
-        this.y = y;
+        this.y = Math.round(y);
         this.width = 25;
         this.height = 25;
         this.id = powerUpId;
