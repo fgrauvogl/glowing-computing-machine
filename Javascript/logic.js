@@ -104,30 +104,35 @@ function winGame() {
 
 function spawnFromStagedEnemy(timeInMs) {
     if (stagedEnemiesArray.length == 0) { return };
-    enemiesArray.push(stagedEnemiesArray[0]);
-    stagedEnemiesArray.splice(0, 1);
+    if (!isPaused) {
+        enemiesArray.push(stagedEnemiesArray[0]);
+        stagedEnemiesArray.splice(0, 1);
+    }
     spawnRate = timeInMs ?? defaultMobSpawnRate;
     setTimeout(spawnFromStagedEnemy, spawnRate);
 }
 
-function spawnRandomEnemies(number, spanOfTimeSeconds) {
+function spawnRandomEnemies() {
+    let number = level * monstersPerLevel;
+    let spanOfTimeinSeconds = level
     for (let i = 0; i < number; i++) {
         stagedEnemiesArray.push(new Enemy());
     }
 
     //time in ms needed to spawn each enemy in given timeperiod
-    let timeInMs = (spanOfTimeSeconds * 1000) / number;
+    let timeInMs = (spanOfTimeinSeconds * 1000) / number;
 
     spawnFromStagedEnemy(timeInMs);
 }
 
 
 function levelUp() {
+
     level += 1;
 
     levelCounter.innerText = level;
 
-    spawnRandomEnemies(level * monstersPerLevel, level);
+    spawnRandomEnemies();
 }
 
 
