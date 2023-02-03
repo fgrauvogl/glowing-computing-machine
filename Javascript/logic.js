@@ -60,7 +60,7 @@ function toggleDoomMode() {
             music.play();
         }
     }
-    restart(false);
+    restart();
 }
 
 function doomLoop() {
