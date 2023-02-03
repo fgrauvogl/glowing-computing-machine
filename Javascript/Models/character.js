@@ -63,7 +63,8 @@ class Character {
         ctx.fillStyle = "rgb(10, 75, 77)";
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y), this.width, this.height);
         ctx.fillStyle = "black";
-        ctx.fillText(this.name, this.x, this.y);
+        ctx.textAlign = "center";
+        ctx.fillText(this.name, this.GetXMidPoint(), this.y);
 
     }
     update() {

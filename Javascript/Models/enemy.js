@@ -308,7 +308,8 @@ class Enemy {
         var currentHealthPercentage = this.health / this.maxHealth;
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y + this.height), this.width * currentHealthPercentage, this.height / 8);
         ctx.fillStyle = "black";
-        ctx.fillText(this.enemyName, this.x, this.y);
+        ctx.font = "10px Tahoma";
+        ctx.fillText(this.enemyName, this.x + (this.width /2), this.y);
 
     }
     handleAge() {
