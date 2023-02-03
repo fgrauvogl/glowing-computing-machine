@@ -16,6 +16,7 @@ class Character {
         this.armor = 500;
         this.maxArmor = this.armor;
         this.speed = 3;
+        this.font = "10px Tahoma";
 
     }
     GetXMidPoint() {
@@ -74,8 +75,8 @@ class Character {
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y), this.width, this.height);
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
+        ctx.font = this.font;
         ctx.fillText(this.name, this.GetXMidPoint(), this.y);
-
     }
     update() {
         this.move();
