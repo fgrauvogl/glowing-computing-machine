@@ -2,7 +2,7 @@ var gunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun
 var mobGunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.Sniper, Guns.FiftyCal];
 
 var automaticGuns = {};
-automaticGuns[Guns.MachineGun] = 500;
+automaticGuns[Guns.MachineGun] = 450;
 automaticGuns[Guns.ChainGun] = 20;
 automaticGuns[Guns.MegaGatling] = 2;
 
@@ -22,13 +22,13 @@ class PlayerWeaponManager {
     }
 
     setStartingAmmo() {
-        this.Ammo[Guns.GrenadeLauncher] = 30;
-        this.Ammo[Guns.ShotGun] = 30;
-        this.Ammo[Guns.MachineGun] = 2000;
-        this.Ammo[Guns.ChainGun] = 2000;
-        this.Ammo[Guns.Sniper] = 100;
-        this.Ammo[Guns.FiftyCal] = 100;
-        this.Ammo[Guns.MegaGatling] = 20000;
+        this.Ammo[Guns.GrenadeLauncher] = 0;
+        this.Ammo[Guns.ShotGun] = 5;
+        this.Ammo[Guns.MachineGun] = 50;
+        this.Ammo[Guns.ChainGun] = 0;
+        this.Ammo[Guns.Sniper] = 0;
+        this.Ammo[Guns.FiftyCal] = 0;
+        this.Ammo[Guns.MegaGatling] = 0;
     }
 
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -134,8 +134,6 @@ class PlayerWeaponManager {
 
         this.useAmmo();
 
-        let rect = canvas.getBoundingClientRect();
-
         let x = event?.clientX ?? mouseX;
 
         let y = event?.clientY ?? mouseY;
@@ -178,6 +176,8 @@ class PlayerWeaponManager {
                 playAudio("./Audio/machinegun.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y, 0, this.currentGun);
+
+                projectile.damage = 24;
 
                 characterProjectileArray.push(projectile);
 

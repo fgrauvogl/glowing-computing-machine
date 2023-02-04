@@ -13,8 +13,8 @@ class Character {
         this.maxHealth = this.health;
         this.isDead = false;
         this.currentGun = Guns.GrenadeLauncher;
-        this.armor = 500;
-        this.maxArmor = this.armor;
+        this.maxArmor = 100;
+        this.armor = this.maxArmor/2;
         this.speed = 3;
         this.font = "10px Tahoma";
 
@@ -138,10 +138,10 @@ class Character {
     applyPowerUp(powerUpType) {
         switch (powerUpType) {
             case PowerUps.Armor:
-                this.armor = Math.min(this.armor + 50, this.maxArmor);
+                this.armor = Math.min(this.armor + this.maxArmor/2, this.maxArmor);
                 break;
             case PowerUps.HP:
-                this.health = Math.min(this.health + 75, this.maxHealth);
+                this.health = Math.min(this.maxHealth + this.maxHealth/2, this.maxHealth);
                 break;
             case PowerUps.Nuke:
                 enemiesArray.forEach(enemy => {
@@ -150,25 +150,25 @@ class Character {
                 enemiesArray = [];
                 break;
             case PowerUps.ShotGunAmmo:
-                playerWeaponManager.Ammo[Guns.ShotGun] = playerWeaponManager.Ammo[Guns.ShotGun] + 10;
+                playerWeaponManager.Ammo[Guns.ShotGun] = playerWeaponManager.Ammo[Guns.ShotGun] + 50;
                 break;
             case PowerUps.GrenadeLauncherAmmo:
-                playerWeaponManager.Ammo[Guns.GrenadeLauncher] = playerWeaponManager.Ammo[Guns.GrenadeLauncher] + 5;
+                playerWeaponManager.Ammo[Guns.GrenadeLauncher] = playerWeaponManager.Ammo[Guns.GrenadeLauncher] + 40;
                 break;
             case PowerUps.MachineGunAmmo:
-                playerWeaponManager.Ammo[Guns.MachineGun] = playerWeaponManager.Ammo[Guns.MachineGun] + 25;
+                playerWeaponManager.Ammo[Guns.MachineGun] = playerWeaponManager.Ammo[Guns.MachineGun] + 100;
                 break;
             case PowerUps.ChainGunAmmo:
-                playerWeaponManager.Ammo[Guns.ChainGun] = playerWeaponManager.Ammo[Guns.ChainGun] + 20;
+                playerWeaponManager.Ammo[Guns.ChainGun] = playerWeaponManager.Ammo[Guns.ChainGun] + 300;
                 break;
             case PowerUps.MegaGatlingAmmo:
-                playerWeaponManager.Ammo[Guns.MegaGatling] = playerWeaponManager.Ammo[Guns.MegaGatling] + 50;
+                playerWeaponManager.Ammo[Guns.MegaGatling] = playerWeaponManager.Ammo[Guns.MegaGatling] + 1000;
                 break;
             case PowerUps.SniperAmmo:
-                playerWeaponManager.Ammo[Guns.Sniper] = playerWeaponManager.Ammo[Guns.Sniper] + 5;
+                playerWeaponManager.Ammo[Guns.Sniper] = playerWeaponManager.Ammo[Guns.Sniper] + 100;
                 break;
             case PowerUps.FiftyCalAmmo:
-                playerWeaponManager.Ammo[Guns.FiftyCal] = playerWeaponManager.Ammo[Guns.FiftyCal] + 3;
+                playerWeaponManager.Ammo[Guns.FiftyCal] = playerWeaponManager.Ammo[Guns.FiftyCal] + 30;
                 break;
             default:
                 break;
