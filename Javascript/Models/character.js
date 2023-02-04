@@ -8,8 +8,7 @@ class Character {
         this.height = 30;
         let nameIndex = Math.floor(Math.random() * (listONames.length - 1));
         this.name = listONames[nameIndex];
-        // this.health = this.getCharacterHealth();
-        this.health = 10000;
+        this.health = this.getCharacterHealth();
         this.maxHealth = this.health;
         this.isDead = false;
         this.currentGun = Guns.GrenadeLauncher;
@@ -128,10 +127,10 @@ class Character {
             return 100;
         }
         else if (this.name == "Mark") {
-            return 1000;
+            return 120;
         }
         else if (this.name == "Clint") {
-            return 10000;
+            return 200;
         }
     }
 
