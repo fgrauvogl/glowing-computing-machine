@@ -390,10 +390,10 @@ function isLootDropped(enemyName) {
     var lootChance;
 
     if (enemyName == "grunt") {
-        lootChance = Math.random() * 12;
+        lootChance = Math.random() * 11;
     }
     else if (enemyName == "alien") {
-        lootChance = Math.random() * 20;
+        lootChance = Math.random() * 15;
     }
     else if (enemyName == "omega") {
         lootChance = Math.random() * 60;
@@ -461,10 +461,10 @@ function getEnemySize(enemyName) {
 function getEnemyHealth(enemyType) {
     switch (enemyType) {
         case MobTypes.Grunt:
-            return 10;
+            return 20;
             break;
         case MobTypes.Alien:
-            return 200;
+            return 50;
             break;
         case MobTypes.Omega:
             return 300;

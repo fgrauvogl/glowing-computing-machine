@@ -40,13 +40,13 @@ class PowerUp {
         if (number < 70) {
             return PowerUps.ChainGunAmmo;
         }
-        if (number < 75) {
+        if (number < 82) {
             return PowerUps.SniperAmmo;
         }
-        if (number < 85) {
+        if (number < 90) {
             return PowerUps.FiftyCalAmmo;
         }
-        if (number < 90) {
+        if (number < 95) {
             return PowerUps.MegaGatlingAmmo;
         }
         if (number < 100) {

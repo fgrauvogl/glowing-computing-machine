@@ -57,7 +57,7 @@ const Guns = {
 	MachineGun: "Machine Gun",
 	ChainGun: "Chain Gun",
 	GrenadeLauncher: "Grenade Launcher",
-	Sniper: "Sniper Rifle",
+	Sniper: "Rifle",
 	FiftyCal: "50 Cal",
 	MegaGatling: "Mega Gatling Gun"
 }
@@ -71,7 +71,7 @@ const PowerUps = {
 	ChainGunAmmo: "Chain Gun Ammo",
 	FiftyCalAmmo: "Fifty Cal Ammo",
 	MegaGatlingAmmo: "Mega Gatling Ammo",
-	SniperAmmo: "Sniper Ammo",
+	SniperAmmo: "Rifle Ammo",
 	SpeedUp: "Speed Up",
 	Nuke: "Nuke",
 	HP: "HP",
