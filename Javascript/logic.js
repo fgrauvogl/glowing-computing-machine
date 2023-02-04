@@ -102,7 +102,7 @@ function handleLevelUp() {
 
 function winGame() {
     winner = true;
-    winscreen.style.display = "block";
+    winScreen.style.display = "block";
     return;
 }
 
@@ -162,7 +162,7 @@ function drawAmmoBar() {
 
 function showDeathScreen() {
     playAudio("./Audio/mariodeath.mp3");
-    document.getElementById("death-screen").style.display = "block";
+    deathScreen.style.display = "block";
     music.pause();
 }
 
@@ -193,12 +193,12 @@ function restart(needsAnimationReset = true) {
     }
    
     document.getElementById("death-screen").style.display = "none";
-    winscreen.style.display = "none";
+    winScreen.style.display = "none";
     if (needsAnimationReset) {
         animate();
     }
 }
-canvas.addEventListener("click", event => {
+canvas.addEventListener("onclick", event => {
     playerWeaponManager.fireGun();
 
 })

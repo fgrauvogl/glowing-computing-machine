@@ -1,7 +1,8 @@
 /** @type {HTMLCanvasElement} */
 const canvas = document.getElementById('canvas1');
+const deathScreen = document.getElementById("death-screen");
 const itemCanvas = document.getElementById('item-canvas');
-const winscreen = document.getElementById('win-screen');
+const winScreen = document.getElementById('win-screen');
 const pausemenu = document.getElementById('pause-menu');
 const levelCounter = document.getElementById('levelCounter');
 const music = document.getElementById('music');
@@ -23,7 +24,11 @@ let experience = 0;
 var healthBarColor = "red";
 var winner = false;
 var doomBackground = document.getElementById('doom-background');
-
+doomBackground.draggable = false;
+deathScreen.draggable = false;
+canvas.draggable = false;
+winScreen.draggable = false;
+itemCanvas.draggable = false;
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');
