@@ -22,6 +22,8 @@ let defaultMobSpawnRate = 500;
 let experience = 0;
 var healthBarColor = "red";
 var winner = false;
+var doomBackground = document.getElementById('doom-background');
+
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');
