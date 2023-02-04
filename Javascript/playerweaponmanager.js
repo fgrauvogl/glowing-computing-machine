@@ -175,7 +175,7 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/machinegun.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y, 0, this.currentGun);
+                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, 0, this.currentGun);
 
                 projectile.damage = 24;
 
@@ -187,7 +187,7 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/machinegun.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 15, x, y, 0, this.currentGun);
+                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y, 0, this.currentGun);
 
                 characterProjectileArray.push(projectile);
 
