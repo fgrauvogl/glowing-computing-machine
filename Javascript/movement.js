@@ -5,7 +5,7 @@ const KEY_DELAY = 200;
 const keyProcessing = new Map();
 
 window.addEventListener('keydown', function (e) {
-    console.log("spam");
+    debugger;
     const key = e.keyCode || e.which;
     if (keyProcessing.has(key)) {
         return;
@@ -13,20 +13,20 @@ window.addEventListener('keydown', function (e) {
     keyProcessing.set(key, true);
     keyState[key] = true;
     keyState[e.keyCode || e.which] = true;
-    if (key == "e") {
+    if (key == 69) {
         playerWeaponManager.switchGunRight();
         updateWeaponExperience();
 
     }
-    else if (key == "`") {
+    else if (key == 192) {
         toggleChat();
     }
-    else if (key == "q") {
+    else if (key == 81) {
         playerWeaponManager.switchGunLeft();
         updateWeaponExperience();
 
     }
-    else if (key == "p") {
+    else if (key == 80) {
         isPaused = !isPaused;
         if (!isPaused) {
             unpause();
@@ -35,7 +35,7 @@ window.addEventListener('keydown', function (e) {
             pause();
         }
     }
-    else if (key === 'enter') {
+    else if (key === 13) {
         addCommand();
     }
     setTimeout(function () {
