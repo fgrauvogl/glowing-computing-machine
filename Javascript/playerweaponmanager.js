@@ -11,8 +11,6 @@ automaticGuns[Guns.Sniper] = 800;
 automaticGuns[Guns.FiftyCal] = 800;
 automaticGuns[Guns.ShotGun] = 1500;
 
-
-
 var shotsFired = {};
 var shotsHit = {};
 
@@ -136,7 +134,12 @@ class PlayerWeaponManager {
             this.setWeaponCoolDown(automaticGuns[this.currentGun]);
         }
 
-        if (this.getAmmo(this.currentGun) == 0) { return; }
+        if (this.getAmmo(this.currentGun) == 0) {
+
+            this.switchGunRight();
+
+            this.fireGun();
+        }
 
         this.recordShotsFired ();
 
