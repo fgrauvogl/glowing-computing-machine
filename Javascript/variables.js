@@ -94,7 +94,8 @@ const MobTypes = {
 let gameMode = null;
 
 const GameModes = {
-	Doom: "Doom"
+	Doom: "Doom",
+	SandBox: "Sand Box"
 }
 
 let startingDoomCountDown = 1000;

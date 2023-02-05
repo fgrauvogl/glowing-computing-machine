@@ -61,6 +61,21 @@ function toggleDoomMode() {
     restart();
 }
 
+function toggleSandBoxMode() {
+    if (gameMode == GameModes.SandBox) {
+        gameMode = null;
+        levelCounter.innerText = "1";
+    }
+    else {
+        gameMode = GameModes.SandBox;
+        levelCounter.innerText = "Sand Box";
+        healthBarColor = "red";
+        music.pause();
+        document.getElementById("doom-image").style.display = "none";
+    }
+    restart();
+}
+
 function doomLoop() {
     if (gameMode != GameModes.Doom) {
         return;
@@ -83,6 +98,9 @@ function handleLevelUp() {
     switch (gameMode) {
 
         case GameModes.Doom:
+
+            break;
+        case GameModes.SandBox:
 
             break;
         default: {
@@ -183,11 +201,11 @@ function restart(needsAnimationReset = true) {
     currentDoomCountDown = startingDoomCountDown
     updateWeaponExperience();
     winner = false;
-    if (gameMode != GameModes.Doom) {
+    if (!gameMode) {
         startLevel();
     }
     else {
-        if (!isMuted) {
+        if (!isMuted && gameMode == GameModes.Doom) {
         music.play();
         }
     }
