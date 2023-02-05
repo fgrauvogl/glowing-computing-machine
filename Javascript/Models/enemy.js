@@ -25,6 +25,7 @@ class Enemy {
         this.hasHitCharacterRecently = false;
         this.experienceGranted = 1;
         this.enemyHitCoolDown = 2;
+        this.hitAudio = null
         enemyid += 1;
     }
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -320,6 +321,7 @@ class Enemy {
     }
     hitPlayer() {
         if (this.hasHitCharacterRecently) { return; }
+        if (this.hitAudio) { playAudio(this.hitAudio); }
         this.hasHitCharacterRecently = true;
         setTimeout(this.removeRecentHitCooldown.bind(this), this.enemyHitCoolDown * 1000);
         character.armor -= this.strength;
