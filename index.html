@@ -55,7 +55,7 @@
     <div id="doom-background" style="position:absolute; width:100vw; height:100vh">
         <img src="Images\doom-background.png" id="doom-image" />
     </div>
-    
+
     <div id="pause-menu">
         <h1 id="menu-text">Menu</h1>
         <img src="Images\mute.png" id="mute-image" style="display:none" onclick="handleMute()" />
@@ -64,6 +64,7 @@
         <input type="range" min="0" max="100" value="30" id="volume-bar">
         <button onclick="restart()" id="play-again-button" class="btn btn-primary">Restart</button>
         <button onclick="toggleDoomMode()" id="doom-button" class="btn btn-danger">Doom</button>
+        <button onclick="toggleSandBoxMode()" class="btn btn-secondary" style="margin-left:10px">Sandbox</button>
         <h3 class="inline-block" style="margin-left:10px;">Accuracy</h3>
         <h4 class="inline-block" id="accuracy-%">0</h4>
     </div>
@@ -77,7 +78,6 @@
 
     <script src="Javascript\variables.js"></script>
     <script src="Javascript\utility.js"></script>
-    <script src="Javascript\chatbox.js"></script>
     <script src="Javascript\playerWeaponExp.js"></script>
     <script src="Javascript\playerweaponmanager.js"></script>
     <script src="Javascript\heart.js"></script>
@@ -88,6 +88,8 @@
     <script src="Javascript\names.js"></script>
     <script src="Javascript\Models\character.js"></script>
     <script src="Javascript\logic.js"></script>
+    <script src="Javascript\commands.js"></script>
+    <script src="Javascript\chatbox.js"></script>
     <script src="Javascript\movement.js"></script>
 </body>
 

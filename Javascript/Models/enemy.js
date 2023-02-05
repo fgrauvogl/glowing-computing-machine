@@ -1,11 +1,11 @@
 var enemyid = 1;
 
 class Enemy {
-    constructor() {
+    constructor(enemyType = null) {
         this.angle = 0;
         this.x = getRandomXCoord();
         this.y = getRandomYCoord(this.x);
-        this.EnemyType = getEnemyType();
+        this.EnemyType = enemyType ?? getRandomEnemyType();
         this.width = getEnemySize(this.EnemyType);
         this.height = getEnemySize(this.EnemyType);
         this.age = 50 * Math.random();
@@ -332,16 +332,16 @@ class Enemy {
     }
 }
 
-function getEnemyType() {
+function getRandomEnemyType() {
     var number = 100 * Math.random();
     if (number < 70) {
-        return enemynames[2];
+        return MobTypes.Grunt;
     }
     else if (number > 70 && number < 98) {
-        return enemynames[1];
+        return MobTypes.Alien;
     }
     else if (number > 98) {
-        return enemynames[0];
+        return MobTypes.Omega;
     }
 }
 function removeEnemy(id) {

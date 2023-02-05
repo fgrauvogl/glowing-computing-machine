@@ -16,4 +16,6 @@ function addCommand(command = null) {
     commandInput.value = "";
 
     commandLine.scrollTop = commandLine.scrollHeight;
+
+    handleCommand(commandText);
 }

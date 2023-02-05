@@ -8,6 +8,12 @@ body {
     -ms-user-select: none;
 }
 
+    body *:not(#commandLine) {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
 
 #background-canvas {
     z-index: -15;
