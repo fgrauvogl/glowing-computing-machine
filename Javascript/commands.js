@@ -30,6 +30,12 @@ function handleCommand(commandText) {
             enemiesArray = [];
             break;
         }
+        case "charger": {
+            var enemy = new SpecialEnemy();
+            stagedEnemiesArray.push(enemy);
+            spawnFromStagedEnemy(1000);
+            break;
+        }
         default:
     }
 }
