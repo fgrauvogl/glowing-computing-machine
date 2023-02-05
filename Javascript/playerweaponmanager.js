@@ -5,6 +5,13 @@ var automaticGuns = {};
 automaticGuns[Guns.MachineGun] = 450;
 automaticGuns[Guns.ChainGun] = 20;
 automaticGuns[Guns.MegaGatling] = 2;
+automaticGuns[Guns.Pistol] = 800;
+automaticGuns[Guns.GrenadeLauncher] = 1000;
+automaticGuns[Guns.Sniper] = 500;
+automaticGuns[Guns.FiftyCal] = 500;
+automaticGuns[Guns.ShotGun] = 1500;
+
+
 
 var shotsFired = {};
 var shotsHit = {};
@@ -26,8 +33,8 @@ class PlayerWeaponManager {
         this.Ammo[Guns.ShotGun] = 5;
         this.Ammo[Guns.MachineGun] = 50;
         this.Ammo[Guns.ChainGun] = 0;
-        this.Ammo[Guns.Sniper] = 0;
-        this.Ammo[Guns.FiftyCal] = 0;
+        this.Ammo[Guns.Sniper] = 50;
+        this.Ammo[Guns.FiftyCal] = 50;
         this.Ammo[Guns.MegaGatling] = 0;
     }
 
