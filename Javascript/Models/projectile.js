@@ -19,7 +19,7 @@ class Projectile {
         else {
             this.angle = angle;
         }
-        this.enemyType = getEnemyType();
+        this.enemyType = getRandomEnemyType();
         this.damage = 10;
         this.enemiesHit = {};
         this.isImpactOnHit = false;
