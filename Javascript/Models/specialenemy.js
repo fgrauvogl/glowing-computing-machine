@@ -1,4 +1,4 @@
-let chargeTimeInSeconds = 1.5;
+let chargeTimeInSeconds = 1.2;
 let chargeCoolDown = 3;
 
 
@@ -12,10 +12,10 @@ class SpecialEnemy extends Enemy {
         this.isNewMovementAlgoNeeded = true;
         this.isChargingOnCoolDown = false;
         this.strength = 100;
+        this.hitAudio = "./Audio/Intimidate.mp3";
     }
 
     update() {
-        console.log(this.isChargingOnCoolDown);
         if (this.isNewMovementAlgoNeeded) { this.handleMovement() }
         else { this.handleCustomMovement(); }
         this.handleCollision();
@@ -40,13 +40,14 @@ class SpecialEnemy extends Enemy {
     handleMovement() {
         var distanceToCharacter = this.calculateDistanceToCharacter();
 
-        if (distanceToCharacter > 100 && distanceToCharacter < 200 && !this.isChargingOnCoolDown) {
-            this.BeginCharge();
-        }
+        if (distanceToCharacter > 50 && distanceToCharacter < 250 && !this.isChargingOnCoolDown) {
 
-        if (distanceToCharacter > 100) {
-            this.moveTowardsPlayer();
+            this.BeginCharge();
+
+            return;
         }
+        this.moveTowardsPlayer();
+
     }
 
     BeginCharge() {
@@ -79,7 +80,7 @@ class SpecialEnemy extends Enemy {
         this.isNewMovementAlgoNeeded = true;
         this.isChargingOnCoolDown = true;
         if (this.hasHitCharacterRecently) { 
-            playAudio("./Audio/Intimidate.mp3");
+            playAudio();
         };
         setTimeout(this.removeChargeCoolDown.bind(this), chargeCoolDown * 1000);
     }
