@@ -54,6 +54,14 @@ window.oncontextmenu = function () {
     keyState = {};
     return false;
 }
+window.addEventListener("wheel", function (event) {
+    if (event.deltaY > 0) {
+        playerWeaponManager.switchGunLeft();
+
+    } else {
+        playerWeaponManager.switchGunRight();
+    }
+});
 
 window.addEventListener('mousedown', function (e) {
     isMouseDown = true;
