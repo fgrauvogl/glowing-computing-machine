@@ -1,5 +1,5 @@
 let chargeTimeInSeconds = 1.5;
-let chargeCoolDown = 1.5;
+let chargeCoolDown = 3;
 
 
 class SpecialEnemy extends Enemy {
@@ -11,9 +11,11 @@ class SpecialEnemy extends Enemy {
         this.chargeAngle = 0;
         this.isNewMovementAlgoNeeded = true;
         this.isChargingOnCoolDown = false;
+        this.strength = 100;
     }
 
     update() {
+        console.log(this.isChargingOnCoolDown);
         if (this.isNewMovementAlgoNeeded) { this.handleMovement() }
         else { this.handleCustomMovement(); }
         this.handleCollision();
@@ -52,6 +54,8 @@ class SpecialEnemy extends Enemy {
 
         this.isCharging = true;
 
+        this.isChargingOnCoolDown = true;
+
         this.isNewMovementAlgoNeeded = false;
 
         setTimeout(this.stopCharging.bind(this), chargeTimeInSeconds * 1000);
@@ -73,11 +77,14 @@ class SpecialEnemy extends Enemy {
     stopCharging() {
         this.isCharging = false;
         this.isNewMovementAlgoNeeded = true;
-        this.chargeCoolDown = true;
+        this.isChargingOnCoolDown = true;
+        if (this.hasHitCharacterRecently) { 
+            playAudio("./Audio/Intimidate.mp3");
+        };
         setTimeout(this.removeChargeCoolDown.bind(this), chargeCoolDown * 1000);
     }
 
     removeChargeCoolDown() {
-        this.chargeCoolDown = false;
+        this.isChargingOnCoolDown = false;
     }
 }

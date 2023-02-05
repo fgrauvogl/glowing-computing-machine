@@ -31,7 +31,6 @@ function handleCommand(commandText) {
             break;
         }
         case "charger": {
-            debugger;
             var enemy = new SpecialEnemy();
             stagedEnemiesArray.push(enemy);
             spawnFromStagedEnemy(1000);

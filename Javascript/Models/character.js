@@ -56,7 +56,7 @@ class Character {
             this.armor = 0;
             this.health -= amount;
 
-            if (this.health < 0) {
+            if (this.health <= 0) {
                 this.health = 0;
                 this.isDead = true;
             }
