@@ -139,7 +139,7 @@ class Projectile {
         // Draw the projectile on the canvas
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        ctx.arc(Math.ceil(this.x), Math.ceil(this.y), this.radius, 0, 2 * Math.PI);
         ctx.fill();
     }
 

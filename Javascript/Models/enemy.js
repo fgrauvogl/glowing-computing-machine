@@ -22,9 +22,9 @@ class Enemy {
         this.maxHealth = this.health;
         this.gun = this.getGun();
         this.isWeaponCoolDown = false;
+        this.hasHitCharacterRecently = false;
         this.experienceGranted = 1;
-
-
+        this.enemyHitCoolDown = 2;
         enemyid += 1;
     }
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -319,6 +319,9 @@ class Enemy {
         }
     }
     hitPlayer() {
+        if (this.hasHitCharacterRecently) { return; }
+        this.hasHitCharacterRecently = true;
+        setTimeout(this.removeRecentHitCooldown.bind(this), this.enemyHitCoolDown * 1000);
         character.armor -= this.strength;
         if (character.armor < 0) {
             character.armor = 0;
@@ -329,6 +332,10 @@ class Enemy {
                 showDeathScreen();
             }
         }
+    }
+
+    removeRecentHitCooldown() {
+        this.hasHitCharacterRecently = false;
     }
 }
 
@@ -504,5 +511,6 @@ function getRandomYCoord(x) {
             return canvas.height + 100;
         }
     }
-}
+}
+
 
