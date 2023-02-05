@@ -22,7 +22,7 @@ class PlayerWeaponManager {
     }
 
     setStartingAmmo() {
-        this.Ammo[Guns.GrenadeLauncher] = 0;
+        this.Ammo[Guns.GrenadeLauncher] = 10;
         this.Ammo[Guns.ShotGun] = 5;
         this.Ammo[Guns.MachineGun] = 50;
         this.Ammo[Guns.ChainGun] = 0;
@@ -120,7 +120,8 @@ class PlayerWeaponManager {
 
 
     fireGun() {
-        if (isPaused || character.isDead || winner) {
+        let weaponCooldown = this.isWeaponCoolDown;
+        if (isPaused || character.isDead || winner || this.isWeaponCoolDown) {
             return;
         }
 

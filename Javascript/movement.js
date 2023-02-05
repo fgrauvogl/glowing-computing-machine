@@ -5,7 +5,6 @@ const KEY_DELAY = 200;
 const keyProcessing = new Map();
 
 window.addEventListener('keydown', function (e) {
-    debugger;
     const key = e.keyCode || e.which;
     if (keyProcessing.has(key)) {
         return;

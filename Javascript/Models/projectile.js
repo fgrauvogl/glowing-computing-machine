@@ -222,6 +222,7 @@ class Projectile {
             var randomSpeed = (10 + Math.random() * 10);
             let projectile = new Projectile(this.x + this.projectileWidth / 2, this.y + this.projectileHeight / 2, randomSpeed, this.x, this.y, randomAngle);
             projectile.color = this.color;
+            projectile.gunType = this.gunType;
             projectile.damage = 15;
             projectile.lifespan = 3 + Math.random() * 7;
          
