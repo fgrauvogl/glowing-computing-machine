@@ -7,8 +7,8 @@ automaticGuns[Guns.ChainGun] = 20;
 automaticGuns[Guns.MegaGatling] = 2;
 automaticGuns[Guns.Pistol] = 800;
 automaticGuns[Guns.GrenadeLauncher] = 1000;
-automaticGuns[Guns.Sniper] = 500;
-automaticGuns[Guns.FiftyCal] = 500;
+automaticGuns[Guns.Sniper] = 800;
+automaticGuns[Guns.FiftyCal] = 800;
 automaticGuns[Guns.ShotGun] = 1500;
 
 
