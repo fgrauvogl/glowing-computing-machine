@@ -329,7 +329,7 @@ class Enemy {
         if (character.armor < 0) {
             character.armor = 0;
             character.health -= this.strength;
-            if (character.health < 0) {
+            if (character.health <= 0) {
                 character.health = 0;
                 character.isDead = true;
                 showDeathScreen();
