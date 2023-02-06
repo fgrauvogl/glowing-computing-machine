@@ -25,6 +25,10 @@ function handleCommand(commandText) {
             spawnEnemies(commands[1], commands[2], commands[3]);
             break;
         }
+        case "color": {
+            changeCharacterColor(commands[1]);
+            break;
+        }
         case "stop": {
             stagedEnemiesArray = [];
             enemiesArray = [];
