@@ -4,8 +4,8 @@ class Character {
     constructor() {
         this.x = canvas.width / 2;
         this.y = canvas.height / 2;
-        this.width = 30;
-        this.height = 30;
+        this.width = characterIdleWidth;
+        this.height = 40;
         let nameIndex = Math.floor(Math.random() * (listONames.length - 1));
         this.name = listONames[nameIndex];
         this.health = this.getCharacterHealth();
