@@ -136,7 +136,6 @@ class Projectile {
 
     }
 
-
     draw() {
         // Draw the projectile on the canvas
         if (this.hasHit) { return; }
