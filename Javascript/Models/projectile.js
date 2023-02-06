@@ -31,6 +31,7 @@ class Projectile {
         this.isEnemyProjectile = false;
         this.color = "black";
         this.gunType = gunType;
+        this.hasHit = false;
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -83,6 +84,7 @@ class Projectile {
 
 
             if (result) {
+                this.hasHit = true;
                 playAudio("./Audio/impact.mp3");
                 enemy.health -= this.damage;
                 this.enemiesHit[enemy.id] = enemy.id;
@@ -137,6 +139,7 @@ class Projectile {
 
     draw() {
         // Draw the projectile on the canvas
+        if (this.hasHit) { return; }
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(Math.ceil(this.x), Math.ceil(this.y), this.radius, 0, 2 * Math.PI);
