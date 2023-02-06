@@ -84,7 +84,7 @@ class Projectile {
 
 
             if (result) {
-                this.hasHit = true;
+                if (!this.isArmorPiercing) { this.hasHit = true; }
                 playAudio("./Audio/impact.mp3");
                 enemy.health -= this.damage;
                 this.enemiesHit[enemy.id] = enemy.id;
