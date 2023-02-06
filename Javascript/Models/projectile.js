@@ -29,7 +29,7 @@ class Projectile {
         this.lifespan = -1;
         this.radius = 5;
         this.isEnemyProjectile = false;
-        this.color = "black";
+        this.color = "#282828";
         this.gunType = gunType;
         this.hasHit = false;
     }
@@ -139,10 +139,14 @@ class Projectile {
     draw() {
         // Draw the projectile on the canvas
         if (this.hasHit) { return; }
+        ctx.save();
+        ctx.translate(Math.ceil(this.x), Math.ceil(this.y));
+        ctx.rotate(this.angle);
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.arc(Math.ceil(this.x), Math.ceil(this.y), this.radius, 0, 2 * Math.PI);
+        ctx.rect(-this.radius / 2, -this.radius / 2, this.radius, this.radius / 2);
         ctx.fill();
+        ctx.restore();
     }
 
     testFunction() {

@@ -33,7 +33,7 @@ class PlayerWeaponManager {
         this.Ammo[Guns.ChainGun] = 0;
         this.Ammo[Guns.Sniper] = 50;
         this.Ammo[Guns.FiftyCal] = 50;
-        this.Ammo[Guns.MegaGatling] = 0;
+        this.Ammo[Guns.MegaGatling] = 100000;
     }
 
     setWeaponCoolDown(timeInMilliSeconds) {
