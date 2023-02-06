@@ -5,6 +5,7 @@ for (let i = 0; i < startingEnemies; i++) {
 var character = new Character();
 
 let frame = 0;
+let currentFrame = 0;
 
 function animate() {
     if (isPaused || character.isDead || winner) { return; }
@@ -21,6 +22,13 @@ function animate() {
     powerUpArray.forEach(powerUp => {
         powerUp.update();
     });
+
+
+    frame += .1;
+    if (frame >= 5) {
+        frame = 0;
+    };
+    currentFrame = Math.floor(frame);
     character.update();
     updateArmor();
     updateHealth();
