@@ -24,7 +24,7 @@ class Enemy {
         this.isWeaponCoolDown = false;
         this.hasHitCharacterRecently = false;
         this.experienceGranted = 1;
-        this.enemyHitCoolDown = 2;
+        this.enemyHitCoolDown = 1;
         this.hitAudio = null
         enemyid += 1;
     }
@@ -246,6 +246,9 @@ class Enemy {
     }
 
     handleMovement() {
+
+        if (this.hasHitCharacterRecently) { return; }
+
         var distanceToCharacter = this.calculateDistanceToCharacter();
 
         if (distanceToCharacter < 10000) {
@@ -269,34 +272,32 @@ class Enemy {
     };
 
     handleCollision() {
-        enemiesArray.forEach(enemy => {
-            if (collision(character.x, character.y, character.width, character.height, enemy.x, enemy.y, enemy.width, enemy.height)) {
-                const center1X = character.x + character.width / 2;
-                const center1Y = character.y + character.height / 2;
-                const center2X = enemy.x + enemy.width / 2;
-                const center2Y = enemy.y + enemy.height / 2;
-                const deltaX = center1X - center2X;
-                const deltaY = center1Y - center2Y;
-                const overlapX = (character.width + enemy.width) / 2 - Math.abs(deltaX);
-                const overlapY = (character.height + enemy.height) / 2 - Math.abs(deltaY);
-                this.hitPlayer();
-                if (overlapX > 0 && overlapY > 0) {
-                    if (overlapX < overlapY) {
-                        if (deltaX > 0) {
-                            enemy.x -= overlapX;
-                        } else {
-                            enemy.x += overlapX;
-                        }
+        if (collision(character.x, character.y, character.width, character.height, this.x, this.y, this.width, this.height)) {
+            const center1X = character.x + character.width / 2;
+            const center1Y = character.y + character.height / 2;
+            const center2X = this.x + this.width / 2;
+            const center2Y = this.y + this.height / 2;
+            const deltaX = center1X - center2X;
+            const deltaY = center1Y - center2Y;
+            const overlapX = (character.width + this.width) / 2 - Math.abs(deltaX);
+            const overlapY = (character.height + this.height) / 2 - Math.abs(deltaY);
+            this.hitPlayer();
+            if (overlapX > 0 && overlapY > 0) {
+                if (overlapX < overlapY) {
+                    if (deltaX > 0) {
+                        this.x -= overlapX;
                     } else {
-                        if (deltaY > 0) {
-                            enemy.y -= overlapY;
-                        } else {
-                            enemy.y += overlapY;
-                        }
+                        this.x += overlapX;
+                    }
+                } else {
+                    if (deltaY > 0) {
+                        this.y -= overlapY;
+                    } else {
+                        this.y += overlapY;
                     }
                 }
             }
-        });
+        }
     }
 
     fight(closestEnemy) {
