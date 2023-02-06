@@ -36,6 +36,12 @@ function handleCommand(commandText) {
             spawnFromStagedEnemy(1000);
             break;
         }
+        case "avoider": {
+            var enemy = new AvoidingEnemy();
+            stagedEnemiesArray.push(enemy);
+            spawnFromStagedEnemy(1000);
+            break;
+        }
         default:
     }
 }
