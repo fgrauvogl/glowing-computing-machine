@@ -227,7 +227,7 @@ class PlayerWeaponManager {
 
                 projectile.damage = 20;
 
-                projectile.radius = 3;
+                projectile.radius = 2;
 
                 characterProjectileArray.push(projectile);
 

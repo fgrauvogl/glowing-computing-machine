@@ -61,6 +61,7 @@ window.addEventListener("wheel", function (event) {
     } else {
         playerWeaponManager.switchGunRight();
     }
+    updateWeaponExperience();
 });
 
 window.addEventListener('mousedown', function (e) {
