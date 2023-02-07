@@ -6,16 +6,21 @@ class Character {
         this.y = canvas.height / 2;
         this.width = characterIdleWidth;
         this.height = 40;
+        this.maxArmor = 100;
+        this.speed = 3;
+        this.totalExperience = 0;
+        this.level = 1;
         let nameIndex = Math.floor(Math.random() * (listONames.length - 1));
         this.name = listONames[nameIndex];
-        this.health = this.getCharacterHealth();
+        this.SetDefaultValues();
         this.maxHealth = this.health;
-        this.isDead = false;
         this.currentGun = Guns.GrenadeLauncher;
-        this.maxArmor = 100;
-        this.armor = this.maxArmor/2;
-        this.speed = 3;
         this.font = "10px Tahoma";
+    }
+    SetDefaultValues() {
+        this.armor = this.maxArmor / 2;
+        this.isDead = false;
+        this.health = this.getCharacterHealth();
     }
     GetXMidPoint() {
         return this.x + this.width / 2;

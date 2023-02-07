@@ -124,12 +124,13 @@ body {
     transition: width 0.3s ease-out;
 }
 
-.experience-number {
+.experience-number, .character-experience-text {
     color: #333;
     font-size: 9px;
     position: absolute;
     left: 50px;
     bottom: 0px;
+    z-index: 15;
 }
 
 .character-experience-container, .hpbar-container, .experience-container, .armorbar-container {
@@ -157,6 +158,9 @@ body {
     text-align: center;
     line-height: 30px;
     color: #333;
+    top: -8px;
+    text-align: center;
+    left: 55px;
 }
 
 .hpbar-container {
