@@ -16,6 +16,8 @@ class Character {
         this.armor = this.maxArmor/2;
         this.speed = 3;
         this.font = "10px Tahoma";
+        this.totalExperience = 0;
+        this.level = 1;
     }
     GetXMidPoint() {
         return this.x + this.width / 2;

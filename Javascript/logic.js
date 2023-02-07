@@ -306,6 +306,27 @@ const updateWeaponExperience = () => {
 
 updateWeaponExperience();
 
+const updateCharacterLevel = () => {
+
+    let currentLevel = character.level;
+
+    let expDifferenceNeededForCurrentLevel = weaponExpToLevel[currentLevel + 1] - weaponExpToLevel[currentLevel];
+
+    let expCharacterHasForCurrentLevelSoFar = character.totalExperience - weaponExpToLevel[currentLevel];
+
+    let progressPercent = (expCharacterHasForCurrentLevelSoFar / expDifferenceNeededForCurrentLevel) * 100;
+
+    characterExperienceText.innerText = `${character.name} Lvl ${currentLevel}: XP ${character.totalExperience}/${weaponExpToLevel[currentLevel + 1]}`;
+
+    characterExperienceBar.style.width = `${progressPercent}%`;
+
+    if (progressPercent >= 100) {
+        character.level += 1;
+    }
+};
+
+updateCharacterLevel();
+
 const toggleChat = () => {
     isChatActive = !isChatActive;
     if (isChatActive) {

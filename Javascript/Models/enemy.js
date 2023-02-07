@@ -358,13 +358,14 @@ function removeEnemy(id) {
     let obj = enemiesArray.find(x => x.id === id);
     let index = enemiesArray.indexOf(obj);
    
-    if (Enemy.health < 0) {
-        Enemy.health = 0;
-        Enemy.enemyIsDead = true;
+    if (obj.health <= 0) {
+        character.totalExperience += obj.experienceGranted;
+        obj.enemyIsDead = true;
     }
     if (this.enemyDead = true) {
         enemiesArray.splice(index, 1);
         getDrop(obj);
+        updateCharacterLevel();
     }
 }
 
