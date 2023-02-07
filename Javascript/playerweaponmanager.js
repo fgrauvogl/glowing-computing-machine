@@ -125,7 +125,6 @@ class PlayerWeaponManager {
 
 
     fireGun() {
-        let weaponCooldown = this.isWeaponCoolDown;
         if (isPaused || character.isDead || winner || this.isWeaponCoolDown) {
             return;
         }
@@ -149,21 +148,21 @@ class PlayerWeaponManager {
 
         let y = event?.clientY ?? mouseY;
 
+        let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, 0, this.currentGun);
+
         switch (playerWeaponManager.currentGun) {
 
             case Guns.ShotGun: {
 
                 playAudio("./Audio/bestshotgun.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, 0, this.currentGun);
-
-
                 characterProjectileArray.push(projectile);
 
                 for (var i = 0; i < shotGunPellets; i++) {
-                    let projectile2 = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, projectile.angle + .3 * (.5 - Math.random()), this.currentGun);
 
-                    characterProjectileArray.push(projectile2);
+                    projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, projectile.angle + .3 * (.5 - Math.random()), this.currentGun);
+
+                    characterProjectileArray.push(projectile);
                 }
 
                 break;
@@ -172,7 +171,6 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/GrenadeLauncher.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, 0, this.currentGun);
                 projectile.radius = 12;
                 projectile.damage = 40;
                 projectile.isGrenade = true;
@@ -185,8 +183,6 @@ class PlayerWeaponManager {
             case Guns.MachineGun: {
 
                 playAudio("./Audio/machinegun.mp3");
-
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, 0, this.currentGun);
 
                 projectile.damage = 24;
 

@@ -32,6 +32,8 @@ class Projectile {
         this.color = "#282828";
         this.gunType = gunType;
         this.hasHit = false;
+        this.hasPowerUp = false;
+        this.powerUpImg = "Images/FireBullet.png";
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -39,11 +41,7 @@ class Projectile {
         const bottom1 = y1 + h1;
         const right2 = x2 + w2;
         const bottom2 = y2 + h2;
-        if (x1 < right2 && right1 > x2 && y1 < bottom2 && bottom1 > y2) {
-            return true;
-        } else {
-            return false;
-        }
+        return (x1 < right2 && right1 > x2 && y1 < bottom2 && bottom1 > y2);
     }
 
     recordShotsHit() {
@@ -145,8 +143,16 @@ class Projectile {
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.drawImage(bulletPng, 0, 0, 12, 3, -this.radius / 2, Math.ceil(- this.radius / 2), this.radius, Math.ceil(- this.radius / 2));
+        this.drawPowerUp();
         ctx.fill();
         ctx.restore();
+    }
+
+    drawPowerUp() {
+        if (!this.hasPowerUp) { return }
+
+        ctx.drawImage(smallFirePng, 0 * fireImageWidth * (currentFrame % 6), 0, fireImageWidth, fireImageHeight, -this.radius / 2, Math.ceil(- this.radius / 2) - 5, 10, 10);
+
     }
 
     testFunction() {
@@ -224,8 +230,8 @@ class Projectile {
         playAudio("./Audio/GrenadeExplosion.mp3");
 
         for (var i = 0; i < grenadePellets; i++) {
-            var randomAngle = (Math.random() - .5) * 10;
-            var randomSpeed = (10 + Math.random() * 10);
+            let randomAngle = (Math.random() - .5) * 10;
+            let randomSpeed = (10 + Math.random() * 10);
             let projectile = new Projectile(this.x + this.projectileWidth / 2, this.y + this.projectileHeight / 2, randomSpeed, this.x, this.y, randomAngle);
             projectile.color = this.color;
             projectile.gunType = this.gunType;
