@@ -201,7 +201,7 @@ function restart(needsAnimationReset = true) {
     level = 1;
     characterProjectileArray = [];
     enemyProjectileArray = [];
-    character = new Character();
+    character.SetDefaultValues();
     enemiesArray = [];
     powerUpArray = [];
     playerWeaponManager.currentGun = Guns.Pistol;
