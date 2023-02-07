@@ -26,6 +26,7 @@ class Enemy {
         this.experienceGranted = 1;
         this.enemyHitCoolDown = 1;
         this.hitAudio = null
+        this.statusConditions = {};
         enemyid += 1;
     }
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -83,6 +84,7 @@ class Enemy {
         if (isCollision) {
         this.hitPlayer();
         }
+        if (this.health <= 0) { removeEnemy(this.id); };
         this.draw();
     }
 

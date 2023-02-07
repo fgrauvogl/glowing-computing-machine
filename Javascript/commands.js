@@ -19,10 +19,19 @@ function handleCommand(commandText) {
     let commands = commandText.split(" ");
 
     let commandKeyWord = commands[0];
-
+    
     switch (commandKeyWord) {
         case "spawn": {
             spawnEnemies(commands[1], commands[2], commands[3]);
+            break;
+        }
+        case "fire": {
+            if (character.powerUp != ElementalPowerUps.Fire) {
+                character.powerUp = ElementalPowerUps.Fire;
+            }
+            else {
+                character.powerUp = null;
+            }
             break;
         }
         case "color": {

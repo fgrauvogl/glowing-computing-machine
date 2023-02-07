@@ -33,7 +33,16 @@ class Projectile {
         this.gunType = gunType;
         this.hasHit = false;
         this.hasPowerUp = false;
+    }
+
+    setPowerUp(powerUp) {
+        if (!powerUp) { return; }
+
+        this.powerUp = powerUp;
+
         this.powerUpImg = "Images/FireBullet.png";
+
+        this.hasPowerUp = true;
     }
 
     collision(x1, y1, w1, h1, x2, y2, w2, h2) {
@@ -83,6 +92,7 @@ class Projectile {
 
             if (result) {
                 if (!this.isArmorPiercing) { this.hasHit = true; }
+                if (this.powerUp) { ApplyPowerUp(enemy, this.powerUp, this.damage / 2); }
                 playAudio("./Audio/impact.mp3");
                 enemy.health -= this.damage;
                 this.enemiesHit[enemy.id] = enemy.id;
@@ -107,8 +117,6 @@ class Projectile {
     }
 
     moveTowards() {
-
-
         // Update the position of the projectile
         this.x += this.speed * Math.cos(this.angle);
         this.y += this.speed * Math.sin(this.angle);
@@ -236,7 +244,7 @@ class Projectile {
             projectile.color = this.color;
             projectile.gunType = this.gunType;
             projectile.damage = 15;
-            projectile.lifespan = 3 + Math.random() * 7;
+            projectile.lifespan = 5 + Math.random() * 7;
          
             if (this.isEnemyProjectile) {
                 projectile.isEnemyProjectile = true;

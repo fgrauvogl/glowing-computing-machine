@@ -140,7 +140,9 @@ class PlayerWeaponManager {
             this.fireGun();
         }
 
-        this.recordShotsFired ();
+        let powerUp = character.powerUp;
+
+        this.recordShotsFired();
 
         this.useAmmo();
 
@@ -149,6 +151,8 @@ class PlayerWeaponManager {
         let y = event?.clientY ?? mouseY;
 
         let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, 0, this.currentGun);
+
+        projectile.setPowerUp(powerUp);
 
         switch (playerWeaponManager.currentGun) {
 
@@ -161,6 +165,7 @@ class PlayerWeaponManager {
                 for (var i = 0; i < shotGunPellets; i++) {
 
                     projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, projectile.angle + .3 * (.5 - Math.random()), this.currentGun);
+                    projectile.setPowerUp(powerUp);
 
                     characterProjectileArray.push(projectile);
                 }
@@ -195,6 +200,7 @@ class PlayerWeaponManager {
                 playAudio("./Audio/machinegun.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y, 0, this.currentGun);
+                projectile.setPowerUp(powerUp);
 
                 characterProjectileArray.push(projectile);
 
@@ -205,6 +211,7 @@ class PlayerWeaponManager {
                 playAudio("./Audio/machinegun.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y, 0, this.currentGun);
+                projectile.setPowerUp(powerUp);
 
                 characterProjectileArray.push(projectile);
                 shotsFired[this.currentGun] += 100;
@@ -220,6 +227,8 @@ class PlayerWeaponManager {
                 playAudio("./Audio/Sniper.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y, 0, this.currentGun);
+                projectile.setPowerUp(powerUp);
+
 
                 projectile.damage = 20;
 
@@ -234,6 +243,8 @@ class PlayerWeaponManager {
                 playAudio("./Audio/50.Cal.mp3");
 
                 let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y, 0, this.currentGun);
+                projectile.setPowerUp(powerUp);
+
 
                 projectile.damage = 50;
 
@@ -251,6 +262,9 @@ class PlayerWeaponManager {
                     playAudio("./Audio/Pistol.mp3");
 
                     let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 4, x, y, 0, this.currentGun);
+
+                    projectile.setPowerUp(powerUp);
+
 
                     characterProjectileArray.push(projectile);
                 }

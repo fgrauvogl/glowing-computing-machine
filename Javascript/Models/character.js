@@ -16,7 +16,7 @@ class Character {
         this.maxHealth = this.health;
         this.currentGun = Guns.GrenadeLauncher;
         this.font = "10px Tahoma";
-        this.powerUp = ElementalPowerUps.Fire;
+        this.powerUp = null;
     }
     SetDefaultValues() {
         this.armor = this.maxArmor / 2;
