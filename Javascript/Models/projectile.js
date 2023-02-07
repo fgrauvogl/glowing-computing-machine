@@ -144,7 +144,7 @@ class Projectile {
         ctx.rotate(this.angle);
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.rect(-this.radius / 2, -this.radius / 2, this.radius, this.radius / 2);
+        ctx.drawImage(bulletPng, 0, 0, 12, 3, -this.radius / 2, Math.ceil(- this.radius / 2), this.radius, Math.ceil(- this.radius / 2));
         ctx.fill();
         ctx.restore();
     }
