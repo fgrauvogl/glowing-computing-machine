@@ -85,6 +85,10 @@ const PowerUps = {
 	ExtraLife: "Extra Life",
 }
 
+const ElementalPowerUps = {
+	Fire : "Fire"
+}
+
 const MobTypes = {
 	Grunt: "grunt",
 	Alien: "alien",
