@@ -21,7 +21,7 @@ class Character {
         this.powerUp = null;
         this.image = characterIdlePNG;
         this.isFacingLeft = false;
-        this.drone = null;
+        this.drones = [];
     }
     SetDefaultValues() {
         this.armor = this.maxArmor / 2;
@@ -91,8 +91,10 @@ class Character {
         this.setSprite();
         this.move();
         this.draw();
-        if (this.drone) {
-            this.drone.update(this);
+        if (this.drones.length > 0) {
+            this.drones.forEach(drone => {
+                drone.update(this);
+            });
         }
     }
 

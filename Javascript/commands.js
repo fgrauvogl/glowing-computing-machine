@@ -56,8 +56,7 @@ function handleCommand(commandText) {
             break;
         }
         case "drone": {
-            debugger;
-            character.drone = new Drone(character.x,character.y);
+                character.drones.push(new Drone(character.x, character.y));
             break;
         }
         default:

@@ -23,9 +23,9 @@ class Drone extends BaseObject {
 
         this.angle = Math.atan2(character.y + character.height / 2 - (this.y + this.height / 2), character.x + character.width / 2 - (this.x + this.width / 2));
 
-        this.x = this.x + this.width / 2 + this.speed * Math.cos(this.angle) - this.width / 2;
+        this.x = this.x + this.width / 2 + this.speed / 1.5 * Math.cos(this.angle) - this.width / 2;
 
-        this.y = this.y + this.height / 2 + this.speed * Math.sin(this.angle) - this.height / 2;
+        this.y = this.y + this.height / 2 + this.speed / 1.5 * Math.sin(this.angle) - this.height / 2;
     }
 
     handleMovement() {
