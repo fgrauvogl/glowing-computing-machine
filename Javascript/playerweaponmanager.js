@@ -30,10 +30,10 @@ class PlayerWeaponManager {
         this.Ammo[Guns.GrenadeLauncher] = 10;
         this.Ammo[Guns.ShotGun] = 5;
         this.Ammo[Guns.MachineGun] = 50;
-        this.Ammo[Guns.ChainGun] = 0;
-        this.Ammo[Guns.Sniper] = 50;
-        this.Ammo[Guns.FiftyCal] = 50;
-        this.Ammo[Guns.MegaGatling] = 100000;
+        this.Ammo[Guns.ChainGun] = 1000;
+        this.Ammo[Guns.Sniper] = 0;
+        this.Ammo[Guns.FiftyCal] = 0;
+        this.Ammo[Guns.MegaGatling] = 1000;
     }
 
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -150,7 +150,11 @@ class PlayerWeaponManager {
 
         let y = event?.clientY ?? mouseY;
 
-        let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, 0, this.currentGun);
+        let startingProjectileY = (character.y + character.height / 2) - character.characterGunOffsetY;
+
+        let startingProjectileX = (character.x + character.width / 2) + character.characterGunOffsetX;
+
+        let projectile = new Projectile(startingProjectileX, startingProjectileY, 8, x, y, 0, this.currentGun);
 
         projectile.setPowerUp(powerUp);
 
@@ -164,7 +168,7 @@ class PlayerWeaponManager {
 
                 for (var i = 0; i < shotGunPellets; i++) {
 
-                    projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 8, x, y, projectile.angle + .3 * (.5 - Math.random()), this.currentGun);
+                    projectile = new Projectile(startingProjectileX, startingProjectileY, 8, x, y, projectile.angle + .3 * (.5 - Math.random()), this.currentGun);
                     projectile.setPowerUp(powerUp);
 
                     characterProjectileArray.push(projectile);
@@ -199,8 +203,7 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/machinegun.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 12, x, y, 0, this.currentGun);
-                projectile.setPowerUp(powerUp);
+                projectile.speed = 12;
 
                 characterProjectileArray.push(projectile);
 
@@ -210,13 +213,10 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/machinegun.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y, 0, this.currentGun);
-                projectile.setPowerUp(powerUp);
-
-                characterProjectileArray.push(projectile);
                 shotsFired[this.currentGun] += 100;
                 for (var i = 0; i < 100; i++) {
-                    let projectile2 = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 20, x, y, projectile.angle + .5 * (.5 - Math.random()), this.currentGun);
+                    let projectile2 = new Projectile(startingProjectileX, startingProjectileY, 20, x, y, projectile.angle + .5 * (.5 - Math.random()), this.currentGun);
+                    projectile.setPowerUp(powerUp);
                     characterProjectileArray.push(projectile2);
                 }
 
@@ -226,9 +226,7 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/Sniper.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y, 0, this.currentGun);
-                projectile.setPowerUp(powerUp);
-
+                projectile.speed = 30;
 
                 projectile.damage = 20;
 
@@ -242,10 +240,8 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/50.Cal.mp3");
 
-                let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 30, x, y, 0, this.currentGun);
-                projectile.setPowerUp(powerUp);
-
-
+                projectile.speed = 30;
+                
                 projectile.damage = 50;
 
                 projectile.radius = 10;
@@ -261,10 +257,9 @@ class PlayerWeaponManager {
                 {
                     playAudio("./Audio/Pistol.mp3");
 
-                    let projectile = new Projectile(character.x + character.width / 2, character.y + character.height / 2, 4, x, y, 0, this.currentGun);
+                    projectile.speed = 4;
 
                     projectile.setPowerUp(powerUp);
-
 
                     characterProjectileArray.push(projectile);
                 }

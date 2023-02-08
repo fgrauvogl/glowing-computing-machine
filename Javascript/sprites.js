@@ -8,6 +8,9 @@ let fireImageHeight = 36;
 let characterIdlePNG = new Image();
 characterIdlePNG.src = "Images/Sprites/CHARACTER_SPRITES/Blue/Gunner_Blue_Idle.png";
 
+let characterIdlePNGLeft = new Image();
+characterIdlePNGLeft.src = "Images/Sprites/CHARACTER_SPRITES/Blue/LeftGunner_Blue_Idle.png";
+
 let bulletPng = new Image();
 bulletPng.src = "Images/Sprites/EXTRAS/Bullet.png";
 
