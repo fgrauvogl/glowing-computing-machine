@@ -2,6 +2,8 @@ var listONames = ["Clint", "Mark", "Crumb"];
 
 class Character {
     constructor() {
+        this.characterGunOffsetY = 0;
+        this.characterGunOffsetX = 13;
         this.x = canvas.width / 2;
         this.y = canvas.height / 2;
         this.width = characterIdleWidth;
@@ -17,6 +19,8 @@ class Character {
         this.currentGun = Guns.GrenadeLauncher;
         this.font = "10px Tahoma";
         this.powerUp = null;
+        this.image = characterIdlePNG;
+        this.isFacingLeft = false;
     }
     SetDefaultValues() {
         this.armor = this.maxArmor / 2;
@@ -76,16 +80,31 @@ class Character {
 
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
-        ctx.drawImage(characterIdlePNG, currentFrame * characterIdleWidth, 0, characterIdleWidth, characterIdleHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
+        ctx.drawImage(this.image, currentFrame * characterIdleWidth, 0, characterIdleWidth, characterIdleHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.font = this.font;
         ctx.fillText(this.name, this.GetXMidPoint(), this.y);
     }
     update() {
+        this.setSprite();
         this.move();
         this.draw();
     }
+
+    setSprite() {
+        this.isFacingLeft = mouseX < this.x;
+
+        if (this.isFacingLeft) {
+            this.image = characterIdlePNGLeft;
+            this.characterGunOffsetX = -Math.abs(this.characterGunOffsetX);
+        }
+        else {
+            this.image = characterIdlePNG;
+            this.characterGunOffsetX = Math.abs(this.characterGunOffsetX);
+        }
+    }
+
     move() {
 
         // checks for up and left
