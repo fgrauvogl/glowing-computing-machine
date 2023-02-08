@@ -9,7 +9,7 @@ class Drone extends BaseObject {
         this.currentGun = Guns.Pistol;
         this.hoverDistance = 50;
         this.ally = null;
-        this.speed = 3;
+        this.speed = 2.5 + Math.random();
         this.distanceToAlly = 0;
     }
     update(ally) {
