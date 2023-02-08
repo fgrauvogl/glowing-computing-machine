@@ -7,7 +7,7 @@ class Drone extends BaseObject {
         this.height = 20;
         this.image = dronePng;
         this.currentGun = Guns.Pistol;
-        this.hoverDistance = 100;
+        this.hoverDistance = 50;
         this.ally = null;
         this.speed = 3;
         this.distanceToAlly = 0;
@@ -24,7 +24,7 @@ class Drone extends BaseObject {
 
         this.angle = Math.atan2(character.y + character.height / 2 - (this.y + this.height / 2), character.x + character.width / 2 - (this.x + this.width / 2));
 
-        let speed = this.speed * (this.distanceToAlly / 100) - 2;
+        let speed = Math.max(this.speed * (this.distanceToAlly / 100) - 2, .2);
 
         this.x = this.x + this.width / 2 + speed * Math.cos(this.angle) - this.width / 2;
 
@@ -55,10 +55,11 @@ class Drone extends BaseObject {
         else {
             perpendicularAngle = angleToAlly - (Math.PI / 2);
         }
+        let speed = Math.max(this.speed * (this.distanceToAlly / 100), .3);
 
-        this.x += this.speed * Math.cos(perpendicularAngle);
+        this.x += speed * Math.cos(perpendicularAngle);
 
-        this.y += this.speed * Math.sin(perpendicularAngle);
+        this.y += speed * Math.sin(perpendicularAngle);
     }
 
     draw() {
