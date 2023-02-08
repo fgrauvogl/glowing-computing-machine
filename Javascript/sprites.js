@@ -20,3 +20,6 @@ smallFirePng.src = "Images/FireBullet.png";
 function changeCharacterColor(color) {
     characterIdlePNG.src = `Images/Sprites/CHARACTER_SPRITES/${color}/Gunner_${color}_Idle.png`;
 }
+
+let dronePng = new Image();
+dronePng.src = "Images/drone.png";

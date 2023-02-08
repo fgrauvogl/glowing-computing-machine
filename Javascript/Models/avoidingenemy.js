@@ -42,17 +42,17 @@ class AvoidingEnemy extends Enemy {
             perpendicularAngle = angleToCharacter - (Math.PI / 2);
         }
 
-        this.x += this.moveSpeed * Math.cos(perpendicularAngle);
+        this.x += this.speed * Math.cos(perpendicularAngle);
 
-        this.y += this.moveSpeed * Math.sin(perpendicularAngle);
+        this.y += this.speed * Math.sin(perpendicularAngle);
 
         if (this.distanceToCharacter < 300) {
 
             let angleAwayFromCharacter = angleToCharacter + (Math.PI);
 
-            this.x += this.moveSpeed * Math.cos(angleAwayFromCharacter);
+            this.x += this.speed * Math.cos(angleAwayFromCharacter);
 
-            this.y += this.moveSpeed * Math.sin(angleAwayFromCharacter);
+            this.y += this.speed * Math.sin(angleAwayFromCharacter);
         }
 
     }
@@ -63,9 +63,9 @@ class AvoidingEnemy extends Enemy {
 
         this.angle = Math.atan2(character.y + character.height / 2 - (this.y + this.height / 2), character.x + character.width / 2 - (this.x + this.width / 2));
 
-        this.x = this.x + this.width / 2 + this.moveSpeed * Math.cos(this.angle) - this.width / 2;
+        this.x = this.x + this.width / 2 + this.speed * Math.cos(this.angle) - this.width / 2;
 
-        this.y = this.y + this.height / 2 + this.moveSpeed * Math.sin(this.angle) - this.height / 2;
+        this.y = this.y + this.height / 2 + this.speed * Math.sin(this.angle) - this.height / 2;
     }
 
     flipStragingFlag() {
@@ -87,9 +87,9 @@ class AvoidingEnemy extends Enemy {
 
         let angleAwayFromMouse = angleToMouse + Math.PI;
 
-        this.x = this.x + this.width / 2 + this.moveSpeed * 2 * Math.cos(angleAwayFromMouse) - this.width / 2;
+        this.x = this.x + this.width / 2 + this.speed * 2 * Math.cos(angleAwayFromMouse) - this.width / 2;
 
-        this.y = this.y + this.height / 2 + this.moveSpeed * 2 * Math.sin(angleAwayFromMouse) - this.height / 2;
+        this.y = this.y + this.height / 2 + this.speed * 2 * Math.sin(angleAwayFromMouse) - this.height / 2;
 
         return true;
     }

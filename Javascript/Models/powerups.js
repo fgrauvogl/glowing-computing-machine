@@ -1,8 +1,9 @@
 var powerUpId = 1;
 
 
-class PowerUp {
+class PowerUp extends  BaseObject {
     constructor(x, y, lootRoll) {
+        super();
         this.x = Math.round(x);
         this.y = Math.round(y);
         this.width = 25;
@@ -10,7 +11,6 @@ class PowerUp {
         this.id = powerUpId;
         this.powerUpType = this.getPowerUpType(lootRoll);
         this.powerUpId = powerUpId;
-        this.image = new Image();
         this.image.src = this.getPowerUpImage(this.powerUpType);
         this.powerUpIsDead = false;
         setTimeout(this.removeMyself.bind(this), 20000);

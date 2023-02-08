@@ -10,9 +10,9 @@ class Enemy {
         this.height = getEnemySize(this.EnemyType);
         this.age = 50 * Math.random();
         this.id = enemyid;
-        this.moveSpeed = 50 / (this.width);
-        this.velocityX = this.moveSpeed;
-        this.velocityY = this.moveSpeed;
+        this.speed = 50 / (this.width);
+        this.velocityX = this.speed;
+        this.velocityY = this.speed;
         this.enemycolor = getEnemyColor(this.EnemyType);
         this.enemyName = getEnemyName(this.EnemyType);
         this.ismovingtowardsplayer = false;
@@ -234,16 +234,16 @@ class Enemy {
             return;
         }
         if (this.x < enemy.x) {
-            this.x += this.moveSpeed;
+            this.x += this.speed;
         }
         else {
-            this.x -= this.moveSpeed;
+            this.x -= this.speed;
         }
         if (this.y < enemy.y) {
-            this.y += this.moveSpeed;
+            this.y += this.speed;
         }
         else {
-            this.y -= this.moveSpeed;
+            this.y -= this.speed;
         }
     }
 
@@ -258,8 +258,8 @@ class Enemy {
 
             this.angle = Math.atan2(character.y + character.height / 2 - (this.y + this.height / 2), character.x + character.width / 2 - (this.x + this.width / 2));
 
-            this.x = this.x + this.width / 2 + this.moveSpeed * Math.cos(this.angle) - this.width / 2;
-            this.y = this.y + this.height / 2 + this.moveSpeed * Math.sin(this.angle) - this.height / 2;
+            this.x = this.x + this.width / 2 + this.speed * Math.cos(this.angle) - this.width / 2;
+            this.y = this.y + this.height / 2 + this.speed * Math.sin(this.angle) - this.height / 2;
 
         } else {
             this.ismovingtowardsplayer = false;

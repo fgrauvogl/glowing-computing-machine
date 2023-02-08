@@ -1,9 +1,10 @@
 let projectileID = 0;
 let grenadePellets = 10;
 
-class Projectile {
+class Projectile extends BaseObject {
     isArmorPiercing = false;
     constructor(x, y, speed, endingx, endingy, angle = 0, gunType = null) {
+        super();
         this.x = x;
         this.y = y;
         this.speed = speed;

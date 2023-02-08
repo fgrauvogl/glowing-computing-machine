@@ -33,8 +33,8 @@ class SpecialEnemy extends Enemy {
     }
 
     Charge() {
-        this.x = this.x + this.width / 2 + (4 * this.moveSpeed * Math.cos(this.chargeAngle)) - this.width / 2;
-        this.y = this.y + this.height / 2 + (4 * this.moveSpeed * Math.sin(this.chargeAngle)) - this.height / 2;
+        this.x = this.x + this.width / 2 + (4 * this.speed * Math.cos(this.chargeAngle)) - this.width / 2;
+        this.y = this.y + this.height / 2 + (4 * this.speed * Math.sin(this.chargeAngle)) - this.height / 2;
     }
 
     handleMovement() {
@@ -67,8 +67,8 @@ class SpecialEnemy extends Enemy {
 
         this.angle = Math.atan2(character.y + character.height / 2 - (this.y + this.height / 2), character.x + character.width / 2 - (this.x + this.width / 2));
 
-        this.x = this.x + this.width / 2 + this.moveSpeed * Math.cos(this.angle) - this.width / 2;
-        this.y = this.y + this.height / 2 + this.moveSpeed * Math.sin(this.angle) - this.height / 2;
+        this.x = this.x + this.width / 2 + this.speed * Math.cos(this.angle) - this.width / 2;
+        this.y = this.y + this.height / 2 + this.speed * Math.sin(this.angle) - this.height / 2;
     }
 
     stopStafing() {

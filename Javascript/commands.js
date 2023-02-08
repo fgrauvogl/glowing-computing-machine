@@ -55,6 +55,11 @@ function handleCommand(commandText) {
             spawnFromStagedEnemy(1000);
             break;
         }
+        case "drone": {
+            debugger;
+            character.drone = new Drone(character.x,character.y);
+            break;
+        }
         default:
     }
 }
