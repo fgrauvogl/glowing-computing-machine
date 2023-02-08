@@ -1,0 +1,30 @@
+#shop-menu {
+    position: absolute;
+    width: 70vw;
+    height: 60vh;
+    left: 15vw;
+    right: 15vw;
+    z-index: 20;
+    background: orange;
+    opacity: .4;
+    top: 20vh;
+    display: none;
+}
+
+#shop-title {
+    font-size: 2rem;
+    text-align: center;
+    border-bottom: solid 3px black;
+}
+
+#title-text {
+    margin: 10px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+
+}
