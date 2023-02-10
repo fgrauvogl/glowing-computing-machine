@@ -40,6 +40,9 @@ class Character {
         if (this.isDead) {
             return;
         }
+        if (x > 0 && this.isFacingLeft || x < 0 && !this.isFacingLeft) {
+            x = x / 1.5;
+        }
 
         this.x += x;
         this.y += y;
