@@ -4,11 +4,16 @@ MAX_KEY_DELAY = 10;
 const KEY_DELAY = 200;
 const keyProcessing = new Map();
 
+function UpdateCharacterMovement() {
+    character.isMoving = keyState[65] || keyState[87] || keyState[68] || keyState[83];
+}
+
 window.addEventListener('keydown', function (e) {
     const key = e.keyCode || e.which;
     if (keyProcessing.has(key)) {
         return;
     }
+    UpdateCharacterMovement();
     keyProcessing.set(key, true);
     keyState[key] = true;
     keyState[e.keyCode || e.which] = true;
@@ -47,6 +52,7 @@ window.addEventListener('keyup', function (e) {
     delete keysPressed[e.keyCode];
     releaseTime[e.keyCode] = new Date().getTime();
     keyState[e.keyCode || e.which] = false;
+    UpdateCharacterMovement();
 }, true);
 
 window.oncontextmenu = function () {
