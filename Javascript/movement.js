@@ -13,10 +13,10 @@ window.addEventListener('keydown', function (e) {
     if (keyProcessing.has(key)) {
         return;
     }
-    UpdateCharacterMovement();
     keyProcessing.set(key, true);
     keyState[key] = true;
     keyState[e.keyCode || e.which] = true;
+    UpdateCharacterMovement();
     if (key == 69) {
         playerWeaponManager.switchGunRight();
         updateWeaponExperience();
