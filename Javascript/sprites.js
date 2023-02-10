@@ -5,6 +5,12 @@ let characterIdleHeight = 40;
 let fireImageWidth = 23;
 let fireImageHeight = 36;
 
+let characterRunPNG = new Image();
+characterRunPNG.src = "Images/Sprites/CHARACTER_SPRITES/Blue/Gunner_Blue_Run.png";
+
+let characterRunPNGLeft = new Image();
+characterRunPNGLeft.src = "Images/Sprites/CHARACTER_SPRITES/Blue/LeftGunner_Blue_Run.png";
+
 let characterIdlePNG = new Image();
 characterIdlePNG.src = "Images/Sprites/CHARACTER_SPRITES/Blue/Gunner_Blue_Idle.png";
 

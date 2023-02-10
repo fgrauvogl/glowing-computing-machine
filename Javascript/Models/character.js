@@ -21,6 +21,7 @@ class Character {
         this.powerUp = null;
         this.image = characterIdlePNG;
         this.isFacingLeft = false;
+        this.isMoving = false;
         this.drones = [];
     }
     SetDefaultValues() {
@@ -109,6 +110,11 @@ class Character {
             this.image = characterIdlePNG;
             this.characterGunOffsetX = Math.abs(this.characterGunOffsetX);
         }
+
+        if (this.isMoving) {
+            this.image = this.isFacingLeft ? characterRunPNGLeft : characterRunPNG;
+        }
+
     }
 
     move() {
