@@ -36,3 +36,7 @@ function calculateDistance(x1, y1, x2, y2) {
     var dify = y1 - y2;
     return Math.sqrt(Math.pow(difx, 2) + Math.pow(dify, 2));
 }
+
+function updateCurrentGunText(text) {
+    currentGunText.innerText = text;
+}

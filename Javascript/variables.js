@@ -29,6 +29,12 @@ deathScreen.draggable = false;
 canvas.draggable = false;
 winScreen.draggable = false;
 itemCanvas.draggable = false;
+var currentGunText = document.getElementById('currentGun');
+var defaultPowerUps = {
+	fireRate: '+Fire Rate',
+	firePower: '+Fire Power',
+	bulletSpeed: '+Projectile Speed',
+	}
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');

@@ -20,7 +20,7 @@ window.addEventListener('keydown', function (e) {
     if (key == 69) {
         playerWeaponManager.switchGunRight();
         updateWeaponExperience();
-
+        updateCurrentGunText(playerWeaponManager.currentGun);
     }
     else if (key == 192) {
         toggleChat();
@@ -28,7 +28,7 @@ window.addEventListener('keydown', function (e) {
     else if (key == 81) {
         playerWeaponManager.switchGunLeft();
         updateWeaponExperience();
-
+        updateCurrentGunText(playerWeaponManager.currentGun);
     }
     else if (key == 80) {
         isPaused = !isPaused;
@@ -67,6 +67,7 @@ window.addEventListener("wheel", function (event) {
     } else {
         playerWeaponManager.switchGunRight();
     }
+    updateCurrentGunText(playerWeaponManager.currentGun);
     updateWeaponExperience();
 });
 

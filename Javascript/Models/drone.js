@@ -18,6 +18,11 @@ class Drone extends BaseObject {
         this.draw();
     }
 
+    updateMovement(x, y) {
+        this.x += x;
+        this.y += y;
+    }
+
     moveTowardsAlly() {
 
         this.ismovingtoward = true;

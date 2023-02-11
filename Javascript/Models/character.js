@@ -63,6 +63,11 @@ class Character {
             this.y = canvas.height - this.height;
             keyState[83] = false;
         }
+        if (this.drones.length > 0) {
+            this.drones.forEach(drone => {
+                drone.updateMovement(x, y);
+            });
+        }
     }
     hitPlayer(amount) {
         this.armor -= amount;
