@@ -1,4 +1,4 @@
-var gunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.MegaGatling, Guns.Sniper, Guns.FiftyCal];
+var gunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.MegaGatling, Guns.Sniper, Guns.FiftyCal, Guns.Lightning];
 var mobGunsList = [Guns.Pistol, Guns.ShotGun, Guns.GrenadeLauncher, Guns.MachineGun, Guns.ChainGun, Guns.Sniper, Guns.FiftyCal];
 
 var automaticGuns = {};
@@ -10,6 +10,7 @@ automaticGuns[Guns.GrenadeLauncher] = 1000;
 automaticGuns[Guns.Sniper] = 800;
 automaticGuns[Guns.FiftyCal] = 800;
 automaticGuns[Guns.ShotGun] = 1500;
+automaticGuns[Guns.Lightning] = 2;
 
 var shotsFired = {};
 var shotsHit = {};
@@ -34,6 +35,7 @@ class PlayerWeaponManager {
         this.Ammo[Guns.Sniper] = 0;
         this.Ammo[Guns.FiftyCal] = 0;
         this.Ammo[Guns.MegaGatling] = 1000;
+        this.Ammo[Guns.Lightning] = 50000;
     }
 
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -125,6 +127,7 @@ class PlayerWeaponManager {
 
 
     fireGun() {
+
         if (isPaused || character.isDead || winner || this.isWeaponCoolDown) {
             return;
         }
@@ -251,6 +254,12 @@ class PlayerWeaponManager {
                 characterProjectileArray.push(projectile);
 
                 break;
+            }
+            case Guns.Lightning: {
+                projectile = null;
+                LightningEffect(startingProjectileX, startingProjectileY, mouseX, mouseY, 3);
+                break;
+
             }
 
             default:

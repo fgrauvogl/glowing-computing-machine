@@ -13,7 +13,7 @@ function spawnEnemies(type, number, time) {
 
 
 function handleCommand(commandText) {
-
+    debugger;
     commandText = commandText.toLowerCase();
 
     let commands = commandText.split(" ");
@@ -32,6 +32,10 @@ function handleCommand(commandText) {
             else {
                 character.powerUp = null;
             }
+            break;
+        }
+        case "lightning": {
+            LightningEffect(character.GetXMidPoint(), character.GetYMidPoint(), mouseX, mouseY, 10);
             break;
         }
         case "color": {
