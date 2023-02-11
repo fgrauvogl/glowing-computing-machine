@@ -56,7 +56,12 @@ function handleCommand(commandText) {
             break;
         }
         case "drone": {
-                character.drones.push(new Drone(character.x, character.y));
+            if (commands[1]) {
+                for (var i = 0; i < commands[1]; i++) {
+                    let droneSpawnX = getRandomXCoord() * 20;
+                    character.drones.push(new Drone(droneSpawnX + ((Math.random() - .5) * 9001), (getRandomYCoord(droneSpawnX) * 20) + ((Math.random() - .5) * 9001)));
+                }
+            }
             break;
         }
         default:

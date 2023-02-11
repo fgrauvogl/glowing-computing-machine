@@ -20,7 +20,6 @@ class Projectile extends BaseObject {
         else {
             this.angle = angle;
         }
-        this.enemyType = getRandomEnemyType();
         this.damage = 10;
         this.enemiesHit = {};
         this.isImpactOnHit = false;
@@ -30,10 +29,18 @@ class Projectile extends BaseObject {
         this.lifespan = -1;
         this.radius = 5;
         this.isEnemyProjectile = false;
-        this.color = "#282828";
+        this.color = "red";
         this.gunType = gunType;
         this.hasHit = false;
         this.hasPowerUp = false;
+        this.png = bulletPng;
+        this.pngWidth = 3;
+        this.pngHeight = 12;
+        this.setMidPoint();
+    }
+    setMidPoint() {
+        this.midPointX = this.x + this.width / 2;
+        this.midPointY = this.y + this.height / 2;
     }
 
     setPowerUp(powerUp) {
@@ -147,11 +154,11 @@ class Projectile extends BaseObject {
         // Draw the projectile on the canvas
         if (this.hasHit) { return; }
         ctx.save();
-        ctx.translate(Math.ceil(this.x), Math.ceil(this.y));
+        ctx.translate(this.x, this.y + 2);
         ctx.rotate(this.angle);
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.drawImage(bulletPng, 0, 0, 12, 3, -this.radius / 2, Math.ceil(- this.radius / 2), this.radius, Math.ceil(- this.radius / 2));
+        ctx.fillRect(0, 0, this.projectileWidth, this.projectileHeight);
         this.drawPowerUp();
         ctx.fill();
         ctx.restore();
@@ -180,6 +187,7 @@ class Projectile extends BaseObject {
     }
 
     update() {
+        this.setMidPoint();
         this.moveTowards();
         this.checkForEnemyCollisions();
         this.handleAdditionalProjectileRules();

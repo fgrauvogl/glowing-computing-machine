@@ -29,6 +29,12 @@ class Enemy {
         this.statusConditions = {};
         enemyid += 1;
     }
+
+    setMidPoint() {
+        this.midPointX = this.x + this.width / 2;
+        this.midPointY = this.y + this.height / 2;
+    }
+
     setWeaponCoolDown(timeInMilliSeconds) {
         let cooldown = timeInMilliSeconds ?? 1000;
 
@@ -42,7 +48,7 @@ class Enemy {
     }
 
     getGun() {
-        if (this.EnemyType != "omega") { return; }
+        if (this.EnemyType != "faggot") { return; }
 
         let randomGunIndex = Math.floor(mobGunsList.length * Math.random());
 
@@ -76,6 +82,7 @@ class Enemy {
     }
 
     update() {
+        this.setMidPoint();
         this.handleAge();
         this.handleMovement();
         this.handleCollision();

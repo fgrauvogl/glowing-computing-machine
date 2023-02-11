@@ -6,13 +6,24 @@ class Drone extends BaseObject {
         this.width = 20;
         this.height = 20;
         this.image = dronePng;
-        this.currentGun = Guns.Pistol;
-        this.hoverDistance = 50;
+        this.currentGun = Guns.pistol;
+        this.damage = 20
+        this.projectileSpeed = 30; 
+        this.hoverDistance = 75;
         this.ally = null;
         this.speed = 2.5 + Math.random();
         this.distanceToAlly = 0;
+        this.midPointX = this.x + this.width / 2;
+        this.midPointY = this.y - this.height / 2;
+        this.attackRange = 400;
+        this.closestEnemy = null;
+        this.isCoolDown = false;
+        this.coolDownLength = 1000;
     }
     update(ally) {
+        this.setMidPoint();
+        this.getNearestEnemy();
+        this.fireAtClosestEnemy();
         this.ally = ally;
         this.handleMovement();
         this.draw();
@@ -71,4 +82,54 @@ class Drone extends BaseObject {
         ctx.drawImage(this.image, this.x, this.y, 20, 20);
     }
 
+    getNearestEnemy() {
+        var closestEnemy;
+        var distanceToClosestEnemy = this.attackRange;
+
+        enemiesArray.forEach(enemy => {
+            let distance = calculateDistance(this.midPointX, this.midPointY, enemy.x, enemy.y);
+            if (distance < this.attackRange && distance < distanceToClosestEnemy) {
+                distanceToClosestEnemy = distance;
+                closestEnemy = enemy;
+            }
+        });
+
+        if (closestEnemy) {
+            this.closestEnemy = closestEnemy;
+        }
+        else {
+            this.closestEnemy = null;
+        }
+    }
+
+    fireAtClosestEnemy() {
+        if (!this.closestEnemy || this.isCoolDown) {
+            return;
+        }
+        this.fireTheLaserBeam();
+        this.isCoolDown = true;
+        setTimeout(this.setCooldown.bind(this), this.coolDownLength);
+
+    }
+
+    fireTheLaserBeam() {
+        let newDroneProjectile = new Projectile(this.midPointX, this.midPointY, this.projectileSpeed, this.closestEnemy.midPointX, this.closestEnemy.midPointY);
+        newDroneProjectile.radius = 100;
+        newDroneProjectile.pngWidth = laserPngWidth;
+        newDroneProjectile.pngHeight = laserPngHeight;
+        newDroneProjectile.projectileWidth = 50;
+        newDroneProjectile.projectileHeight = 3;
+        newDroneProjectile.png = laserPng;
+        characterProjectileArray.push(newDroneProjectile);
+
+    }
+
+    setMidPoint() {
+        this.midPointX = this.x + this.width / 2;
+        this.midPointY = this.y + this.height / 2;
+    }
+
+    setCooldown() {
+        this.isCoolDown = false;
+    }
 }
