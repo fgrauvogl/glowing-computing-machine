@@ -13,7 +13,6 @@ function spawnEnemies(type, number, time) {
 
 
 function handleCommand(commandText) {
-    debugger;
     commandText = commandText.toLowerCase();
 
     let commands = commandText.split(" ");
