@@ -82,6 +82,10 @@ body {
     -webkit-user-select: none;
     -o-user-select: none;
 }
+#effect-canvas {
+    z-index: -1;
+    position: absolute;
+}
 
 #levelCounter {
     display: inline-block;
