@@ -31,10 +31,10 @@ class PlayerWeaponManager {
         this.Ammo[Guns.GrenadeLauncher] = 10;
         this.Ammo[Guns.ShotGun] = 5;
         this.Ammo[Guns.MachineGun] = 50;
-        this.Ammo[Guns.ChainGun] = 1000;
-        this.Ammo[Guns.Sniper] = 0;
-        this.Ammo[Guns.FiftyCal] = 0;
-        this.Ammo[Guns.MegaGatling] = 1000;
+        this.Ammo[Guns.ChainGun] = 0;
+        this.Ammo[Guns.Sniper] = 10;
+        this.Ammo[Guns.FiftyCal] = 10;
+        this.Ammo[Guns.MegaGatling] = 0;
         this.Ammo[Guns.Lightning] = 50000;
     }
 
@@ -167,15 +167,16 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/bestshotgun.mp3");
 
-                characterProjectileArray.push(projectile);
-
                 for (var i = 0; i < shotGunPellets; i++) {
 
-                    projectile = new Projectile(startingProjectileX, startingProjectileY, 8, x, y, projectile.angle + .3 * (.5 - Math.random()), this.currentGun);
+                    projectile = new Projectile(startingProjectileX, startingProjectileY, 1, x, y, projectile.angle + .3 * (.5 - Math.random()), this.currentGun);
+                    projectile.acceleration = .2;
                     projectile.setPowerUp(powerUp);
 
                     characterProjectileArray.push(projectile);
                 }
+
+                projectile = null; //remove original
 
                 break;
             }
@@ -183,7 +184,8 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/GrenadeLauncher.mp3");
 
-                projectile.radius = 12;
+                projectile.projectileHeight = 15;
+                projectile.projectileWidth = 25;
                 projectile.damage = 40;
                 projectile.isGrenade = true;
                 projectile.isImpactOnHit = true;
@@ -206,7 +208,8 @@ class PlayerWeaponManager {
 
                 playAudio("./Audio/machinegun.mp3");
 
-                projectile.speed = 12;
+                projectile.speed = 30;
+                projectile.calculateDirectionalVelocities();
 
                 characterProjectileArray.push(projectile);
 
@@ -230,10 +233,12 @@ class PlayerWeaponManager {
                 playAudio("./Audio/Sniper.mp3");
 
                 projectile.speed = 30;
+                projectile.calculateDirectionalVelocities();
 
                 projectile.damage = 20;
 
-                projectile.radius = 4;
+                projectile.projectileHeight = 2;
+                projectile.projectileWidth = 4;
 
                 characterProjectileArray.push(projectile);
 
@@ -244,10 +249,12 @@ class PlayerWeaponManager {
                 playAudio("./Audio/50.Cal.mp3");
 
                 projectile.speed = 30;
+                projectile.calculateDirectionalVelocities();
                 
                 projectile.damage = 50;
 
-                projectile.radius = 10;
+                projectile.projectileHeight = 5;
+                projectile.projectileWidth = 12;
 
                 projectile.isArmorPiercing = true;
 
@@ -269,6 +276,8 @@ class PlayerWeaponManager {
                     playAudio("./Audio/Pistol.mp3");
 
                     projectile.speed = 4;
+
+                    projectile.calculateDirectionalVelocities();
 
                     projectile.setPowerUp(powerUp);
 

@@ -12,8 +12,8 @@ class Projectile extends BaseObject {
         this.endingy = endingy;
         this.id = projectileID;
         projectileID += 1;
-        this.projectileHeight = 5;
-        this.projectileWidth = 5;
+        this.projectileHeight = 2;
+        this.projectileWidth = 6;
         if (angle == 0) {
             this.angle = Math.atan2(endingy - this.y, endingx - this.x);
         }
@@ -37,9 +37,15 @@ class Projectile extends BaseObject {
         this.pngWidth = 3;
         this.pngHeight = 12;
         this.setMidPoint();
+        this.acceleration = 0;
+        this.calculateDirectionalVelocities();
+
+    }
+    calculateDirectionalVelocities() {
         this.dx = this.speed * Math.cos(this.angle);
         this.dy = this.speed * Math.sin(this.angle);
     }
+
     setMidPoint() {
         this.midPointX = this.x + this.width / 2;
         this.midPointY = this.y + this.height / 2;
@@ -128,6 +134,10 @@ class Projectile extends BaseObject {
 
     moveTowards() {
         // Update the position of the projectile
+        if (this.acceleration) {
+            this.speed += this.acceleration;
+            this.calculateDirectionalVelocities();
+        }
         this.x += this.dx;
         this.y += this.dy;
     }
@@ -160,7 +170,7 @@ class Projectile extends BaseObject {
         ctx.rotate(this.angle);
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.fillRect(0, 0, this.projectileWidth, this.projectileHeight);
+        ctx.drawImage(bulletPng, 0, 0, this.projectileWidth, this.projectileHeight);
         this.drawPowerUp();
         ctx.fill();
         ctx.restore();
