@@ -36,9 +36,11 @@ var branchId = 1;
 var specialEffects = [];
 
 class LightningBranch {
-    constructor(x, y) {
+    constructor(x, y, id) {
         this.x = x;
         this.y = y;
+        this.id = id;
+
     }
 }
 
@@ -53,15 +55,23 @@ class LightningEffectObect {
         this.lightningBoltLength = calculateDistance(startX, startY, endX, endY);
         this.lightningBoltKinks = Math.max(2, Math.ceil(.01 * this.lightningBoltLength));
         this.branches = [];
+        let branchId = 1;
         for (let i = 0; i < branches; i++) {
-            this.branches.push(new LightningBranch(this.startX, this.startY));
+            this.branches.push(new LightningBranch(this.startX, this.startY, branchId));
+            branchId += 1;
         }
     }
 
     update() {
-        for (const branch of this.branches) {
-            this.DrawBranch(branch);
+        if (this.branches.length > 0) {
+            for (const branch of this.branches) {
+                this.DrawBranch(branch);
+            }
         }
+        else {
+            removeEnemySFX(this.id);
+        }
+      
     }
 
     DrawBranch(branch) {
@@ -74,6 +84,7 @@ class LightningEffectObect {
             if (i >= this.lightningBoltKinks) {
 
                 this.DrawToEndPoint();
+                this.RemoveBranch(branch.id);
                 break;
             }
             var t = i / this.lightningBoltKinks;
@@ -91,12 +102,23 @@ class LightningEffectObect {
         effectCtx.stroke();
     }
 
+    RemoveBranch(id) {
+        let obj = this.branches.find(x => x.id === id);
+        let index = this.branches.indexOf(obj);
+        this.branches.splice(index, 1);
+    }
+
     DrawToEndPoint() {
         effectCtx.lineTo(this.endX, this.endY);
         effectCtx.stroke();
     }
 }
 
+function removeEnemySFX(id) {
+    let obj = specialEffects.find(x => x.id === id);
+    let index = specialEffects.indexOf(obj);
+    specialEffects.splice(index, 1);
+}
 
 
 

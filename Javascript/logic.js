@@ -10,6 +10,7 @@ let currentFrame = 0;
 function animate() {
     if (isPaused || character.isDead || winner) { return; }
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    effectCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     enemiesArray.forEach(enemy => {
         enemy.update();
