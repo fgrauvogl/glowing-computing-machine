@@ -64,6 +64,7 @@ class LightningEffectObect {
         this.attractionRange = 150;
         this.lightningBoltLength = calculateDistance(startX, startY, endX, endY);
         this.lightningBoltKinks = Math.max(2, Math.ceil(.02 * this.lightningBoltLength));
+        this.splitChance = .26;
 
         this.branches = [];
         let branchId = 1;
@@ -74,6 +75,7 @@ class LightningEffectObect {
     }
 
     update() {
+        effectCtx.strokeStyle = "#Ffca1f";
         if (this.branches.length > 0) {
             for (const branch of this.branches) {
                 branch.update();
@@ -98,6 +100,8 @@ class LightningEffectObect {
                 this.RemoveBranch(branch.id);
                 break;
             }
+            this.BranchOff(branch); 
+
             var t = i / this.lightningBoltKinks;
             var noiseX = simplex.noise3D(t * 10 + randomSeed, t * 10 + 10 + randomSeed, randomSeed * 0.0005);
             var noiseY = simplex.noise3D(t * 10 + randomSeed, t * 10 + 20 + randomSeed, randomSeed * 0.0005);
@@ -121,6 +125,21 @@ class LightningEffectObect {
 
 
         effectCtx.stroke();
+    }
+
+    BranchOff(branch) {
+
+        if (!branch || this.currentKink < 6) { return };
+
+        let randomChance = Math.random();
+
+        if (randomChance < this.splitChance) {
+            let newEndX = branch.x + 300 * (Math.random() - .5);
+            let newEndY = branch.y + 300 * (Math.random() - .5);
+            branchId += 1;
+            let newBranch = new LightningBranch(branch.x, branch.y, newEndX, newEndY, branchId);
+            this.branches.push(newBranch);
+        }
     }
 
     CalculateEnemyHit(branch) {
