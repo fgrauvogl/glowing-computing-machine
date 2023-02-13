@@ -2,6 +2,7 @@
 const canvas = document.getElementById('canvas1');
 const deathScreen = document.getElementById("death-screen");
 const itemCanvas = document.getElementById('item-canvas');
+const effectCanvas = document.getElementById('effect-canvas');
 const winScreen = document.getElementById('win-screen');
 const pausemenu = document.getElementById('pause-menu');
 const levelCounter = document.getElementById('levelCounter');
@@ -29,6 +30,7 @@ deathScreen.draggable = false;
 canvas.draggable = false;
 winScreen.draggable = false;
 itemCanvas.draggable = false;
+effectCanvas.draggable = false;
 var currentGunText = document.getElementById('currentGun');
 var defaultPowerUps = {
 	fireRate: '+Fire Rate',
@@ -38,16 +40,18 @@ var defaultPowerUps = {
 
 const ctx = canvas.getContext('2d');
 const itemCtx = itemCanvas.getContext('2d');
+const effectCtx = effectCanvas.getContext('2d');
 
-CANVAS_WIDTH = itemCanvas.width = canvas.width = window.innerWidth;
-CANVAS_HEIGHT = itemCanvas.height = canvas.height = window.innerHeight;
+
+CANVAS_WIDTH = effectCanvas.width = itemCanvas.width = canvas.width = window.innerWidth;
+CANVAS_HEIGHT = effectCanvas.height = itemCanvas.height = canvas.height = window.innerHeight;
 
 function resize() {
 	CANVAS_WIDTH = itemCanvas.width = canvas.width = window.innerWidth;
 	CANVAS_HEIGHT = itemCanvas.height = canvas.height = window.innerHeight;
 }
-const startingEnemies = 1;
-const monstersPerLevel = 2;
+var startingEnemies = 1;
+var monstersPerLevel = 2;
 var isMouseDown = false;
 let isPaused = false;
 let isMuted = false;

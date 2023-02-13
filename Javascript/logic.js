@@ -27,6 +27,7 @@ function animate() {
     frame += .1;
     if (frame >= 5) {
         frame = 0;
+        effectCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     };
     currentFrame = Math.floor(frame);
     character.update();
