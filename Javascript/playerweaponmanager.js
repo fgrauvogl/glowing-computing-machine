@@ -28,14 +28,14 @@ class PlayerWeaponManager {
     }
 
     setStartingAmmo() {
-        this.Ammo[Guns.GrenadeLauncher] = 10;
-        this.Ammo[Guns.ShotGun] = 5;
-        this.Ammo[Guns.MachineGun] = 50;
+        this.Ammo[Guns.GrenadeLauncher] = 100;
+        this.Ammo[Guns.ShotGun] = 0;
+        this.Ammo[Guns.MachineGun] = 0;
         this.Ammo[Guns.ChainGun] = 0;
-        this.Ammo[Guns.Sniper] = 10;
-        this.Ammo[Guns.FiftyCal] = 10;
+        this.Ammo[Guns.Sniper] = 0;
+        this.Ammo[Guns.FiftyCal] = 0;
         this.Ammo[Guns.MegaGatling] = 0;
-        this.Ammo[Guns.Lightning] = 50000;
+        this.Ammo[Guns.Lightning] = 0;
     }
 
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -153,7 +153,7 @@ class PlayerWeaponManager {
 
         let y = event?.clientY ?? mouseY;
 
-        let startingProjectileY = (character.y + character.height / 2) - character.characterGunOffsetY;
+        let startingProjectileY = (character.y + character.height / 2) - character.characterGunOffsetY + 4;
 
         let startingProjectileX = (character.x + character.width / 2) + character.characterGunOffsetX;
 
@@ -185,11 +185,10 @@ class PlayerWeaponManager {
                 playAudio("./Audio/GrenadeLauncher.mp3");
 
                 projectile.projectileHeight = 15;
-                projectile.projectileWidth = 25;
+                projectile.projectileWidth = 20;
                 projectile.damage = 40;
                 projectile.isGrenade = true;
                 projectile.isImpactOnHit = true;
-                characterProjectileArray.push(projectile);
 
 
                 break;
@@ -200,7 +199,6 @@ class PlayerWeaponManager {
 
                 projectile.damage = 24;
 
-                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -211,7 +209,6 @@ class PlayerWeaponManager {
                 projectile.speed = 30;
                 projectile.calculateDirectionalVelocities();
 
-                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -223,7 +220,6 @@ class PlayerWeaponManager {
                 for (var i = 0; i < 100; i++) {
                     let projectile2 = new Projectile(startingProjectileX, startingProjectileY, 20, x, y, projectile.angle + .5 * (.5 - Math.random()), this.currentGun);
                     projectile.setPowerUp(powerUp);
-                    characterProjectileArray.push(projectile2);
                 }
 
                 break;
@@ -240,7 +236,6 @@ class PlayerWeaponManager {
                 projectile.projectileHeight = 2;
                 projectile.projectileWidth = 4;
 
-                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -258,7 +253,6 @@ class PlayerWeaponManager {
 
                 projectile.isArmorPiercing = true;
 
-                characterProjectileArray.push(projectile);
 
                 break;
             }
@@ -281,9 +275,11 @@ class PlayerWeaponManager {
 
                     projectile.setPowerUp(powerUp);
 
-                    characterProjectileArray.push(projectile);
                 }
         }
+
+        characterProjectileArray.push(projectile);
+
     }
 }
 
