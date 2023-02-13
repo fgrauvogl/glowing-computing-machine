@@ -37,6 +37,8 @@ class Projectile extends BaseObject {
         this.pngWidth = 3;
         this.pngHeight = 12;
         this.setMidPoint();
+        this.dx = this.speed * Math.cos(this.angle);
+        this.dy = this.speed * Math.sin(this.angle);
     }
     setMidPoint() {
         this.midPointX = this.x + this.width / 2;
@@ -126,8 +128,8 @@ class Projectile extends BaseObject {
 
     moveTowards() {
         // Update the position of the projectile
-        this.x += this.speed * Math.cos(this.angle);
-        this.y += this.speed * Math.sin(this.angle);
+        this.x += this.dx;
+        this.y += this.dy;
     }
 
     projectileDisappearCheck(targetx, targety) {
