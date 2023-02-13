@@ -10,7 +10,7 @@ automaticGuns[Guns.GrenadeLauncher] = 1000;
 automaticGuns[Guns.Sniper] = 800;
 automaticGuns[Guns.FiftyCal] = 800;
 automaticGuns[Guns.ShotGun] = 1500;
-automaticGuns[Guns.Lightning] = 2;
+automaticGuns[Guns.Lightning] = 1000;
 
 var shotsFired = {};
 var shotsHit = {};
