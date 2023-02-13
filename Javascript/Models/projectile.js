@@ -281,6 +281,20 @@ class Projectile extends BaseObject {
     }
 
 }
+
+class EnemyProjectile extends Projectile {
+    draw() {
+        if (this.hasHit) { return; }
+        ctx.save();
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 5, 0, 2 * Math.PI, false);
+        this.drawPowerUp();
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
 function removeProjectile(id) {
     let obj = characterProjectileArray.find(x => x.id === id);
     let index = characterProjectileArray.indexOf(obj);
