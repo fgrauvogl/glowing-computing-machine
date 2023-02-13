@@ -10,7 +10,7 @@ automaticGuns[Guns.GrenadeLauncher] = 1000;
 automaticGuns[Guns.Sniper] = 800;
 automaticGuns[Guns.FiftyCal] = 800;
 automaticGuns[Guns.ShotGun] = 1500;
-automaticGuns[Guns.Lightning] = 1000;
+automaticGuns[Guns.Lightning] = 200;
 
 var shotsFired = {};
 var shotsHit = {};
@@ -257,7 +257,9 @@ class PlayerWeaponManager {
             }
             case Guns.Lightning: {
                 projectile = null;
-                LightningEffect(startingProjectileX, startingProjectileY, mouseX, mouseY, 3);
+                specialEffects.push(new LightningEffectObect(character.GetXMidPoint(), character.GetYMidPoint(), mouseX, mouseY, 5));
+
+               // LightningEffect(startingProjectileX, startingProjectileY, mouseX, mouseY, 3);
                 break;
 
             }

@@ -47,8 +47,8 @@ CANVAS_WIDTH = effectCanvas.width = itemCanvas.width = canvas.width = window.inn
 CANVAS_HEIGHT = effectCanvas.height = itemCanvas.height = canvas.height = window.innerHeight;
 
 function resize() {
-	CANVAS_WIDTH = itemCanvas.width = canvas.width = window.innerWidth;
-	CANVAS_HEIGHT = itemCanvas.height = canvas.height = window.innerHeight;
+	CANVAS_WIDTH = itemCanvas.width = effectCanvas.width = canvas.width = window.innerWidth;
+	CANVAS_HEIGHT = itemCanvas.height = effectCanvas.height = canvas.height = window.innerHeight;
 }
 var startingEnemies = 1;
 var monstersPerLevel = 2;
