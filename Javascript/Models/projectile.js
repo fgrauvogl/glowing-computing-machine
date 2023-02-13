@@ -166,11 +166,11 @@ class Projectile extends BaseObject {
         // Draw the projectile on the canvas
         if (this.hasHit) { return; }
         ctx.save();
-        ctx.translate(this.x, this.y + 2);
+        ctx.translate(this.x - this.projectileWidth / 2, this.y - this.projectileHeight / 2);
         ctx.rotate(this.angle);
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.drawImage(bulletPng, 0, 0, this.projectileWidth, this.projectileHeight);
+        ctx.drawImage(bulletPng, - this.projectileWidth /2, - this.projectileHeight / 2, this.projectileWidth, this.projectileHeight);
         this.drawPowerUp();
         ctx.fill();
         ctx.restore();
