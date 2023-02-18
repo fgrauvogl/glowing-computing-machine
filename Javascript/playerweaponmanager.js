@@ -263,12 +263,12 @@ class PlayerWeaponManager {
                 break;
             }
             case Guns.Lightning: {
+
                 projectile = null;
 
                 specialEffects.push(new LightningEffectObect(startingProjectileX, startingProjectileY, mouseX, mouseY, 5));
 
                 break;
-
             }
 
             default:

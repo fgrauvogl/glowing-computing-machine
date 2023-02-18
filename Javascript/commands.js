@@ -52,8 +52,14 @@ function handleCommand(commandText) {
             spawnFromStagedEnemy(1000);
             break;
         }
-        case "avoider": {
-            var enemy = new AvoidingEnemy();
+        case "charger": {
+            var enemy = new SpecialEnemy();
+            stagedEnemiesArray.push(enemy);
+            spawnFromStagedEnemy(1000);
+            break;
+        }
+        case "rat": {
+            var enemy = new Rat();
             stagedEnemiesArray.push(enemy);
             spawnFromStagedEnemy(1000);
             break;
