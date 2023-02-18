@@ -90,7 +90,7 @@ class Character {
 
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
-        ctx.drawImage(this.image, currentFrame * characterIdleWidth, 0, characterIdleWidth, characterIdleHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
+        ctx.drawImage(this.image, currentFrame % 5 * characterIdleWidth, 0, characterIdleWidth, characterIdleHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.font = this.font;

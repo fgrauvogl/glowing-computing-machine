@@ -264,9 +264,9 @@ class PlayerWeaponManager {
             }
             case Guns.Lightning: {
                 projectile = null;
-                specialEffects.push(new LightningEffectObect(character.GetXMidPoint(), character.GetYMidPoint(), mouseX, mouseY, 5));
 
-               // LightningEffect(startingProjectileX, startingProjectileY, mouseX, mouseY, 3);
+                specialEffects.push(new LightningEffectObect(startingProjectileX, startingProjectileY, mouseX, mouseY, 5));
+
                 break;
 
             }
