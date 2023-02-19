@@ -90,7 +90,7 @@ class Character {
 
     draw() {
         ctx.fillStyle = "rgb(10, 75, 77)";
-        ctx.drawImage(this.image, currentFrame * characterIdleWidth, 0, characterIdleWidth, characterIdleHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
+        ctx.drawImage(this.image, currentFrame % 5 * characterIdleWidth, 0, characterIdleWidth, characterIdleHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.font = this.font;
@@ -168,13 +168,13 @@ class Character {
 
     getCharacterHealth() {
         if (this.name == "Crumb") {
-            return 100;
+            return 1000;
         }
         else if (this.name == "Mark") {
-            return 120;
+            return 1200;
         }
         else if (this.name == "Clint") {
-            return 200;
+            return 2000;
         }
     }
 

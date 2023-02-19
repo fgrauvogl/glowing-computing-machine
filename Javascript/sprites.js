@@ -35,3 +35,11 @@ function changeCharacterColor(color) {
 
 let dronePng = new Image();
 dronePng.src = "Images/drone.png";
+
+let ratPng = new Image();
+ratPng.src = "Images/Sprites/Enemies/RatTrimmed.png";
+
+let ratPngLeft = new Image();
+ratPngLeft.src = "Images/Sprites/Enemies/RatTrimmedLeft.png";
+
+let ratPngWidthAndHeight = 20;
