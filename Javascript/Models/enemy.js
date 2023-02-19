@@ -87,9 +87,9 @@ class Enemy {
         this.handleMovement();
         this.handleCollision();
         this.fireGun();
-        var isCollision = this.collision(character.x, character.y, character.width, character.height, this.x, this.y, this.width, this.height);
+        var isCollision = this.collision(character.x, character.y, character.width / 2, character.height / 2, this.x, this.y, this.width, this.height);
         if (isCollision) {
-        this.hitPlayer();
+            this.hitPlayer();
         }
         if (this.health <= 0) { removeEnemy(this.id); };
         this.draw();
@@ -239,8 +239,8 @@ class Enemy {
             const center2Y = this.y + this.height / 2;
             const deltaX = center1X - center2X;
             const deltaY = center1Y - center2Y;
-            const overlapX = (character.width + this.width) / 2 - Math.abs(deltaX);
-            const overlapY = (character.height + this.height) / 2 - Math.abs(deltaY);
+            const overlapX = (character.width / 2 + this.width) / 2 - Math.abs(deltaX);
+            const overlapY = (character.height / 1.5 + this.height) / 2 - Math.abs(deltaY);
             this.hitPlayer();
             if (overlapX > 0 && overlapY > 0) {
                 if (overlapX < overlapY) {
@@ -272,7 +272,7 @@ class Enemy {
         ctx.fillRect(Math.floor(this.x), Math.floor(this.y + this.height), this.width * currentHealthPercentage, this.height / 8);
         ctx.fillStyle = "black";
         ctx.font = "10px Tahoma";
-        ctx.fillText(this.enemyName, this.x + (this.width /2), this.y);
+        ctx.fillText(this.enemyName, this.x + (this.width / 2), this.y);
     }
     handleAge() {
         this.age = this.age + .01 * Math.random();
@@ -280,9 +280,15 @@ class Enemy {
             removeEnemy(this.id);
         }
     }
+
     hitPlayer() {
         if (this.hasHitCharacterRecently) { return; }
         if (this.hitAudio) { playAudio(this.hitAudio); }
+        this.applyDamageToCharacter();
+        this.stopAtLastAnimation = true;
+    }
+
+    applyDamageToCharacter() {
         this.hasHitCharacterRecently = true;
         setTimeout(this.removeRecentHitCooldown.bind(this), this.enemyHitCoolDown * 1000);
         character.armor -= this.strength;

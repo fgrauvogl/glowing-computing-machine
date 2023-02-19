@@ -75,4 +75,5 @@ function handleCommand(commandText) {
         }
         default:
     }
+    toggleChat();
 }

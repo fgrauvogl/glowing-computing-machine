@@ -37,6 +37,9 @@ let dronePng = new Image();
 dronePng.src = "Images/drone.png";
 
 let ratPng = new Image();
-ratPng.src = "Images/Sprites/Enemies/Rat.png";
+ratPng.src = "Images/Sprites/Enemies/RatTrimmed.png";
 
-let ratPngWidthAndHeight = 64;
+let ratPngLeft = new Image();
+ratPngLeft.src = "Images/Sprites/Enemies/RatTrimmedLeft.png";
+
+let ratPngWidthAndHeight = 20;

@@ -168,13 +168,13 @@ class Character {
 
     getCharacterHealth() {
         if (this.name == "Crumb") {
-            return 100;
+            return 1000;
         }
         else if (this.name == "Mark") {
-            return 120;
+            return 1200;
         }
         else if (this.name == "Clint") {
-            return 200;
+            return 2000;
         }
     }
 
