@@ -59,7 +59,9 @@ function handleCommand(commandText) {
             break;
         }
         case "rat": {
-            var enemy = new Rat();
+            var enemy = new SpriteEnemy(20, 20, 20, 20);
+            enemy.image = ratPng;
+            enemy.imageLeft = ratPngLeft;
             stagedEnemiesArray.push(enemy);
             spawnFromStagedEnemy(1000);
             break;

@@ -1,13 +1,14 @@
-class Rat extends Enemy {
-    constructor() {
+class SpriteEnemy extends Enemy {
+    constructor(width, height, spriteWidth, spriteHeight) {
         super();
-        this.image = ratPng;
-        this.width = 20;
-        this.height = 20;
+        this.image = null;
+        this.imageLeft = null
+        this.width = width;
+        this.height = height;
+        this.spriteWidth = spriteWidth;
+        this.spriteHeight = spriteHeight;
         this.isFacingLeft = false;
         this.spriteRow = 0;
-        this.drawWidth = 64;
-        this.drawHeight = 64;
         this.spriteFrame = 0;
         this.maxSpriteFrame = 5;
         this.isAnimationPaused = false;
@@ -17,12 +18,13 @@ class Rat extends Enemy {
     draw() {
         this.SetSprite();
         let spriteFrame = Math.floor(this.spriteFrame);
-        ctx.drawImage(this.image, spriteFrame * ratPngWidthAndHeight, ratPngWidthAndHeight * this.spriteRow, ratPngWidthAndHeight, ratPngWidthAndHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
+        ctx.drawImage(this.image, spriteFrame * this.spriteWidth, this.spriteHeight * this.spriteRow, this.spriteWidth, this.spriteHeight, Math.floor(this.x), Math.floor(this.y), this.width, this.height);
     }
 
     hitPlayer() {
         console.log(this.hasHitCharacterRecently);
         if (this.hasHitCharacterRecently) { return; }
+        playAudio();
         setTimeout(this.resetSprite.bind(this), this.enemyHitCoolDown * 1000);
         this.spriteFrame = 0;
         this.stopAtLastAnimation = true;
