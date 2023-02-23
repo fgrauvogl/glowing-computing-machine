@@ -144,7 +144,7 @@ function spawnFromStagedEnemy(timeInMs) {
 
 function spawnRandomEnemies() {
     let number = level * monstersPerLevel;
-    let spanOfTimeinSeconds = level
+    let spanOfTimeinSeconds = level;
     for (let i = 0; i < number; i++) {
         stagedEnemiesArray.push(new Enemy());
     }
@@ -206,7 +206,7 @@ function restart(needsAnimationReset = true) {
     powerUpArray = [];
     playerWeaponManager.currentGun = Guns.Pistol;
     playerWeaponManager.setStartingAmmo();
-    currentDoomCountDown = startingDoomCountDown
+    currentDoomCountDown = startingDoomCountDown;
     updateWeaponExperience();
     winner = false;
     if (!gameMode) {

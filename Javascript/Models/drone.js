@@ -7,8 +7,8 @@ class Drone extends BaseObject {
         this.height = 20;
         this.image = dronePng;
         this.currentGun = Guns.pistol;
-        this.damage = 20
-        this.projectileSpeed = 30; 
+        this.damage = 20;
+        this.projectileSpeed = 30;
         this.hoverDistance = 75;
         this.ally = null;
         this.speed = 2.5 + Math.random();

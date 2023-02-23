@@ -5,7 +5,7 @@ function spawnEnemies(type, number, time) {
 
     for (var i = 0; i < number; i++) {
         var enemy = new Enemy(type);
-        stagedEnemiesArray.push(enemy);   
+        stagedEnemiesArray.push(enemy);
     }
 
     spawnFromStagedEnemy(timeToSpawnPerMob);

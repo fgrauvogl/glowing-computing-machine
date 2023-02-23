@@ -25,7 +25,7 @@ class Enemy {
         this.hasHitCharacterRecently = false;
         this.experienceGranted = 1;
         this.enemyHitCoolDown = 1;
-        this.hitAudio = null
+        this.hitAudio = null;
         this.statusConditions = {};
         enemyid += 1;
     }
