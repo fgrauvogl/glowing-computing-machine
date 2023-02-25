@@ -19,11 +19,15 @@ class Drone extends BaseObject {
         this.closestEnemy = null;
         this.isCoolDown = false;
         this.coolDownLength = 1000;
+        this.angleToEnemy = null;
+        this.defaultAngle = 1;
+        this.spinSpeed = .02;
     }
     update(ally) {
         this.setMidPoint();
         this.getNearestEnemy();
         this.fireAtClosestEnemy();
+        this.lookAtClosestEnemy();
         this.ally = ally;
         this.handleMovement();
         this.draw();
@@ -79,7 +83,16 @@ class Drone extends BaseObject {
     }
 
     draw() {
-        ctx.drawImage(this.image, this.x, this.y, 20, 20);
+        console.log(`x is ${this.x} midpointx is ${this.midPointX} y is ${this.y} midpointy is ${this.midPointY}`);
+        let rotationAngle = this.angleToEnemy ?? this.defaultAngle;
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(rotationAngle);
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.drawImage(this.image, -this.width / 2, -this.height / 2, 20, 20);
+        ctx.fill();
+        ctx.restore();
     }
 
     getNearestEnemy() {
@@ -109,6 +122,17 @@ class Drone extends BaseObject {
         this.fireTheLaserBeam();
         this.isCoolDown = true;
         setTimeout(this.setCooldown.bind(this), this.coolDownLength);
+
+    }
+
+    lookAtClosestEnemy() {
+        this.defaultAngle += this.spinSpeed;
+        if (!this.closestEnemy) {
+            this.angleToEnemy = null;
+            return;
+        }
+        this.angleToEnemy = Math.atan2(this.closestEnemy.midPointY - this.midPointY, this.closestEnemy.midPointX - this.midPointX);
+        this.defaultAngle = this.angleToEnemy;
 
     }
 
