@@ -36,14 +36,3 @@ function calculateDistance(x1, y1, x2, y2) {
     var dify = y1 - y2;
     return Math.sqrt(Math.pow(difx, 2) + Math.pow(dify, 2));
 }
-
-function updateCurrentGunText(text) {
-    currentGunText.innerText = text;
-    shopButtonContainer.innerHTML = '';
-    for (const key in defaultPowerUps) {
-        const button = document.createElement("button");
-        button.classList.toggle("button-74");
-        button.textContent = defaultPowerUps[key];
-        shopButtonContainer.appendChild(button);
-    }
-}

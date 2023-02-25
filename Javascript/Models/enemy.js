@@ -184,7 +184,9 @@ class Enemy {
 
                 }
         }
-        enemyProjectileArray.push(projectile);
+        if (projectile) {
+            enemyProjectileArray.push(projectile);
+        }
     }
 
     moveTowards(enemy) {
