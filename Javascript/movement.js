@@ -10,9 +10,9 @@ function UpdateCharacterMovement() {
 
 window.addEventListener('keydown', function (e) {
     const key = e.keyCode || e.which;
-    if (keyProcessing.has(key)) {
-        return;
-    }
+     //if (keyProcessing.has(key)) {
+      //  return;
+    // }
     keyProcessing.set(key, true);
     keyState[key] = true;
     keyState[e.keyCode || e.which] = true;
@@ -31,12 +31,14 @@ window.addEventListener('keydown', function (e) {
         updateCurrentGunText(playerWeaponManager.currentGun);
     }
     else if (key == 80) {
-        isPaused = !isPaused;
-        if (!isPaused) {
-            unpause();
-        }
-        else {
-            pause();
+        if (!isChatActive) {
+            isPaused = !isPaused;
+            if (!isPaused) {
+                unpause();
+            }
+            else {
+                pause();
+            }
         }
     }
     else if (key === 13) {

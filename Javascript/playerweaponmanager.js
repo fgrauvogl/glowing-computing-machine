@@ -29,13 +29,13 @@ class PlayerWeaponManager {
 
     setStartingAmmo() {
         this.Ammo[Guns.GrenadeLauncher] = 100;
-        this.Ammo[Guns.ShotGun] = 0;
-        this.Ammo[Guns.MachineGun] = 0;
+        this.Ammo[Guns.ShotGun] = 5;
+        this.Ammo[Guns.MachineGun] = 5;
         this.Ammo[Guns.ChainGun] = 0;
         this.Ammo[Guns.Sniper] = 0;
-        this.Ammo[Guns.FiftyCal] = 0;
+        this.Ammo[Guns.FiftyCal] = 5;
         this.Ammo[Guns.MegaGatling] = 0;
-        this.Ammo[Guns.Lightning] = 0;
+        this.Ammo[Guns.Lightning] = 5;
     }
 
     setWeaponCoolDown(timeInMilliSeconds) {
@@ -277,8 +277,9 @@ class PlayerWeaponManager {
 
                 }
         }
-
-        characterProjectileArray.push(projectile);
+        if (projectile) {
+            characterProjectileArray.push(projectile);
+        }
 
     }
 }

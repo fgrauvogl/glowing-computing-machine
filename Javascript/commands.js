@@ -59,20 +59,24 @@ function handleCommand(commandText) {
             break;
         }
         case "rat": {
-            var enemy = new SpriteEnemy(20, 20, 20, 20);
-            enemy.image = ratPng;
-            enemy.imageLeft = ratPngLeft;
-            stagedEnemiesArray.push(enemy);
-            spawnFromStagedEnemy(1000);
+            let numberOfRats = commands[1] ?? 1;
+            for (var i = 0; i < numberOfRats; i++) {
+                    var enemy = new SpriteEnemy(20, 20, 20, 20);
+                    enemy.image = ratPng;
+                    enemy.imageLeft = ratPngLeft;
+                    stagedEnemiesArray.push(enemy);
+                    spawnFromStagedEnemy(1000);
+            }
+            
             break;
         }
+
         case "drone": {
-            if (commands[1]) {
-                for (var i = 0; i < commands[1]; i++) {
+            let numberOfDrones = commands[1] ?? 1;
+            for (var i = 0; i < numberOfDrones; i++) {
                     let droneSpawnX = getRandomXCoord() * 20;
                     character.drones.push(new Drone(droneSpawnX + ((Math.random() - .5) * 9001), (getRandomYCoord(droneSpawnX) * 20) + ((Math.random() - .5) * 9001)));
                 }
-            }
             break;
         }
         default:

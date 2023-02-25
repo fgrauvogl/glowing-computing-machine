@@ -18,13 +18,10 @@ downArrow.addEventListener("click", function () {
 
 });
 
-for (const key in defaultPowerUps) {
-    const button = document.createElement("button");
-    button.classList.toggle("button-74");
-    button.textContent = defaultPowerUps[key];
-    button.addEventListener("click", function () {
-        console.log(`Selected Power Up: ${defaultPowerUps[key]}`);
-    });
-    shopButtonContainer.appendChild(button);
-}
+//for (const key in defaultPowerUps) {
+//    const button = document.createElement("button");
+  //  button.classList.toggle("button-74");
+    //button.textContent = defaultPowerUps[key];
+  //  shopButtonContainer.appendChild(button);
+//}
 
