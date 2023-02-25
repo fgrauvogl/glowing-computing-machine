@@ -17,11 +17,3 @@ downArrow.addEventListener("click", function () {
     updateCurrentGunText(playerWeaponManager.currentGun);
 
 });
-
-//for (const key in defaultPowerUps) {
-//    const button = document.createElement("button");
-  //  button.classList.toggle("button-74");
-    //button.textContent = defaultPowerUps[key];
-  //  shopButtonContainer.appendChild(button);
-//}
-
